@@ -1,0 +1,206 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amscd}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{listings}
+\usepackage{enumerate}
+\usepackage[all,cmtip]{xy}
+
+\textwidth=15cm \textheight=22cm \topmargin=0.5cm \oddsidemargin=0.5cm \evensidemargin=0.5cm
+
+\newcommand{\sk}{\vskip 10mm}
+\newcommand{\bb}[1]{\mathbb{#1}}
+\newcommand{\ra}{\rightarrow}
+%\newcommand{\Re}{\text{Re}}
+%\newcommand{\Im}{\text{Im}}
+
+\theoremstyle{plain}
+\newtheorem{problem}{Problem}
+\newtheorem{lemma}{Lemma}[problem]
+
+\theoremstyle{remark}
+\newtheorem{tpart}{}[problem]
+\newtheorem*{ppart}{}
+
+\begin{document}
+
+\begin{problem}[1.4.7]
+  The family of mappings introduced here plays an important role in complex
+  analysis. These mappings, sometimes called \textbf{Blaschke factors},
+  will reappear in various applications in later chapters.
+  \begin{enumerate}
+  \item[(a)] Let $z,w$ be two complex numbers such that $\bar{z}w\neq 1$.
+    Prove that
+    \[
+      \left|
+        \frac{w-z}{1-\bar{w}z}
+      \right|
+      <1 \text{\quad if $|z|<1$ and $|w| <1$,}
+    \]
+    and also that
+    \[
+      \left|
+        \frac{w-z}{1-\bar{w}z}
+      \right|
+      = 1 \text{\quad if $|z|=1$ or $|w|=1$}.
+    \]
+    Hint: Wy can one assume that $z$ is real? It then suffices to prove that
+    \[
+      (r-w)(r-\bar{w})\leq (1-rw)(1-r\bar{w})
+    \]
+    with equality for appropriate $r$ and $|w|$.
+  \item[(b)] Prove that for a fixed $w$ in the unit disc $\bb{D}$, the mappings
+    \[
+      F:z\mapsto \frac{w-z}{1-\bar{w}z}
+    \]
+    satisfies the following conditions:
+    \begin{enumerate}
+    \item[(i)] $F$ maps the unit disc to itself (that is,
+      $F:\bb{D}\rightarrow\bb{D}$), and is holomorphic.
+    \item[(ii)] $F$ interchanges $0$ and $w$, namely $F(0)=w$ and $F(w)=0$.
+    \item[(iii)] $|F(z)|=1$ if $|z|=1$.
+    \item[(iv)] $F:\bb{D}\rightarrow \bb{D}$ is bijective.
+      Hint: Calculate $F\circ F$.
+    \end{enumerate}
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}
+  
+\end{proof}
+
+\sk
+
+\begin{problem}[1.4.9]
+  Show that in polar coordinates, the Cauchy-Riemann equations take the form
+  \[
+    \frac{\partial u}{\partial r}=\frac{1}{r}\frac{\partial v}{\partial\theta} \text{\quad and\quad} \frac{1}{r}\frac{\partial u}{\partial\theta}=-\frac{\partial v}{\partial r}.
+  \]
+  Use these equations to show that the logarithm function defined by
+  \[
+    \log z = \log r + i\theta \text{\quad  where $z=re^{i\theta}$ with $-\pi<\theta<\pi$}
+  \]
+  is holomorphic in the region $r>0$ and $-\pi<\theta<\pi$.
+\end{problem}
+
+\begin{proof}
+  
+\end{proof}
+
+\sk
+
+\begin{problem}[1.4.10]
+  Show that
+  \[
+    4\frac{\partial}{\partial z}\frac{\partial}{\partial \bar{z}}=4\frac{\partial}{\partial\bar{z}}\frac{\partial}{\partial z}=\Delta,
+  \]
+  where $\Delta$ is the \textbf{Laplacian}
+  \[
+    \Delta = \frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial y^2}.
+  \]
+\end{problem}
+
+\begin{proof}
+  
+\end{proof}
+
+\sk
+
+\begin{problem}[1.4.13]
+  Suppose that $f$ is holomorphic in an open set $\Omega$. Prove that in any one
+  of the following cases:
+  \begin{itemize}
+  \item[(a)] $\Re(f)$ is constant;
+  \item[(b)] $\Im(f)$ is constant;
+  \item[(c)] $|f|$ is constant;
+  \end{itemize}
+  one can conclude that $f$ is constant.
+\end{problem}
+
+\begin{proof}
+  
+\end{proof}
+
+\sk
+
+\begin{problem}[1.4.17]
+  Show that if $\{a_n\}_{n=0}^\infty$ is a sequence of non-zero complex numbers
+  such that
+  \[
+    \lim_{n\rightarrow\infty}\frac{|a_{n+1}|}{|a_n|}=L,
+  \]
+  then
+  \[
+    \lim_{n\rightarrow\infty}|a_n|^{1/n}=L.
+  \]
+  In particular, this exercise shows that when applicable, the ratio test
+  can be used to calculate the radius of convergence of a power series.
+\end{problem}
+
+\begin{proof}
+  
+\end{proof}
+
+\sk
+
+\begin{problem}[2.6.1]
+  Prove that
+  \[
+    \int_0^\infty\sin(x^2)dx=\int_0^\infty\cos(x^2)dx=\frac{\sqrt{2\pi}}{4}.
+  \]
+  These are the \textbf{Fresnel Integrals}. Here, $\int_0^\infty$ is
+  interpreted as $\lim_{R\rightarrow\infty}\int_0^R$.\\
+  Hint: Integrate the function $e^{-x^2}$ over the $\pi/4$ semicircle
+  thing. Recall that $\int_{-\infty}^\infty e^{-x^2}=\sqrt{\pi}$.
+\end{problem}
+
+\begin{proof}
+  
+\end{proof}
+
+\sk
+
+\begin{problem}[2.6.11]
+  Let $f$ be a holomorphic function on the disc $D_{R_0}$ centered at the
+  origin and of radius $R_0$.
+\end{problem}
+
+\begin{proof}
+  \begin{itemize}
+  \item[(a)] Prove that whenever $0<R<R_0$ and $|z|<R$, then
+    \[
+      f(z)=\frac{1}{2\pi}\int_0^{2\pi}f(Re^{i\varphi}\Re\left(\frac{Re^{i\varphi}+z}{Re^{i\varphi}-z}\right))d\varphi.
+    \]
+  \item[(b)] Show that
+    \[
+      \Re\left(\frac{Re^{i\gamma}-r}{Re^{i\gamma}-r}\right) = \frac{R^2-r^2}{R^2-2Rr\cos\gamma + r^2}.
+    \]
+  \end{itemize}
+  Hint: For the first part, note that if $w=R^2/\bar{z}$, then the integral of
+  $f(\zeta)/(\zeta-w)$ around the circle of radius $R$ centered at the origin is
+  zero. Use this, together with the usual Cauchy integral formula, to deduce
+  the desired identity.
+\end{proof}
+
+\sk
+
+\begin{problem}[2.6.14]
+  Suppose that $f$ is holomorphic in an open set containing the closed unit
+  disc, except for a pole at $z_0$ on the unit circle. Show that if
+  \[
+    \sum_{n=0}^\infty a_nz^n
+  \]
+  denotes the power series expansion of $f$ in the open unit disc, then
+  \[
+    \lim_{n\rightarrow\infty}\frac{a_n}{a_{n+1}}=z_0
+  \]
+\end{problem}
+
+\begin{proof}
+  
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
