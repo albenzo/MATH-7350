@@ -13,8 +13,7 @@
 \newcommand{\sk}{\vskip 10mm}
 \newcommand{\bb}[1]{\mathbb{#1}}
 \newcommand{\ra}{\rightarrow}
-%\newcommand{\Re}{\text{Re}}
-%\newcommand{\Im}{\text{Im}}
+\newcommand{\conj}[1]{\overline{#1}}
 
 \theoremstyle{plain}
 \newtheorem{problem}{Problem}
@@ -31,29 +30,29 @@
   analysis. These mappings, sometimes called \textbf{Blaschke factors},
   will reappear in various applications in later chapters.
   \begin{enumerate}
-  \item[(a)] Let $z,w$ be two complex numbers such that $\bar{z}w\neq 1$.
+  \item[(a)] Let $z,w$ be two complex numbers such that $\conj{z}w\neq 1$.
     Prove that
     \[
       \left|
-        \frac{w-z}{1-\bar{w}z}
+        \frac{w-z}{1-\conj{w}z}
       \right|
       <1 \text{\quad if $|z|<1$ and $|w| <1$,}
     \]
     and also that
     \[
       \left|
-        \frac{w-z}{1-\bar{w}z}
+        \frac{w-z}{1-\conj{w}z}
       \right|
       = 1 \text{\quad if $|z|=1$ or $|w|=1$}.
     \]
-    Hint: Wy can one assume that $z$ is real? It then suffices to prove that
+    Hint: Why can one assume that $z$ is real? It then suffices to prove that
     \[
-      (r-w)(r-\bar{w})\leq (1-rw)(1-r\bar{w})
+      (r-w)(r-\conj{w})\leq (1-rw)(1-r\conj{w})
     \]
     with equality for appropriate $r$ and $|w|$.
   \item[(b)] Prove that for a fixed $w$ in the unit disc $\bb{D}$, the mappings
     \[
-      F:z\mapsto \frac{w-z}{1-\bar{w}z}
+      F:z\mapsto \frac{w-z}{1-\conj{w}z}
     \]
     satisfies the following conditions:
     \begin{enumerate}
@@ -68,7 +67,68 @@
 \end{problem}
 
 \begin{proof}
-  
+  \begin{itemize}
+  \item[(a)] Since $\conj{z}w\neq 1$ we can change the inequality from
+    \[
+      \left|
+        \frac{w-z}{1-\conj{w}{z}}
+      \right| \leq 1
+    \]
+    to
+    \[
+      |w-z|\leq |1-\conj{w}z|
+    \]
+    Then if we square both sides we can use the properties of the conjugate
+    to get
+    \[
+      (w-z)\conj{(w-z)} \leq (1-\conj{w}z)\conj{(1-\conj{w}z)}
+    \]
+    Distribute the conjugate over the sum to get
+    \[
+      (w-z)(\conj{w}-\conj{z})\leq (1-\conj{w}z)(1-w\conj{z})
+    \]
+    Multiply out to get
+    \[
+      |w|^2-z\conj{w}-w\conj{z} + |z|^2\leq 1-\conj{w}z-\conj{z}w+|w|^2|z|^2
+    \]
+    Shuffle everything to the right and we get
+    \[
+      0 \leq 1-|w|^2|z|^2 -|w|^2-|z|^2 = (1-|w|^2)(1-|z|^2) = (1-|w|)(1+|w|)(1-|z|)(1+|z|)
+    \]
+    Since each one of these steps was invertible this inequality is equivalent
+    to the original. At this point it is clear if either $|w|$ or $|z|$ is
+    equal to one we have equality. Moreover when $|z|<1$ and $|w|<1$ we will
+    have two negative terms and to positive terms making the inequality hold
+    strictly.
+  \item[(b)]
+    \begin{itemize}
+    \item[(i)] If $|z|\leq 1$ then  it is in the unit disc. From the above
+      inequality $|F(z)|\leq 1$. Thus $F$ is a map from the unit disc to
+      itself.
+
+      For holomorphicity we \textbf{FINISH THIS}.
+    \item[(ii)] First calculate $F(0)$
+      \begin{align*}
+        F(0) &= \frac{w-0}{1-\conj{w}0}\\
+             &= \frac{w}{1}\\
+             &= w
+      \end{align*}
+      Calculating $F(w)$ we get
+      \begin{align*}
+        F(w) &= \frac{w-w}{1-|w|^2}\\
+             &= 0
+      \end{align*}
+    \item[(iii)] From the second part of (a) if $|z|=1$ then $F(z)=1$.
+    \item[(iv)] To show it is a bijection we calculate $F\circ F(z)$:
+      \begin{align*}
+        F\circ F(z) &= \frac{w+\frac{z-w}{1-\conj{w}z}}{1+\conj{w}\frac{z-w}{1-\conj{w}z}}\\
+                &= \frac{\frac{w(1-\conj{w}z)+z-w}{1-\conj{w}z}}{\frac{1-\conj{w}z+\conj{z}-\conj{w}w}{1-\conj{w}z}}\\
+                &= \frac{-|w|^2z+z}{1-|w|^2}\\
+                &= \frac{z(1-|w|^2)}{1-|w|^2}\\
+                &= z
+      \end{align*}
+    \end{itemize}
+  \end{itemize}
 \end{proof}
 
 \sk
@@ -86,15 +146,41 @@
 \end{problem}
 
 \begin{proof}
-  
+  Using the chain rule and relations $x=r\cos\theta$ and $y=r\sin\theta$ we get:
+  \begin{align*}
+    u_r &= u_x\cos\theta+u_y\sin\theta\\
+    u_\theta &= -u_xr\sin\theta+u_yr\cos\theta\\
+    v_r &= v_x\cos\theta+v_y\sin\theta\\
+    v_\theta &= -v_xr\sin\theta+v_yr\cos\theta\\
+  \end{align*}
+
+  At this point we have
+  \[
+    \frac{1}{r}(v_\theta)=-v_x\sin\theta+v_y\cos\theta=u_y\sin\theta+u_x\cos\theta=u_r
+  \]
+  and similarly
+  \[
+    \frac{1}{r}u_\theta = -u_x\sin\theta+u_y\cos\theta = -v_y\sin\theta-v_x\cos\theta=-v_r
+  \]
 \end{proof}
+
+Taking the derivatives for $u=\log r$ and $v=\theta$ with respect to $r$ and $\theta$ we get
+\begin{align*}
+  \frac{\partial u}{\partial r} &= \frac{1}{r}\\
+  \frac{\partial u}{\partial\theta} &= 0\\
+  \frac{\partial v}{\partial r} &= 0\\
+  \frac{\partial v}{\partial\theta} &= 1\\
+\end{align*}
+
+Which fulfill the polar Cauchy-Riemann equations. Thus $\log z$ is in fact
+holomorphic.
 
 \sk
 
 \begin{problem}[1.4.10]
   Show that
   \[
-    4\frac{\partial}{\partial z}\frac{\partial}{\partial \bar{z}}=4\frac{\partial}{\partial\bar{z}}\frac{\partial}{\partial z}=\Delta,
+    4\frac{\partial}{\partial z}\frac{\partial}{\partial \conj{z}}=4\frac{\partial}{\partial\conj{z}}\frac{\partial}{\partial z}=\Delta,
   \]
   where $\Delta$ is the \textbf{Laplacian}
   \[
@@ -103,7 +189,26 @@
 \end{problem}
 
 \begin{proof}
-  
+  First recall that
+  \[
+    f_z=1/2f_x-i/2f_y
+  \]
+  and
+  \[
+    f_{\conj{z}}=1/2f_x+i/2f_y
+  \]
+  Then we compute:
+  \begin{align*}
+    4\frac{\partial}{\partial z}\frac{\partial}{\partial\conj{z}} &= 4\frac{\partial}{\partial z}(1/2f_x+i/2f_y)\\
+                                                           &= 4(1/4f_{xx}+i/4f_{yx}-i/4f_{xy}+1/4f_{yy}\\
+                                                           &= f_{xx}+f_{yy} = \Delta f
+  \end{align*}
+  and the other
+  \begin{align*}
+    4\frac{\partial}{\partial \conj{z}}\frac{\partial}{\partial z} &= 4\frac{\partial}{\partial \conj{z}}(1/2f_x-i/2f_y)\\
+                                                           &= 4(1/4f_{xx}+i/4f_{yx}-i/4f_{xy}+1/4f_{yy}\\
+                                                           &= f_{xx}+f_{yy} = \Delta f
+  \end{align*}
 \end{proof}
 
 \sk
@@ -120,7 +225,41 @@
 \end{problem}
 
 \begin{proof}
-  
+  Separate $f=u+iv$.
+  \begin{itemize}
+  \item[(a)] Since $u$ is constant $u_x=u_y=0$. However using the
+    Cauchy-Riemann equations we have that $v_x=v_y=0$ as well. Since
+    $u$ and $v$ are constant so is $f$.
+  \item[(b)] Since $v$ is constant $v_x=v_y=0$. However using the
+    Cauchy-Riemann equations we have that $u_x=u_y=0$ as well. Since
+    $u$ and $v$ are constant so is $f$.
+  \item[(c)] Since $|f|$ is constant so is $|f|^2=u^2+v^2$. Take the
+    derivative with respect to $x$ and divide by two to get
+    \[
+      uu_x+vv_x=0
+    \]
+    and for $y$
+    \[
+      uu_y+vv_y=0
+    \]
+    Next rewrite the latter with the Cauchy-Riemann equations
+    \[
+      -uv_x+vu_x=0
+    \]
+    Then multiply the first equation by $u$, the latter by $v$,
+    and add them together to get
+    \[
+      u(uu_x+vv_y)v(-uv_x+vu_x)=(u^2+v^2)u_x=0
+    \]
+    Since $u^2+v^2$ is a constant this implies that $u_x=v_y=0$.
+
+    We can do the same thing by rewriting the first to get
+    \[
+      (u^2+v^2)v_x=0
+    \]
+    Which implies that $v_x=-u_y=0$. This gives us that
+    $u$ and $v$ are constant and as such so is $f$.
+  \end{itemize}
 \end{proof}
 
 \sk
@@ -139,9 +278,39 @@
   can be used to calculate the radius of convergence of a power series.
 \end{problem}
 
+We prove the alternate exercise given in class.
+
 \begin{proof}
-  
+  Let $R:=\lim_{n\rightarrow\infty}\frac{|a_n|}{|a_{n+1}|}$. We will show
+  that $R$ is the radius of convergence for the power series
+  $\sum_0^\infty a_n(z-z_0)$.
+
+  Let $|z-z_0|<R$ and $r:=|z-z_0|$
+  \[
+    \left|
+      \sum_0^\infty a_n(z-z_0)^n
+    \right|
+    \leq \sum_0^\infty |a_n|r^n
+  \]
+
+  Then we apply the ratio test to the latter sum to get
+  \[
+    \lim_{n\rightarrow\infty}\frac{|a_{n+1}|r}{a_n}=\frac{r}{R}<1
+  \]
+  which shows that the sum converges.
+
+  Now suppose that $|z-z_0|>R$. Then apply the ratio test to
+  the power series to get
+  \[
+    \lim_{n\rightarrow\infty}\frac{|a_{n+1}|r}{|a_n|} = \frac{r}{R}>1
+  \]
+  which shows that the series diverges.
+
+  Therefore $R$ is in fact the radius of convergence.
 \end{proof}
+
+I suppose a way of proving the original would be to use the sequence
+as a power series and apply the convergence tests with Hadarmard's rule.
 
 \sk
 
@@ -178,28 +347,10 @@
       \Re\left(\frac{Re^{i\gamma}-r}{Re^{i\gamma}-r}\right) = \frac{R^2-r^2}{R^2-2Rr\cos\gamma + r^2}.
     \]
   \end{itemize}
-  Hint: For the first part, note that if $w=R^2/\bar{z}$, then the integral of
+  Hint: For the first part, note that if $w=R^2/\conj{z}$, then the integral of
   $f(\zeta)/(\zeta-w)$ around the circle of radius $R$ centered at the origin is
   zero. Use this, together with the usual Cauchy integral formula, to deduce
   the desired identity.
-\end{proof}
-
-\sk
-
-\begin{problem}[2.6.14]
-  Suppose that $f$ is holomorphic in an open set containing the closed unit
-  disc, except for a pole at $z_0$ on the unit circle. Show that if
-  \[
-    \sum_{n=0}^\infty a_nz^n
-  \]
-  denotes the power series expansion of $f$ in the open unit disc, then
-  \[
-    \lim_{n\rightarrow\infty}\frac{a_n}{a_{n+1}}=z_0
-  \]
-\end{problem}
-
-\begin{proof}
-  
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
