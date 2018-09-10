@@ -14,6 +14,7 @@
 \newcommand{\bb}[1]{\mathbb{#1}}
 \newcommand{\ra}{\rightarrow}
 \newcommand{\conj}[1]{\overline{#1}}
+\DeclareMathOperator{\cis}{cis}
 
 \theoremstyle{plain}
 \newtheorem{problem}{Problem}
@@ -200,13 +201,13 @@ holomorphic.
   Then we compute:
   \begin{align*}
     4\frac{\partial}{\partial z}\frac{\partial}{\partial\conj{z}} &= 4\frac{\partial}{\partial z}(1/2f_x+i/2f_y)\\
-                                                           &= 4(1/4f_{xx}+i/4f_{yx}-i/4f_{xy}+1/4f_{yy}\\
+                                                           &= 4(1/4f_{xx}+i/4f_{yx}-i/4f_{xy}+1/4f_{yy})\\
                                                            &= f_{xx}+f_{yy} = \Delta f
   \end{align*}
   and the other
   \begin{align*}
     4\frac{\partial}{\partial \conj{z}}\frac{\partial}{\partial z} &= 4\frac{\partial}{\partial \conj{z}}(1/2f_x-i/2f_y)\\
-                                                           &= 4(1/4f_{xx}+i/4f_{yx}-i/4f_{xy}+1/4f_{yy}\\
+                                                           &= 4(1/4f_{xx}+i/4f_{yx}-i/4f_{xy}+1/4f_{yy})\\
                                                            &= f_{xx}+f_{yy} = \Delta f
   \end{align*}
 \end{proof}
@@ -295,7 +296,7 @@ We prove the alternate exercise given in class.
 
   Then we apply the ratio test to the latter sum to get
   \[
-    \lim_{n\rightarrow\infty}\frac{|a_{n+1}|r}{a_n}=\frac{r}{R}<1
+    \lim_{n\rightarrow\infty}\frac{|a_{n+1}|r}{|a_n|}=\frac{r}{R}<1
   \]
   which shows that the sum converges.
 
@@ -326,7 +327,18 @@ as a power series and apply the convergence tests with Hadarmard's rule.
 \end{problem}
 
 \begin{proof}
-  
+  Let $\gamma_R$ denote the curve given in the supplied figure of radius $R$.
+  Then parametrize the curve piecewise so we have:
+  \[
+    \oint_{\gamma_R}e^{-z^2} = \int_0^Re^{-t^2}dt+\int_0^{\pi/4}iR\cis\theta e^{-(R\cis\theta)^2}d\theta +\int_0^R-\cis\pi/4e^{-\cis\pi/4(R-t))^2 } dt
+  \]
+  The integral about $\gamma_R$ is zero as the function contained within is holomorphic.
+  Moreover we already know that $\lim_{R\rightarrow\infty}\int_0^Re^{-t^2}dt=\frac{\sqrt{\pi}}{2}$.
+
+  Next we show that
+  \[
+    \lim_{R\rightarrow\infty}\int_0^{\pi/4}iR\cis\theta e^{-(R\cis\theta)^2}d\theta=0
+  \]
 \end{proof}
 
 \sk
