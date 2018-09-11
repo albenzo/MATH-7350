@@ -107,43 +107,10 @@
       inequality $|F(z)|\leq 1$. Thus $F$ is a map from the unit disc to
       itself.
 
-      For holomorphicity we multiply on the top and bottom by the conjugate of the bottom and
-      rewrite with $w=a+bi$ and $z=x+iy$ to get:
-      \[
-        \frac{w-w^2\conj{z}-z+w|z|^2}{|1-\conj{w}z|^2}=
-      \]
-      \[
-        \frac{a+bi+b^2x-a^2x-2iabx-b^2iy+a^2iy-2aby-x-iy+x^2a+y^2a+ibx^2+iby^2}{{\left(a x + b y - 1\right)}^{2} + {\left(b x - a y\right)}^{2}}
-      \]
-
-      The real part is
-      \[
-        u=\frac{a x^{2}+ay^2-ax-by+a-x}{{\left(a x + b y - 1\right)}^{2} + {\left(b x - a y\right)}^{2}}
-      \]
-      and the imaginary part is
-      \[
-        v=\frac{bx^2+by^2-bx+ay+b-y}{{\left(a x + b y - 1\right)}^{2} + {\left(b x - a y\right)}^{2}}
-      \]
-      % u = (a*x^2+a*y^2-a*x-b*y+a-x)/((a*x+b*y-1)^2+(b*x-a*y)^2)
-      % v = (b*x^2+b*y^2-b*x+a*y+b-y)/((a*x+b*y-1)^2+(b*x-a*y)^2)
-      Then we have
-      \begin{align*}
-        u_x &= \frac{2 \, {\left(b x^{2} + b y^{2} - b x + a y + b - y\right)} {\left({\left(b x - a y\right)} a - {\left(a x + b y - 1\right)} b\right)}}{{\left({\left(a x + b y - 1\right)}^{2} + {\left(b x - a y\right)}^{2}\right)}^{2}} + \frac{2 \, b y + a - 1}{{\left(a x + b y - 1\right)}^{2} + {\left(b x - a y\right)}^{2}}\\
-        u_y &= -\frac{2 \, {\left(2 \, b y^{2} + a y - b y + b - y\right)} {\left({\left(a y - b y\right)} a + {\left(a y + b y - 1\right)} b\right)}}{{\left({\left(a y + b y - 1\right)}^{2} + {\left(a y - b y\right)}^{2}\right)}^{2}} + \frac{2 \, b y + a - 1}{{\left(a y + b y - 1\right)}^{2} + {\left(a y - b y\right)}^{2}}\\
-        v_x &= \frac{2 \, {\left(b x^{2} + b y^{2} - b x + a y + b - y\right)} {\left({\left(b x - a y\right)} a - {\left(a x + b y - 1\right)} b\right)}}{{\left({\left(a x + b y - 1\right)}^{2} + {\left(b x - a y\right)}^{2}\right)}^{2}} + \frac{2 \, b y + a - 1}{{\left(a x + b y - 1\right)}^{2} + {\left(b x - a y\right)}^{2}}\\
-        v_y &= -\frac{2 \, {\left(2 \, b y^{2} + a y - b y + b - y\right)} {\left({\left(a y - b y\right)} a + {\left(a y + b y - 1\right)} b\right)}}{{\left({\left(a y + b y - 1\right)}^{2} + {\left(a y - b y\right)}^{2}\right)}^{2}} + \frac{2 \, b y + a - 1}{{\left(a y + b y - 1\right)}^{2} + {\left(a y - b y\right)}^{2}}\\
-      \end{align*}
-    \item[(ii)] First calculate $F(0)$
-      \begin{align*}
-        F(0) &= \frac{w-0}{1-\conj{w}0}\\
-             &= \frac{w}{1}\\
-             &= w
-      \end{align*}
-      Calculating $F(w)$ we get
-      \begin{align*}
-        F(w) &= \frac{w-w}{1-|w|^2}\\
-             &= 0
-      \end{align*}
+      For holomorphicity we know that the quotient of holomorphic functions is holomorphic.
+      Moreover so is addition, multiplication by a constant. Since the identity map
+      is holomorphic this means that $w-z$ and $1-\conj{w}z$ are both holomorphic and
+      as such $F(z)=\frac{w-z}{1-\conj{w}z}$ is holomorphic as a function of $z$.
     \item[(iii)] From the second part of (a) if $|z|=1$ then $F(z)=1$.
     \item[(iv)] To show it is a bijection we calculate $F\circ F(z)$:
       \begin{align*}
@@ -153,6 +120,7 @@
                 &= \frac{z(1-|w|^2)}{1-|w|^2}\\
                 &= z
       \end{align*}
+      Since the function is its own inverse it is indeed a bijection.
     \end{itemize}
   \end{itemize}
 \end{proof}
@@ -225,13 +193,13 @@ holomorphic.
   \]
   Then we compute:
   \begin{align*}
-    4\frac{\partial}{\partial z}\frac{\partial}{\partial\conj{z}} &= 4\frac{\partial}{\partial z}(1/2f_x+i/2f_y)\\
+    4\frac{\partial}{\partial z}\frac{\partial}{\partial\conj{z}}f &= 4\frac{\partial}{\partial z}(1/2f_x+i/2f_y)\\
                                                            &= 4(1/4f_{xx}+i/4f_{yx}-i/4f_{xy}+1/4f_{yy})\\
                                                            &= f_{xx}+f_{yy} = \Delta f
   \end{align*}
-  and the other
+  and similarly
   \begin{align*}
-    4\frac{\partial}{\partial \conj{z}}\frac{\partial}{\partial z} &= 4\frac{\partial}{\partial \conj{z}}(1/2f_x-i/2f_y)\\
+    4\frac{\partial}{\partial \conj{z}}\frac{\partial}{\partial z}f &= 4\frac{\partial}{\partial \conj{z}}(1/2f_x-i/2f_y)\\
                                                            &= 4(1/4f_{xx}+i/4f_{yx}-i/4f_{xy}+1/4f_{yy})\\
                                                            &= f_{xx}+f_{yy} = \Delta f
   \end{align*}
@@ -407,23 +375,76 @@ as a power series and apply the convergence tests with Hadarmard's rule.
 \begin{problem}[2.6.11]
   Let $f$ be a holomorphic function on the disc $D_{R_0}$ centered at the
   origin and of radius $R_0$.
-\end{problem}
-
-\begin{proof}
   \begin{itemize}
   \item[(a)] Prove that whenever $0<R<R_0$ and $|z|<R$, then
     \[
-      f(z)=\frac{1}{2\pi}\int_0^{2\pi}f(Re^{i\varphi}\Re\left(\frac{Re^{i\varphi}+z}{Re^{i\varphi}-z}\right))d\varphi.
+      f(z)=\frac{1}{2\pi}\int_0^{2\pi}f(Re^{i\varphi})\Re\left(\frac{Re^{i\varphi}+z}{Re^{i\varphi}-z}\right)d\varphi.
     \]
   \item[(b)] Show that
     \[
-      \Re\left(\frac{Re^{i\gamma}-r}{Re^{i\gamma}-r}\right) = \frac{R^2-r^2}{R^2-2Rr\cos\gamma + r^2}.
+      \Re\left(\frac{Re^{i\gamma}+r}{Re^{i\gamma}-r}\right) = \frac{R^2-r^2}{R^2-2Rr\cos\gamma + r^2}.
     \]
   \end{itemize}
   Hint: For the first part, note that if $w=R^2/\conj{z}$, then the integral of
   $f(\zeta)/(\zeta-w)$ around the circle of radius $R$ centered at the origin is
   zero. Use this, together with the usual Cauchy integral formula, to deduce
   the desired identity.
+\end{problem}
+
+\begin{proof}
+  \begin{itemize}
+  \item[(a)] First we write the Cauchy integral formula and subtract the quantity
+    $0=\frac{1}{2\pi i}\int_{C_R}\frac{f(\zeta)}{\zeta-\frac{R^2}{\conj{z}}}d\zeta$ to get
+    \[
+      f(z)=\frac{1}{2\pi i}\int_{C_R}\frac{f(\zeta)}{\zeta-z}-\frac{f(\zeta)}{\zeta-\frac{R^2}{\conj{z}}}d\zeta
+    \]
+    We do a substitution $\zeta=Re^{i\varphi}$ and get
+    \[
+      f(z)=\frac{1}{2\pi}\int_0^{2\pi}f(Re^{i\varphi})\left(\frac{Re^{i\varphi}}{Re^{i\varphi}-z}-\frac{Re^{i\varphi}}{Re^{i\varphi}-\frac{R^2}{\conj{z}}}\right)d\varphi
+    \]
+    Now we want to show that
+    \[
+      \left(
+        \frac{Re^{i\varphi}}{Re^{i\varphi}-z}-\frac{Re^{i\varphi}}{Re^{i\varphi}-\frac{R^2}{\conj{z}}}
+      \right)
+      =
+      \Re
+      \left(
+        \frac{Re^{i\varphi}+z}{Re^{i\varphi}-z}
+      \right)
+    \]
+
+    First note that
+    \[
+      \frac{Re^{i\varphi}}{Re^{i\varphi}-\frac{R^2}{\conj{z}}}\cdot\frac{\conj{z}Re^{-i\varphi}\frac{1}{R}}{\conj{z}Re^{-i\varphi}\frac{1}{R}} = \frac{-\conj{z}}{\conj{\zeta}-\conj{z}}
+    \]
+    Then if we sub back in for $\zeta$ in the prior equation we get
+    \begin{align*}
+      \frac{Re^{i\varphi}}{Re^{i\varphi}-z}-\frac{Re^{i\varphi}}{Re^{i\varphi}-\frac{R^2}{\conj{z}}} &= \frac{\zeta}{\zeta-z}+\frac{\conj{z}}{\conj{\zeta}-\conj{z}}\\
+                                                                            &= \frac{\zeta(\conj{\zeta}-\conj{z})+\conj{z}(\zeta-z)}{|\zeta-z|^2}\\
+                                                                            &= \frac{|\zeta|^2-|z|^2}{|\zeta-z|^2}\\
+    \end{align*}
+
+    Now we'll start working from the other end. Splitting $\zeta=a+ib$ and $z=x+iy$ we get
+    \begin{align*}
+      \Re\left(\frac{\zeta+z}{\zeta-z}\right) &= \Re\left(\frac{(a+x)+i(b+y)}{(a-x)+i(b-y)}\cdot\frac{(a-x)-i(b-y)}{(a-x)-i(b-y)}\right)\\
+                                    &= \frac{a^2+b^2-x^2-y^2}{(a-x)^2+(b-y)^2}\\
+                                    &=\frac{|\zeta|^2-|z|^2}{|\zeta-z|^2}
+    \end{align*}
+    Which completes the proof.
+    
+  \item[(b)] First we rewrite $\frac{Re^{i\gamma}+r}{Re^{i\gamma}-r}$. Then we multiply
+    by the conjugate on the bottom and take the real part.
+    \begin{align*}
+      \frac{Re^{i\gamma}+r}{Re^{i\gamma}-r} &= \frac{R\cos\gamma+iR\sin\gamma+r}{R\cos\gamma+iR\sin\gamma-r}\cdot\frac{(R\cos\gamma-r)-iR\sin\gamma}{(R\cos\gamma-r)-iR\sin\gamma}\\
+                                       &=\frac{(R\cos\gamma+iR\sin\gamma+r)((R\cos\gamma-r)-i\sin\gamma)}{(R\cos\gamma-r)^2+R^2\sin^2\gamma}
+    \end{align*}
+    Then we take the real part to get
+    \begin{align*}
+      \Re\left(\frac{(R\cos\gamma+iR\sin\gamma+r)((R\cos\gamma-r)-i\sin\gamma)}{(R\cos\gamma-r)^2+R^2\sin^2\gamma}\right) &= \frac{R^2\cos^2\gamma+R^2\sin^2\gamma-r^2}{R^2\cos^2\gamma-2Rr\cos\gamma+r^2+R^2\sin^2\gamma}\\
+                                                                                       &= \frac{R^2-r^2}{R^2-2Rr\cos\gamma+r^2}
+    \end{align*}
+  \end{itemize}
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
