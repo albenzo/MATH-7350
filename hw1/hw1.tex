@@ -107,7 +107,20 @@
       inequality $|F(z)|\leq 1$. Thus $F$ is a map from the unit disc to
       itself.
 
-      For holomorphicity we \textbf{FINISH THIS}.
+      For holomorphicity we multiply on the top and bottom by the conjugate of the bottom and
+      convert it into terms of $x$ and $y$ to get
+      \[
+        \frac{w-w^2\conj{z}-z+w|z|^2}{|1-\conj{w}z|^2}=\frac{{\left(x^{2} + y^{2}\right)} {\left(a + i \, b\right)} - {\left(a + i \, b\right)} {\left(x - i \, y\right)} + a + i \, b - x - i \, y}{{\left(a x + b y - 1\right)}^{2} + {\left(b x - a y\right)}^{2}}
+      \]
+
+      The real part is
+      \[
+        \frac{a x^{2}+ay^2-ax-by+a-x}{a^{2} x^{2} + b^{2} x^{2} + a^{2} y^{2} + b^{2} y^{2} - 2 \, a x - 2 \, b y + 1} 
+      \]
+      and the imaginary part is
+      \[
+        \frac{bx^2+by^2-bx+ay+b-y}{a^{2} x^{2} + b^{2} x^{2} + a^{2} y^{2} + b^{2} y^{2} - 2 \, a x - 2 \, b y + 1}
+      \]
     \item[(ii)] First calculate $F(0)$
       \begin{align*}
         F(0) &= \frac{w-0}{1-\conj{w}0}\\
@@ -330,14 +343,50 @@ as a power series and apply the convergence tests with Hadarmard's rule.
   Let $\gamma_R$ denote the curve given in the supplied figure of radius $R$.
   Then parametrize the curve piecewise so we have:
   \[
-    \oint_{\gamma_R}e^{-z^2} = \int_0^Re^{-t^2}dt+\int_0^{\pi/4}iR\cis\theta e^{-(R\cis\theta)^2}d\theta +\int_0^R-\cis\pi/4e^{-\cis\pi/4(R-t))^2 } dt
+    \oint_{\gamma_R}e^{-iz^2} = \int_0^Re^{it^2}dt+\int_0^{\pi/4}iR\cis\theta e^{i(R\cis\theta)^2}d\theta +\int_0^R-\cis\pi/4e^{\cis(\pi/4)(R-t))^2 } dt
   \]
   The integral about $\gamma_R$ is zero as the function contained within is holomorphic.
-  Moreover we already know that $\lim_{R\rightarrow\infty}\int_0^Re^{-t^2}dt=\frac{\sqrt{\pi}}{2}$.
-
-  Next we show that
+  Now we will show that
   \[
-    \lim_{R\rightarrow\infty}\int_0^{\pi/4}iR\cis\theta e^{-(R\cis\theta)^2}d\theta=0
+    \lim_{R\rightarrow\infty}\int_0^{\pi/4}iR\cis\theta e^{i(R\cis\theta)^2}d\theta=0
+  \]
+
+  \begin{align*}
+    \left|\int_0^{\pi/4}iR\cis\theta e^{iR^2\cis^2\theta}d\theta\right| &\leq \int_0^{\pi/4}R\left|e^{iR^2\cis2\theta}\right|d\theta\\
+                                                              &= \int_0^{\pi/4}R\left|e^{iR^2\cos2\theta}\right|\left|e^{-R^2\sin2\theta}\right|d\theta\\
+                                                              &\leq \int_0^{\pi/4}R|\cis(R^2\cos2\theta)|e^{-R^2\sin2\theta}d\theta\\
+                                                              &\leq \int_0^{\pi/4}Re^{-R^2\sin2\theta}d\theta\\
+  \end{align*}
+  Next we use the fact that $\sin2\theta\geq\theta$ when $0\leq\theta\leq\pi/4$ to get
+  \begin{align*}
+    \int_0^{\pi/4}Re^{-R^2\sin2\theta}d\theta &\leq \int_0^{\pi/4}Re^{-R^2\theta}\\
+                                         &=\left(\frac{Re^{-R^2\theta}}{-R^2}\right|_0^{\pi/4}\\
+                                         &=\frac{e^{-R^2\pi/4}-1}{R}\\
+  \end{align*}
+  This last term goes to zero as $R$ approaches infinity.
+
+  Next we evaluate $\int_0^R-\cis(\pi/4)e^{i(R-t)^2\cis(\pi/2)}dt$.
+  \begin{align*}
+    \int_0^R-\cis(\pi/4)e^{i(R-t)^2\cis^2(\pi/4)} dt &= \int_0^R-\cis(\pi/4)e^{i(R-t)^2\cis(\pi/2)}dt\\
+                                              &= \int_0^R-\cis(\pi/4)e^{-(R-t)^2)}dt\\
+  \end{align*}
+  Then we apply the reminder in the problem giving that:
+  \[
+    \int_0^R-\cis(\pi/4)e^{-(R-t)^2)}dt = \cis(\pi/4)\frac{\sqrt{\pi}}{2}=-\left(\frac{\sqrt{2\pi}}{4}+i\frac{\sqrt{2\pi}}{4}\right)
+  \]
+
+  Which gives us
+  \[
+    \lim_{R\rightarrow\infty}\int_0^R e^{it^2}dt=\lim_{R\rightarrow\infty}\int_0^R\cos t^2+i\sin t^2 dt = \left(\frac{\sqrt{2\pi}}{4}+i\frac{\sqrt{2\pi}}{4}\right)
+  \]
+
+  If we take the real part of the above equation we get
+  \[
+    \int_0^\infty\cos(x^2)dx=\frac{\sqrt{2\pi}}{4}
+  \]
+  and if we take the imaginary part we get
+  \[
+    \int_0^\infty\sin(x^2)dx=\frac{\sqrt{2\pi}}{4}
   \]
 \end{proof}
 
