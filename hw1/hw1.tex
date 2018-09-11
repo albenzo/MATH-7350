@@ -108,19 +108,31 @@
       itself.
 
       For holomorphicity we multiply on the top and bottom by the conjugate of the bottom and
-      convert it into terms of $x$ and $y$ to get
+      rewrite with $w=a+bi$ and $z=x+iy$ to get:
       \[
-        \frac{w-w^2\conj{z}-z+w|z|^2}{|1-\conj{w}z|^2}=\frac{{\left(x^{2} + y^{2}\right)} {\left(a + i \, b\right)} - {\left(a + i \, b\right)} {\left(x - i \, y\right)} + a + i \, b - x - i \, y}{{\left(a x + b y - 1\right)}^{2} + {\left(b x - a y\right)}^{2}}
+        \frac{w-w^2\conj{z}-z+w|z|^2}{|1-\conj{w}z|^2}=
+      \]
+      \[
+        \frac{a+bi+b^2x-a^2x-2iabx-b^2iy+a^2iy-2aby-x-iy+x^2a+y^2a+ibx^2+iby^2}{{\left(a x + b y - 1\right)}^{2} + {\left(b x - a y\right)}^{2}}
       \]
 
       The real part is
       \[
-        \frac{a x^{2}+ay^2-ax-by+a-x}{a^{2} x^{2} + b^{2} x^{2} + a^{2} y^{2} + b^{2} y^{2} - 2 \, a x - 2 \, b y + 1} 
+        u=\frac{a x^{2}+ay^2-ax-by+a-x}{{\left(a x + b y - 1\right)}^{2} + {\left(b x - a y\right)}^{2}}
       \]
       and the imaginary part is
       \[
-        \frac{bx^2+by^2-bx+ay+b-y}{a^{2} x^{2} + b^{2} x^{2} + a^{2} y^{2} + b^{2} y^{2} - 2 \, a x - 2 \, b y + 1}
+        v=\frac{bx^2+by^2-bx+ay+b-y}{{\left(a x + b y - 1\right)}^{2} + {\left(b x - a y\right)}^{2}}
       \]
+      % u = (a*x^2+a*y^2-a*x-b*y+a-x)/((a*x+b*y-1)^2+(b*x-a*y)^2)
+      % v = (b*x^2+b*y^2-b*x+a*y+b-y)/((a*x+b*y-1)^2+(b*x-a*y)^2)
+      Then we have
+      \begin{align*}
+        u_x &= \frac{2 \, {\left(b x^{2} + b y^{2} - b x + a y + b - y\right)} {\left({\left(b x - a y\right)} a - {\left(a x + b y - 1\right)} b\right)}}{{\left({\left(a x + b y - 1\right)}^{2} + {\left(b x - a y\right)}^{2}\right)}^{2}} + \frac{2 \, b y + a - 1}{{\left(a x + b y - 1\right)}^{2} + {\left(b x - a y\right)}^{2}}\\
+        u_y &= -\frac{2 \, {\left(2 \, b y^{2} + a y - b y + b - y\right)} {\left({\left(a y - b y\right)} a + {\left(a y + b y - 1\right)} b\right)}}{{\left({\left(a y + b y - 1\right)}^{2} + {\left(a y - b y\right)}^{2}\right)}^{2}} + \frac{2 \, b y + a - 1}{{\left(a y + b y - 1\right)}^{2} + {\left(a y - b y\right)}^{2}}\\
+        v_x &= \frac{2 \, {\left(b x^{2} + b y^{2} - b x + a y + b - y\right)} {\left({\left(b x - a y\right)} a - {\left(a x + b y - 1\right)} b\right)}}{{\left({\left(a x + b y - 1\right)}^{2} + {\left(b x - a y\right)}^{2}\right)}^{2}} + \frac{2 \, b y + a - 1}{{\left(a x + b y - 1\right)}^{2} + {\left(b x - a y\right)}^{2}}\\
+        v_y &= -\frac{2 \, {\left(2 \, b y^{2} + a y - b y + b - y\right)} {\left({\left(a y - b y\right)} a + {\left(a y + b y - 1\right)} b\right)}}{{\left({\left(a y + b y - 1\right)}^{2} + {\left(a y - b y\right)}^{2}\right)}^{2}} + \frac{2 \, b y + a - 1}{{\left(a y + b y - 1\right)}^{2} + {\left(a y - b y\right)}^{2}}\\
+      \end{align*}
     \item[(ii)] First calculate $F(0)$
       \begin{align*}
         F(0) &= \frac{w-0}{1-\conj{w}0}\\
