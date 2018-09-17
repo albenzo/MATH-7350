@@ -1,0 +1,152 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amscd}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{listings}
+\usepackage{enumerate}
+\usepackage[all,cmtip]{xy}
+
+\textwidth=15cm \textheight=22cm \topmargin=0.5cm \oddsidemargin=0.5cm \evensidemargin=0.5cm
+
+\newcommand{\sk}{\vskip 10mm}
+\newcommand{\bb}[1]{\mathbb{#1}}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\conj}[1]{\overline{#1}}
+\DeclareMathOperator{\cis}{cis}
+
+\theoremstyle{remark}
+\newtheorem{problem}{Problem}
+\newtheorem{lemma}{Lemma}[problem]
+
+\theoremstyle{remark}
+\newtheorem{tpart}{}[problem]
+\newtheorem*{ppart}{}
+
+\begin{document}
+
+\begin{problem}[2.6.14]
+  Suppose that $f$ is holomorhic in an open set containing the closed unit disc,
+  expcept for a pole at $z_0$ on the unit circle. Show that if
+  \[
+    \sum_{n=0}^\infty a_n z^n
+  \]
+  denotes the power series expansion of $f$ in the open unit disc, then
+  \[
+    \lim_{n\rightarrow\infty}\frac{a_n}{a_{n+1}}=z_0.
+  \]
+  
+  Only need to do case where degree of pole is greater than 1.
+\end{problem}
+
+\begin{proof}
+  
+\end{proof}
+
+\sk
+
+\begin{problem}[3.8.2]
+  Evaluate the integral
+  \[
+    \int_{-\infty}^\infty \frac{dx}{1+x^4}dx
+  \]
+
+  Where are the poles of $1/(1+z^4)$?
+\end{problem}
+
+\begin{proof}
+  
+\end{proof}
+
+\sk
+
+\begin{problem}[3.8.4]
+  Show that
+  \[
+    \int_{-\infty}^\infty\frac{x\sin x}{x^2+a^2}dx=\pi e^{-a},\quad \text{for all $a>0$}
+  \]
+\end{problem}
+
+\begin{proof}
+  
+\end{proof}
+
+\sk
+
+\begin{problem}[3.8.8]
+  Prove that
+  \[
+    \int_0^{2\pi}\frac{d\theta}{a+b\cos\theta}=\frac{2\pi}{\sqrt{a^2-b^2}}
+  \]
+  if $a>|b|$ and $a,b\in\bb{R}$.
+\end{problem}
+
+\begin{proof}
+  
+\end{proof}
+
+\sk
+
+\begin{problem}[3.8.9]
+  Show that
+  \[
+    \int_0^1\log(\sin\pi x)dx = -\log 2
+  \]
+
+  Hint: Use contour that goes down to 0 and up from 1.
+\end{problem}
+
+\begin{proof}
+  
+\end{proof}
+
+\sk
+
+\begin{problem}[3.8.10]
+  Show that if $a>0$, then
+  \[
+    \int_0^\infty\frac{\log x}{x^2+a^2}dx=\frac{\pi}{2a}\log a
+  \]
+
+  Hint: Integrate over upper half annulus with inner radius $\epsilon$ and outer
+  radius $R$.
+\end{problem}
+
+\begin{proof}
+  
+\end{proof}
+
+\sk
+
+\begin{problem}[3.8.13]
+  Suppose $f$ is holomorphic in a punctured disc $D_r(z_0)\setminus\{z_0\}$.
+  Suppose also that
+  \[
+    |f(z)|\leq A|z-z_0|^{-1+\epsilon}
+  \]
+  for some $\epsilon>0$, and all $z$ near $z_0$. Show that the singularity
+  of $f$ at $z_0$ is removable.
+\end{problem}
+
+\begin{proof}
+  
+\end{proof}
+
+\sk
+
+\begin{problem}[3.9.3]
+  If $f$ is holomorphic in the deleted neighborhood $\{0<|z-z_0|<r\}$ and has a
+  pole of order $k$ at $z_0$, then we can write
+  \[
+    f(z)=\frac{a_{-k}}{(z-z_0)^k}+\cdots + \frac{a_{-1}}{(z-z_0)} +g(z)
+  \]
+  where $g$ is holomorphic in the disc $\{|z-z_0|<r\}$.
+\end{problem}
+
+\begin{proof}
+  
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
