@@ -15,6 +15,8 @@
 \newcommand{\ra}{\rightarrow}
 \newcommand{\conj}[1]{\overline{#1}}
 \DeclareMathOperator{\cis}{cis}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\Arg}{Arg}
 
 \theoremstyle{remark}
 \newtheorem{problem}{Problem}
@@ -55,9 +57,38 @@
   Where are the poles of $1/(1+z^4)$?
 \end{problem}
 
-\begin{proof}
-  
-\end{proof}
+The poles of the function are at $\pm e^{i\pi/4},\pm e^{3i\pi/4}$.
+
+We evaluate this integral by integrating over the semicircle in the
+upper half plane of radius $R$ which we will call $\gamma_R$. Then we have
+\[
+  \int_{\gamma_R}\frac{1}{1+z^4} dz = \int_{-\infty}^\infty \frac{1}{1+x^4}dx+\int_{C_R}\frac{1}{1+z^4}dz= 2\cap i\Res_{z=e^{i\pi/4},e^{3i\pi/4}}\frac{1}{1+z^4}
+\]
+
+However since $\frac{1}{1+z^4}\leq\frac{1}{R^4-1}$ on $C_R$ we have
+\[
+  \left|\int_{C_R}\frac{1}{1+z^4}dz\right|\leq\frac{\pi R}{R^4-1}
+\]
+which approaches $0$ as $R$ approaches infinity. This gives us that
+\[
+  \int_{-\infty}^\infty \frac{1}{1+x^4}dx+\int_{C_R}\frac{1}{1+z^4}dz= 2\pi i\Res_{z=e^{i\pi/4},e^{3i\pi/4}}\frac{1}{1+z^4}
+\]
+
+To calculate the residues we use the formula from the book. In this case the
+formula boils down to plugging in the point to $\frac{1}{1+z^4}$ where removing the factor
+associated with the singularity. This gives us
+\[
+  \Res_{z=e^{i\pi/4}}\frac{1}{1+z^4}=\frac{1}{(e^{2\pi i/4}+e^{\pi i/2})(2e^{i\pi/4})}=\frac{1}{4e^{3\pi i/4}}
+\]
+and
+\[
+  \Res_{z=e^{3i\pi/4}}\frac{1}{1+z^4}=\frac{1}{(e^{6\pi i/4}+e^{3\pi i/2})(2e^{3i\pi/4})}=\frac{1}{4e^{9\pi i/4}}
+\]
+Add them together and we get $\frac{-i\sqrt{2}}{4}$. Multiply it by $2\pi i$ and
+we get $\frac{\pi}{2}$. Which gives us that
+\[
+  \int_{-\infty}^\infty \frac{dx}{1+x^4} = \frac{\pi}{\sqrt{2}}
+\]
 
 \sk
 
@@ -69,7 +100,47 @@
 \end{problem}
 
 \begin{proof}
-  
+  First note that $\Im(\frac{ze^{iz}}{z^2+a^2})=\frac{z\sin z}{z^2+a^2}$. We proceed
+  by integrating the semicircle in the upper half plane, $\gamma_R$, which we can
+  expand as
+  \[
+    \int_{\gamma_R}\frac{ze^{iz}}{z^2+a^2}dz=\int_{C_R}\frac{ze^{iz}}{z^2+a^2}dz+\int_{-R}^R\frac{ze^{iz}}{z^2+a^2} dz = 2\pi i\Res_{z=ia}\frac{ze^{iz}}{z^2+a^2}
+  \]
+
+  First we will show that $\left|\int_{C_R}\frac{ze^{iz}}{z^2+a^2}dz\right|\rightarrow 0$ as $R\rightarrow\infty$. Start by
+  making the substitution $z=Re^{i\theta}$. Then we get
+  \begin{align*}
+    \left|\int_{C_R}\frac{ze^{iz}}{z^2+a^2}dz\right| &= \left|\int_0^\pi\frac{Re^{i\theta}e^{iRe^{i\theta}}}{R^2e^{2i\theta}+a^2}Rie^{i\theta}d\theta\right|\\
+                                                  &\leq \left|\int_0^\pi\frac{iR^2e^{2i\theta}e^{iRe^{i\theta}}}{R^2-a^2}d\theta\right|\\
+                                                  &\leq\left|\int_0^\pi\frac{R^2e^{iRe^{i\theta}}}{R^2-a^2}d\theta\right|\\
+                                                  &\leq\frac{R^2}{R^2-a^2}\left|\int_0^\pi e^{iR\cos\theta-R\sin\theta}d\theta\right|\\
+                                                  &\le\frac{R^2}{R^2-a^2}\left|\int_0^\pi e^{-R\sin\theta}d\theta\right|
+  \end{align*}
+  At this point we use two inequalities related to $\sin\theta$. The first
+  is that $\sin\theta\geq 2/\pi\theta$ if $0\leq\theta\leq\pi/2$ and the other is that
+  $\sin\theta\geq 1-2/\pi\theta$ when $\pi/2\leq\theta\leq\pi$. This gives us
+  \begin{align*}
+    \frac{R^2}{R^2-a^2}\left|\int_0^\pi e^{-R\sin\theta}d\theta\right| &\leq\frac{R^2}{R^2-a^2}\left(\int_0^{\pi/2}e^{-R\pi\theta/2}d\theta+\int_{\pi/2}^{\pi}e^{-R+2/\pi R\theta}d\theta\right)\\
+                                                               &=\frac{R^2}{R^2-a^2}\left(\frac{-2e^{-R\pi/2\theta}}{\pi R}\right|_0^{\pi/2}+\frac{R^2}{R^2-a^2}\left(\frac{\pi e^{-R+2/\pi R\theta}}{2R}\right|_{\pi/2}^\pi
+  \end{align*}% ))
+  At this point it is clear that the above approaches zero as $R$ approaches infinity.
+  Thus
+  \[
+    \int_{-R}^R \frac{ze^{iz}}{z^2+a^2}dz = 2\pi i\Res_{z=ia}\frac{ze^{iz}}{z^2+a^2}
+  \]
+
+  To calculate the residue we compute
+  \begin{align*}
+    \lim_{z\rightarrow ia}(z-ia)\frac{ze^{iz}}{z^2+a^2}&=\frac{iae^{-a}}{2ia}\\
+                                             &=\frac{e^{-a}}{2}\\
+  \end{align*}
+
+  When we put it all together we get
+  \begin{align*}
+    \int_{-\infty}^\infty\frac{x\sin x}{x^2+a^2}dx&=\Im\left(\int_{-\infty}^\infty\frac{ze^{iz}}{z^2+a^2} dz\right)\\
+                                               &=\Im(2\pi i\cdot \frac{e^{-a}}{2})\\
+                                               &=\pi e^{-a}
+  \end{align*}
 \end{proof}
 
 \sk
@@ -83,7 +154,34 @@
 \end{problem}
 
 \begin{proof}
-  
+  We start by rewriting $\cos\theta$ in terms of $e^{i\theta}$ which gives us
+  \begin{align*}
+    \int_0^{2\pi}\frac{d\theta}{a+b\cos\theta} &= \int_0^{2\pi}\frac{d\theta}{a+b/2(e^{i\theta}+e^{-i\theta})}\\
+                                            &= 2\int_0^{2\pi}\frac{e^{i\theta}}{2ae^{i\theta}+be^{2i\theta}+b}d\theta\\
+  \end{align*}
+  Then substitute $z=e^{i\theta}$ to get
+  \begin{align*}
+    2\int_0^{2\pi}\frac{e^{i\theta}}{2ae^{i\theta}+be^{2i\theta}+b}d\theta&= \frac{2}{i}\int_{C_1}\frac{1}{bz^2+2az+b}dz\\
+                                                                     &= 4\pi\Res\frac{1}{bz^2+2az+b}
+  \end{align*}
+
+  First we find the poles by factoring the bottom
+  \[
+    \frac{1}{bz^2+2az+b}=\frac{1}{b(z-(-a/b+\sqrt{a^2/b^2-1}))(z-(-a/b-\sqrt{a^2/b^2-1}))}
+  \]
+  The pole that occurs within the circle of radius $1$ is $-a/b+\sqrt{a^2/b^2-1}$. We
+  calculate the residue as
+  \begin{align*}
+    \Res_{z=-a/b+\sqrt{a^2/b^2-1}} \frac{1}{bz^2+2az+b} &= \lim_{z\rightarrow -a/b+\sqrt{a^2/b^2-1}}\frac{(z-(-a/b+\sqrt{a^2/b^2-1}))}{b(z-(-a/b+\sqrt{a^2/b^2-1}))(z-(-a/b-\sqrt{a^2/b^2-1}))}\\
+                                                     &=\frac{1}{b(-a/b+\sqrt{a^2/b^2-1}-(-a/b-\sqrt{a^2/b^2-1}))}\\
+                                                     &=\frac{1}{2b\sqrt{a^2/b^2-1}}\\
+                                                     &=\frac{1}{2\sqrt{a^2-b^2}}
+  \end{align*}
+
+  Which when we plug back in we get
+  \[
+    \int_0^{2\pi}\frac{d\theta}{a+b\cos\theta}=\frac{4\pi}{2\sqrt{a^2-b^2}}=\frac{2\pi}{\sqrt{a^2-b^2}}
+  \]
 \end{proof}
 
 \sk
@@ -98,7 +196,54 @@
 \end{problem}
 
 \begin{proof}
-  
+  First note that
+  \begin{align*}
+    \log(1-e^{2\pi iz}) &=\log(e^{\pi iz}(-2i)(e^{\pi iz}+e^{-\pi iz})/2i)\\
+                      &=\pi iz + \log(-2i)+\log(\sin\pi z)\\
+                      &= \pi iz + \log(2)-i\pi/2+\log(\sin\pi z)\\
+  \end{align*}
+  If we integrate this with respect to $z$ from $0$ to $1$ we get
+  \[
+    \int_0^1\log(1-e^{2\pi iz})dz=\pi i/2+\log(2)-i\pi/2+\int_0^1\log(\sin\pi z) dz = \log(2)+\int_0^1\log(\sin\pi z) dz
+  \]
+  This will give us the desired equality if we show that $\int_0^1\log(1-e^{2\pi iz})dz=0$. To do this
+  we integrate over the rectangle of width $1$, height $R$, with two quarter circles of radius $\epsilon$
+  on the corners at $0$ and $1$ to avoid the branch points. Refer to this curve as $\gamma_{\epsilon,R}$. The
+  entire integral will be zero as $\log(1-e^{2\cap iz})$ is holomorphic on the curve and its interior.
+  Then we split the integral into six pieces
+  \begin{align*}
+    0 = \int_{\gamma_{\epsilon,R}}\log(1-e^{2\pi iz})dz &= \int_\epsilon^{1-\epsilon}\log(1-e^{2\pi ix}) dx & z=x\\
+                                                     &+ \int_{\pi}^{\pi/2}\log(1-e^{2\pi i\epsilon e^{i\theta}})i\epsilon e^{i\theta}d\theta & z=\epsilon e^{i\theta}\\
+                                                     &+ i\int_\epsilon^R\log(1-e^{2\pi i(1+it)})dt & z=1+it\\
+                                                     &+ \int_1^0\log(1-e^{2\pi i(t+iR)})dt & z=t+iR\\
+                                                     &+ i\int_R^\epsilon\log(1-e^{2\pi i(it)}) dt & z=it\\
+                                                     &+ \int_{\pi/2}^0\log(1-e^{2\pi i \epsilon e^{i\theta}}) d\theta & z=\epsilon e^{i\theta}
+  \end{align*}
+  First note that for the two vertical portions of $\gamma_{\epsilon,R}$, the third and fifth, that
+  \[
+    \log(1-e^{2\pi i(1+it)}) = \log(1-e^{2\pi i(it)})
+  \]
+  as $e^{2\pi i }=1$. Since the only difference then is that the limits of integration are swapped
+  these two cancel eachother out. What is left to show is that
+  \[
+    \left|\int_1^0\log(1-e^{2\pi i(t+iR)})dt\right|,\quad\left|\int_{\pi}^{\pi/2}\log(1-e^{2\pi i\epsilon e^{i\theta}})i\epsilon e^{i\theta}d\theta\right|,\quad \left|\int_{\pi/2}^0\log(1-e^{2\pi i \epsilon e^{i\theta}}) d\theta\right|
+  \]
+  all approach zero as $\epsilon\rightarrow 0 $ and $R\rightarrow\infty$.
+
+  Starting with the first we have
+  \begin{align*}
+    \left|\int_0^1\log(1-e^{2\pi i(t+iR)})dt\right| &\leq \int_0^1\left|\log(1-e^{-2\pi R}e^{2\pi i t})\right|dt\\
+                                              &\leq\int_0^1\log|1-e^{-2\pi R}e^{2\pi i t}|+|i\Arg(1-e^{-2\pi R}e^{2\pi it})|dt\\
+                                              & \leq\int_0^1\log(|1|+|e^{-2\pi R}e^{2\pi i t}|)+|i\Arg(1-e^{-2\pi R}e^{2\pi it})|dt\\
+                                              &\leq\int_0^1\log(1+e^{-2\pi R})+|i\Arg(1-e^{-2\pi R}e^{2\pi it})|dt\\
+                                              &\leq\int_0^1\log(1+e^{-2\pi R})+|\Arg(1-e^{-2\pi R}e^{2\pi it})|dt\\
+                                              &\leq\int_0^1\log(1+e^{-2\pi R})+|\arctan(\frac{\Im(1-e^{-2\pi R}e^{2\pi it})}{\Re(1-e^{-2\pi R}e^{2\pi it})})|dt\\
+                                              &\leq\int_0^1\log(1+e^{-2\pi R})+|\arctan(\frac{e^{-2\pi R}\sin(2\pi t)}{1-e^{2\pi R}\cos(2\pi t)})|dt\\
+                                              &\leq\int_0^1\log(1+e^{-2\pi R})+|\frac{e^{-2\pi R}\sin(2\pi t)}{1-e^{2\pi R}\cos(2\pi t)}|dt\\
+                                              &\leq\int_0^1\log(1+e^{-2\pi R})+|\frac{e^{-2\pi R}}{1-e^{2\pi R}}|dt\\
+                                              &= \log(1+e^{-2\pi R})+|\frac{e^{-2\pi R}}{1-e^{2\pi R}}|
+  \end{align*}
+  which goes to zero as $R\rightarrow \infty$.
 \end{proof}
 
 \sk
@@ -130,7 +275,29 @@
 \end{problem}
 
 \begin{proof}
-  
+  We show this by proving the contrapositive. Suppose $z_0$ is a singularity
+  that is not removable and let $\epsilon>0$ and $A\in\bb{R}_{>0}$.
+  Then it is either a pole of order $k$ or essential.
+
+  If $z_0$ is a pole of order $k$ then we can write $f$ as
+  $f(z)=\sum_{n=0}^k\frac{a_{-n}}{(z-z_0)^{n}}\cdot g(z)$ where $g$ is holomorphic on
+  $D_r(z_0)$. Then there exists a constant $B$ such that $B|(z-z_0)^{-k}|<|f(z)|$
+  when $z$ is sufficiently close to $z_0$. In addition when $z$ is sufficiently
+  close to $z_0$ we that $|f(z)|\geq B|z-z_0|^{-k}\geq A|z-z_0|^{-1+\epsilon}$ as $k\geq 1$.
+
+  On the other hand if $k$ is an essential singularity we have a Laurant
+  series in $D_r(z_0)\setminus\{z_0\}$ of the form
+  \[
+    f(z)=\sum_0^\infty b_n(z-z_0)^{-n} +\sum_0^\infty a_n(z-z_0)^n
+  \]
+  If we cut off the series for the negative powers at the first nonzero coefficient
+  we get
+  \[
+    g(z)=b_k(z-z_0)^k+\sum_0^\infty a_n(z-z_0)^n
+  \]
+  where $|g|<|f|$ sufficiently close to $z_0$. Since $g$ has a pole of order $k$
+  at $z_0$ this then reduces to the case where we have a pole of order $k$ where
+  we shrink the radius of the disk such that $|g|<|f|$ holds within.
 \end{proof}
 
 \sk
@@ -145,7 +312,16 @@
 \end{problem}
 
 \begin{proof}
-  
+  Since $f$ has a pole of order $k$ we can write $f$ as
+  \[
+    f(z)=(z-z_0)^k g(z)
+  \]
+  where $g$ is holomorphic. Moreover since $g$ is holomorphic it is equal
+  to its power series $g(z)=\sum_0^\infty a_n(z-z_0)^n$. Then we distribute to get
+  \[
+    f(z)=\sum_{n=0}^{k-1}\frac{a_n}{(z-z_0)^{k-n}}+\sum_0^\infty a_{n+k}(z-z_0)^n
+  \]
+  completing the proof.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
