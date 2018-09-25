@@ -43,7 +43,7 @@
 \end{problem}
 
 \begin{proof}
-  
+  Tried doing the sum method. Currently attempting proof by induction.
 \end{proof}
 
 \sk
@@ -118,7 +118,7 @@ we get $\frac{\pi}{2}$. Which gives us that
   \end{align*}
   At this point we use two inequalities related to $\sin\theta$. The first
   is that $\sin\theta\geq 2/\pi\theta$ if $0\leq\theta\leq\pi/2$ and the other is that
-  $\sin\theta\geq 1-2/\pi\theta$ when $\pi/2\leq\theta\leq\pi$. This gives us
+  $\sin\theta\geq 1-2/\pi\theta$ when $\pi/2\leq\theta\leq\pi$. This gives us \textbf{Lucas you did things horribly wrong}
   \begin{align*}
     \frac{R^2}{R^2-a^2}\left|\int_0^\pi e^{-R\sin\theta}d\theta\right| &\leq\frac{R^2}{R^2-a^2}\left(\int_0^{\pi/2}e^{-R\pi\theta/2}d\theta+\int_{\pi/2}^{\pi}e^{-R+2/\pi R\theta}d\theta\right)\\
                                                                &=\frac{R^2}{R^2-a^2}\left(\frac{-2e^{-R\pi/2\theta}}{\pi R}\right|_0^{\pi/2}+\frac{R^2}{R^2-a^2}\left(\frac{\pi e^{-R+2/\pi R\theta}}{2R}\right|_{\pi/2}^\pi
@@ -213,7 +213,7 @@ we get $\frac{\pi}{2}$. Which gives us that
   Then we split the integral into six pieces
   \begin{align*}
     0 = \int_{\gamma_{\epsilon,R}}\log(1-e^{2\pi iz})dz &= \int_\epsilon^{1-\epsilon}\log(1-e^{2\pi ix}) dx & z=x\\
-                                                     &+ \int_{\pi}^{\pi/2}\log(1-e^{2\pi i\epsilon e^{i\theta}})i\epsilon e^{i\theta}d\theta & z=\epsilon e^{i\theta}\\
+                                                     &+ \int_{\pi}^{\pi/2}\log(1-e^{2\pi i(1+\epsilon e^{i\theta})})i\epsilon e^{i\theta}d\theta & z=1+\epsilon e^{i\theta}\\
                                                      &+ i\int_\epsilon^R\log(1-e^{2\pi i(1+it)})dt & z=1+it\\
                                                      &+ \int_1^0\log(1-e^{2\pi i(t+iR)})dt & z=t+iR\\
                                                      &+ i\int_R^\epsilon\log(1-e^{2\pi i(it)}) dt & z=it\\
@@ -244,6 +244,32 @@ we get $\frac{\pi}{2}$. Which gives us that
                                               &= \log(1+e^{-2\pi R})+|\frac{e^{-2\pi R}}{1-e^{2\pi R}}|
   \end{align*}
   which goes to zero as $R\rightarrow \infty$.
+
+  \textbf{Check logarithm inequalities. Might not work for $\epsilon$}.
+  Next we show that $|\int_{\pi/2}^0\log(1-e^{2\pi i \epsilon e^{i\theta}}) d\theta|\rightarrow 0$ as $\epsilon\rightarrow 0$.
+  \begin{align*}
+    |\int_{\pi/2}^0\log(1-e^{2\pi i \epsilon e^{i\theta}}) \epsilon ie^i\theta d\theta| &\leq \int_0^{\pi/2}|\log(1-e^{2\pi i \epsilon e^{i\theta}})\epsilon ie^{i\theta}|d\theta\\
+                                                       &\leq\epsilon\int_0^{\pi/2}|\log(1-e^{2\pi i \epsilon e^{i\theta}})|d\theta\\
+                                           &\leq \epsilon\int_0^{\pi/2}|\log|1-e^{2\pi i \epsilon e^{i\theta}}|+i\Arg(1-e^{2\pi i \epsilon e^{i\theta}})|d\theta\\
+                                                       &\leq \epsilon\int_0^{\pi/2}\log(1+|e^{2\pi i\epsilon e^{i\theta}})+|\Arg(1-e^{2\pi i \epsilon e^{i\theta}})|d\theta\\
+                                                       &\leq\epsilon\int_0^{\pi/2}\log(1+|e^{2\pi i\epsilon e^{i\theta}}|)+\pi d\theta\\
+                                                       &\leq\epsilon\int_0^{\pi/2}\log(1+e^{-2\pi \epsilon\sin\theta|})+\pi d\theta\\
+                                                       &\leq\epsilon\int_0^{\pi/2}\log(1+e^{2\pi \epsilon})+\pi d\theta\\
+                                                       &= \epsilon\cdot\frac{\pi}{2}\log(1+e^{2\pi\epsilon})
+  \end{align*}
+  Which at this point clearly goes to zero as $\epsilon\rightarrow 0$. The last quarter-circle integral is identical
+  once we note that
+  \[
+    \int_{\pi}^{\pi/2}\log(1-e^{2\pi i(1+\epsilon e^{i\theta})})i\epsilon e^{i\theta}d\theta =  \int_{\pi}^{\pi/2}\log(1-e^{2\pi i(\epsilon e^{i\theta})})i\epsilon e^{i\theta}d\theta
+  \]
+  We can then bound this integral the same as the prior. Since the arc length of the quarter-circle
+  is the same we can safely conclude that this integral also approaches zero as $\epsilon\rightarrow 0$.
+
+  Therefore, since every portion of $\int_{\gamma_{\epsilon,R}}\log(1-e^{2\pi i z})$ is zero aside from
+  $\int_{-\epsilon}^\epsilon\log(\sin(\pi x))dx$, we can conclude that
+  \[
+    \int_0^1\log(\sin\pi x)dx = -\log 2
+  \]
 \end{proof}
 
 \sk
@@ -259,7 +285,47 @@ we get $\frac{\pi}{2}$. Which gives us that
 \end{problem}
 
 \begin{proof}
+  Let $\gamma_{\epsilon,R}$ denote the curve around half annulus in the upper half plane with
+  inner radius $\epsilon$ and outer radius $R$. The function $\frac{\log x}{x^2+a^2}$ has
+  a pole at $ia$. Then the integral over $\gamma_{\epsilon,R}$ is
+  \begin{align*}
+    \int_{\gamma_{\epsilon,R}}\frac{\log z}{z^2+a^2} dz&= 2\pi i\Res_{z=ia}\frac{\log z}{z^2+a^2}\\
+                                                    &= \int_{C_R}\frac{\log z}{z^2+a^2}dz \\
+                                                    &+ \int_{C_\epsilon}\frac{\log z}{z^2+a^2}dz \\
+                                                    &+ \int_\epsilon^R \frac{\log x}{x^2+a^2}dx\\
+                                                    &-\int_{R}^{\epsilon}\frac{\log -x}{x^2+a^2}dx
+  \end{align*}
+  First we show that the integral on $C_R$ approaches $0$ as $R\rightarrow\infty$.
+  \begin{align*}
+    |\int_{C_R}\frac{\log z}{z^2+a^2}dz| &\leq \pi R\cdot \frac{R+i\pi}{R^2-a^2}\\
+  \end{align*}
+  This approaches zero as $R$ approaches infinity.
+
+  Next we show that the integral along $C_\epsilon$ approaches $0$ as $\epsilon\rightarrow 0$.
+  \begin{align*}
+    |\int_{C_\epsilon}\frac{\log z}{z^2+a^2}dz & \leq \\
+  \end{align*}
   
+  The residue calculation is
+  \[
+    2\pi i\Res_{z=ia}\frac{\log z}{z^2+a^2}= 2\pi i\frac{\log ia}{2ia} = \pi\log a+\frac{i\pi^2}{2}
+  \]
+
+  Note that for the last integral, since we are on the principle branch we have
+  \[
+    -\int_{R}^{\epsilon}\frac{\log -x}{x^2+a^2}dx =\int_\epsilon^R\frac{\log x}{x^2+a^2}dx+\int_\epsilon^R\frac{i\pi}{x^2+a^2}dx
+  \]
+  
+  Which gives us that
+  \[
+    2\int_0^\infty\frac{\log x}{x^2+a^2}dx+i\pi\int_0^\infty\frac{1}{x^2+a^2}dx = \pi\log a+\frac{i\pi^2}{2}
+  \]
+
+  Since we know that $i\pi\int_0^\infty\frac{1}{x^2+a^2}dx = \frac{i\pi^2}{2}$ we get
+  \[
+    \int_0^\infty\frac{\log x}{x^2+a^2}dx=\frac{\pi\log a}{2}
+  \]
+  as desired.
 \end{proof}
 
 \sk
