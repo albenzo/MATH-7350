@@ -44,7 +44,7 @@
 
 \begin{proof}
   We proceed by induction over the degree of the pole. The case of the simple
-  pole was handled in class. Suppose that the above property holds for poles of
+  pole was provided. Suppose that the above property holds for poles of
   degree $k$. Then if $z_0$ is a pole of degree $k+1$ we can construct a function
   \[
     g(z)=(z-z_0)f(z)
@@ -74,7 +74,7 @@
     \frac{a_n\epsilon^n}{a_{n+1}\epsilon^{n+1}}=C(1+\delta(n))
   \]
 
-  Where $1+\delta(n)$ will converge to $1$. Rewriting the original limit we get
+  Where $1+\delta(n)$ depends solely on $\epsilon$ and will converge to $1$. Rewriting the original limit we get
   \[
     \lim_{n\rightarrow\infty}\frac{a_n\epsilon^n}{a_{n+1}\epsilon^{n+1}}\cdot\frac{\frac{a_{n-1}\epsilon^{n-1}}{a_n\epsilon^{n}}-z_0}{\frac{a_n\epsilon^{n}}{a_{n+1}\epsilon^{n+1}}-z_0}
   \]
@@ -364,7 +364,7 @@ we get $\frac{\pi}{2}$. Which gives us that
 
   Note that for the last integral, since we are on the principle branch we have
   \[
-    -\int_{R}^{\epsilon}\frac{\log -x}{x^2+a^2}dx =\int_\epsilon^R\frac{\log x}{x^2+a^2}dx+\int_\epsilon^R\frac{i\pi}{x^2+a^2}dx
+    -\int_{R}^{\epsilon}\frac{\log (-x)}{x^2+a^2}dx =\int_\epsilon^R\frac{\log x}{x^2+a^2}dx+\int_\epsilon^R\frac{i\pi}{x^2+a^2}dx
   \]
   
   Which gives us that
@@ -400,7 +400,8 @@ we get $\frac{\pi}{2}$. Which gives us that
   $f(z)=\sum_{n=0}^k\frac{a_{-n}}{(z-z_0)^{n}}\cdot g(z)$ where $g$ is holomorphic on
   $D_r(z_0)$. Then there exists a constant $B$ such that $B|(z-z_0)^{-k}|<|f(z)|$
   when $z$ is sufficiently close to $z_0$. In addition when $z$ is sufficiently
-  close to $z_0$ we that $|f(z)|\geq B|z-z_0|^{-k}\geq A|z-z_0|^{-1+\epsilon}$ as $k\geq 1$.
+  close to $A|z-z_0|^{-1+\epsilon}\leq B|z-z_0|^{-k}$ which then implies that
+  $A|z-z_0|^{-1+\epsilon}\leq|f(z)|$ when sufficiently close.
 
   On the other hand if $k$ is an essential singularity we have a Laurant
   series in $D_r(z_0)\setminus\{z_0\}$ of the form
