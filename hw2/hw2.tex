@@ -47,13 +47,13 @@
   pole was provided. Suppose that the above property holds for poles of
   degree $k$. Then if $z_0$ is a pole of degree $k+1$ we can construct a function
   \[
-    g(z)=(z-z_0)f(z)
+    g\left(z\right)=\left(z-z_0\right)f\left(z\right)
   \]
   The function $g$ has a pole of degree $k$. By assumption, for the power series
-  $g(z)=\sum_0^\infty b_nz^n$, we have that $\lim_{n\rightarrow\infty}\frac{b_n}{b_{n+1}}=z_0$. Since
+  $g\left(z\right)=\sum_0^\infty b_nz^n$, we have that $\lim_{n\rightarrow\infty}\frac{b_n}{b_{n+1}}=z_0$. Since
   power series are unique. We can write the coefficients $b_n$ in terms of $a_n$.
   \[
-    f(z)(z-z_0)=\sum_0^\infty(z-z_0)a_nz^n
+    f\left(z\right)\left(z-z_0\right)=\sum_0^\infty\left(z-z_0\right)a_nz^n
   \]
   This implies that $b_n=a_{n-1}-a_nz_0$ where $a_{-1}=0$. Now we rewrite the limit
   as
@@ -71,10 +71,10 @@
   the limit of ratios for a power series. Call this limit $C$. Then introduce the constant $0<\epsilon<1$
   such that
   \[
-    \frac{a_n\epsilon^n}{a_{n+1}\epsilon^{n+1}}=C(1+\delta(n))
+    \frac{a_n\epsilon^n}{a_{n+1}\epsilon^{n+1}}=C\left(1+\delta\left(n\right)\right)
   \]
 
-  Where $1+\delta(n)$ depends solely on $\epsilon$ and will converge to $1$. Rewriting the original limit we get
+  Where $1+\delta\left(n\right)$ depends solely on $\epsilon$ and will converge to $1$. Rewriting the original limit we get
   \[
     \lim_{n\rightarrow\infty}\frac{a_n\epsilon^n}{a_{n+1}\epsilon^{n+1}}\cdot\frac{\frac{a_{n-1}\epsilon^{n-1}}{a_n\epsilon^{n}}-z_0}{\frac{a_n\epsilon^{n}}{a_{n+1}\epsilon^{n+1}}-z_0}
   \]
@@ -82,7 +82,7 @@
   Then we have
 
   \[
-    \lim_{n\rightarrow\infty}\frac{a_n}{a_{n+1}\epsilon}\cdot\frac{C(1+\delta(n))-z_0}{C(1+\delta(n))-z_0}
+    \lim_{n\rightarrow\infty}\frac{a_n}{a_{n+1}\epsilon}\cdot\frac{C\left(1+\delta\left(n\right)\right)-z_0}{C\left(1+\delta\left(n\right)\right)-z_0}
   \]
 
   The limit of the right hand term is $1$. Take the limit as $\epsilon$ approaches $1$ and we
@@ -101,7 +101,7 @@
     \int_{-\infty}^\infty \frac{dx}{1+x^4}dx
   \]
 
-  Where are the poles of $1/(1+z^4)$?
+  Where are the poles of $1/\left(1+z^4\right)$?
 \end{problem}
 
 The poles of the function are at $\pm e^{i\pi/4},\pm e^{3i\pi/4}$.
@@ -125,11 +125,11 @@ To calculate the residues we use the formula from the book. In this case the
 formula boils down to plugging in the point to $\frac{1}{1+z^4}$ where removing the factor
 associated with the singularity. This gives us
 \[
-  \Res_{z=e^{i\pi/4}}\frac{1}{1+z^4}=\frac{1}{(e^{2\pi i/4}+e^{\pi i/2})(2e^{i\pi/4})}=\frac{1}{4e^{3\pi i/4}}
+  \Res_{z=e^{i\pi/4}}\frac{1}{1+z^4}=\frac{1}{\left(e^{2\pi i/4}+e^{\pi i/2}\right)\left(2e^{i\pi/4}\right)}=\frac{1}{4e^{3\pi i/4}}
 \]
 and
 \[
-  \Res_{z=e^{3i\pi/4}}\frac{1}{1+z^4}=\frac{1}{(e^{6\pi i/4}+e^{3\pi i/2})(2e^{3i\pi/4})}=\frac{1}{4e^{9\pi i/4}}
+  \Res_{z=e^{3i\pi/4}}\frac{1}{1+z^4}=\frac{1}{\left(e^{6\pi i/4}+e^{3\pi i/2}\right)\left(2e^{3i\pi/4}\right)}=\frac{1}{4e^{9\pi i/4}}
 \]
 Add them together and we get $\frac{-i\sqrt{2}}{4}$. Multiply it by $2\pi i$ and
 we get $\frac{\pi}{2}$. Which gives us that
@@ -147,7 +147,7 @@ we get $\frac{\pi}{2}$. Which gives us that
 \end{problem}
 
 \begin{proof}
-  First note that $\Im(\frac{ze^{iz}}{z^2+a^2})=\frac{z\sin z}{z^2+a^2}$ when $z$ is on the real axis. We proceed
+  First note that $\Im\left(\frac{ze^{iz}}{z^2+a^2}\right)=\frac{z\sin z}{z^2+a^2}$ when $z$ is on the real axis. We proceed
   by integrating the semicircle in the upper half plane, $\gamma_R$, which we can
   expand as
   \[
@@ -168,7 +168,7 @@ we get $\frac{\pi}{2}$. Which gives us that
   \begin{align*}
     \frac{R^2}{R^2-a^2}\left|\int_0^\pi e^{-R\sin\theta}d\theta\right| &\leq\frac{2R^2}{R^2-a^2}\left(\int_0^{\pi/2}e^{-R\pi\theta/2}d\theta\right)\\
                                                                &=\frac{2R^2}{R^2-a^2}\left(\frac{-2e^{-R\pi/2\theta}}{\pi R}\right|_0^{\pi/2}
-  \end{align*}% ))
+  \end{align*}% )
   At this point it is clear that the above approaches zero as $R$ approaches infinity.
   Thus
   \[
@@ -184,7 +184,7 @@ we get $\frac{\pi}{2}$. Which gives us that
   When we put it all together we get
   \begin{align*}
     \int_{-\infty}^\infty\frac{x\sin x}{x^2+a^2}dx&=\Im\left(\int_{-\infty}^\infty\frac{ze^{iz}}{z^2+a^2} dz\right)\\
-                                               &=\Im(2\pi i\cdot \frac{e^{-a}}{2})\\
+                                               &=\Im\left(2\pi i\cdot \frac{e^{-a}}{2}\right)\\
                                                &=\pi e^{-a}
   \end{align*}
 \end{proof}
@@ -202,7 +202,7 @@ we get $\frac{\pi}{2}$. Which gives us that
 \begin{proof}
   We start by rewriting $\cos\theta$ in terms of $e^{i\theta}$ which gives us
   \begin{align*}
-    \int_0^{2\pi}\frac{d\theta}{a+b\cos\theta} &= \int_0^{2\pi}\frac{d\theta}{a+b/2(e^{i\theta}+e^{-i\theta})}\\
+    \int_0^{2\pi}\frac{d\theta}{a+b\cos\theta} &= \int_0^{2\pi}\frac{d\theta}{a+b/2\left(e^{i\theta}+e^{-i\theta}\right)}\\
                                             &= 2\int_0^{2\pi}\frac{e^{i\theta}}{2ae^{i\theta}+be^{2i\theta}+b}d\theta\\
   \end{align*}
   Then substitute $z=e^{i\theta}$ to get
@@ -213,13 +213,13 @@ we get $\frac{\pi}{2}$. Which gives us that
 
   First we find the poles by factoring the bottom
   \[
-    \frac{1}{bz^2+2az+b}=\frac{1}{b(z-(-a/b+\sqrt{a^2/b^2-1}))(z-(-a/b-\sqrt{a^2/b^2-1}))}
+    \frac{1}{bz^2+2az+b}=\frac{1}{b\left(z-\left(-a/b+\sqrt{a^2/b^2-1}\right)\right)\left(z-\left(-a/b-\sqrt{a^2/b^2-1}\right)\right)}
   \]
   The pole that occurs within the circle of radius $1$ is $-a/b+\sqrt{a^2/b^2-1}$. We
   calculate the residue as
   \begin{align*}
-    \Res_{z=-a/b+\sqrt{a^2/b^2-1}} \frac{1}{bz^2+2az+b} &= \lim_{z\rightarrow -a/b+\sqrt{a^2/b^2-1}}\frac{(z-(-a/b+\sqrt{a^2/b^2-1}))}{b(z-(-a/b+\sqrt{a^2/b^2-1}))(z-(-a/b-\sqrt{a^2/b^2-1}))}\\
-                                                     &=\frac{1}{b(-a/b+\sqrt{a^2/b^2-1}-(-a/b-\sqrt{a^2/b^2-1}))}\\
+    \Res_{z=-a/b+\sqrt{a^2/b^2-1}} \frac{1}{bz^2+2az+b} &= \lim_{z\rightarrow -a/b+\sqrt{a^2/b^2-1}}\frac{\left(z-\left(-a/b+\sqrt{a^2/b^2-1}\right)\right)}{b\left(z-\left(-a/b+\sqrt{a^2/b^2-1}\right)\right)\left(z-\left(-a/b-\sqrt{a^2/b^2-1}\right)\right)}\\
+                                                     &=\frac{1}{b\left(-a/b+\sqrt{a^2/b^2-1}-\left(-a/b-\sqrt{a^2/b^2-1}\right)\right)}\\
                                                      &=\frac{1}{2b\sqrt{a^2/b^2-1}}\\
                                                      &=\frac{1}{2\sqrt{a^2-b^2}}
   \end{align*}
@@ -235,7 +235,7 @@ we get $\frac{\pi}{2}$. Which gives us that
 \begin{problem}[3.8.9]
   Show that
   \[
-    \int_0^1\log(\sin\pi x)dx = -\log 2
+    \int_0^1\log\left(\sin\pi x\right)dx = -\log 2
   \]
 
   Hint: Use contour that goes down to 0 and up from 1.
@@ -244,76 +244,76 @@ we get $\frac{\pi}{2}$. Which gives us that
 \begin{proof}
   First note that
   \begin{align*}
-    \log(1-e^{2\pi iz}) &=\log(e^{\pi iz}(-2i)(e^{\pi iz}+e^{-\pi iz})/2i)\\
-                      &=\pi iz + \log(-2i)+\log(\sin\pi z)\\
-                      &= \pi iz + \log(2)-i\pi/2+\log(\sin\pi z)\\
+    \log\left(1-e^{2\pi iz}\right) &=\log\left(e^{\pi iz}\left(-2i\right)\left(e^{\pi iz}+e^{-\pi iz}\right)/2i\right)\\
+                      &=\pi iz + \log\left(-2i\right)+\log\left(\sin\pi z\right)\\
+                      &= \pi iz + \log\left(2\right)-i\pi/2+\log\left(\sin\pi z\right)\\
   \end{align*}
   If we integrate this with respect to $z$ from $0$ to $1$ we get
   \[
-    \int_0^1\log(1-e^{2\pi iz})dz=\pi i/2+\log(2)-i\pi/2+\int_0^1\log(\sin\pi z) dz = \log(2)+\int_0^1\log(\sin\pi z) dz
+    \int_0^1\log\left(1-e^{2\pi iz}\right)dz=\pi i/2+\log\left(2\right)-i\pi/2+\int_0^1\log\left(\sin\pi z\right) dz = \log\left(2\right)+\int_0^1\log\left(\sin\pi z\right) dz
   \]
-  This will give us the desired equality if we show that $\int_0^1\log(1-e^{2\pi iz})dz=0$. To do this
+  This will give us the desired equality if we show that $\int_0^1\log\left(1-e^{2\pi iz}\right)dz=0$. To do this
   we integrate over the rectangle of width $1$, height $R$, with two quarter circles of radius $\epsilon$
   on the corners at $0$ and $1$ to avoid the branch points. Refer to this curve as $\gamma_{\epsilon,R}$. The
-  entire integral will be zero as $\log(1-e^{2\pi iz})$ is holomorphic on the curve and its interior.
+  entire integral will be zero as $\log\left(1-e^{2\pi iz}\right)$ is holomorphic on the curve and its interior.
   Then we split the integral into six pieces
   \begin{align*}
-    0 = \int_{\gamma_{\epsilon,R}}\log(1-e^{2\pi iz})dz &= \int_\epsilon^{1-\epsilon}\log(1-e^{2\pi ix}) dx & z=x\\
-                                                     &+ \int_{\pi}^{\pi/2}\log(1-e^{2\pi i(1+\epsilon e^{i\theta})})i\epsilon e^{i\theta}d\theta & z=1+\epsilon e^{i\theta}\\
-                                                     &+ i\int_\epsilon^R\log(1-e^{2\pi i(1+it)})dt & z=1+it\\
-                                                     &+ \int_1^0\log(1-e^{2\pi i(t+iR)})dt & z=t+iR\\
-                                                     &+ i\int_R^\epsilon\log(1-e^{2\pi i(it)}) dt & z=it\\
-                                                     &+ \int_{\pi/2}^0\log(1-e^{2\pi i \epsilon e^{i\theta}}) d\theta & z=\epsilon e^{i\theta}
+    0 = \int_{\gamma_{\epsilon,R}}\log\left(1-e^{2\pi iz}\right)dz &= \int_\epsilon^{1-\epsilon}\log\left(1-e^{2\pi ix}\right) dx & z=x\\
+                                                     &+ \int_{\pi}^{\pi/2}\log\left(1-e^{2\pi i\left(1+\epsilon e^{i\theta}\right)}\right)i\epsilon e^{i\theta}d\theta & z=1+\epsilon e^{i\theta}\\
+                                                     &+ i\int_\epsilon^R\log\left(1-e^{2\pi i\left(1+it\right)}\right)dt & z=1+it\\
+                                                     &+ \int_1^0\log\left(1-e^{2\pi i\left(t+iR\right)}\right)dt & z=t+iR\\
+                                                     &+ i\int_R^\epsilon\log\left(1-e^{2\pi i\left(it\right)}\right) dt & z=it\\
+                                                     &+ \int_{\pi/2}^0\log\left(1-e^{2\pi i \epsilon e^{i\theta}}\right) d\theta & z=\epsilon e^{i\theta}
   \end{align*}
   First note that for the two vertical portions of $\gamma_{\epsilon,R}$, the third and fifth, that
   \[
-    \log(1-e^{2\pi i(1+it)}) = \log(1-e^{2\pi i(it)})
+    \log\left(1-e^{2\pi i\left(1+it\right)}\right) = \log\left(1-e^{2\pi i\left(it\right)}\right)
   \]
   as $e^{2\pi i }=1$. Since the only difference then is that the limits of integration are swapped
   these two cancel each other out. What is left to show is that
   \[
-    \left|\int_1^0\log(1-e^{2\pi i(t+iR)})dt\right|,\quad\left|\int_{\pi}^{\pi/2}\log(1-e^{2\pi i\epsilon e^{i\theta}})i\epsilon e^{i\theta}d\theta\right|,\quad \left|\int_{\pi/2}^0\log(1-e^{2\pi i \epsilon e^{i\theta}}) d\theta\right|
+    \left|\int_1^0\log\left(1-e^{2\pi i\left(t+iR\right)}\right)dt\right|,\quad\left|\int_{\pi}^{\pi/2}\log\left(1-e^{2\pi i\epsilon e^{i\theta}}\right)i\epsilon e^{i\theta}d\theta\right|,\quad \left|\int_{\pi/2}^0\log\left(1-e^{2\pi i \epsilon e^{i\theta}}\right) d\theta\right|
   \]
   all approach zero as $\epsilon\rightarrow 0 $ and $R\rightarrow\infty$.
 
   Starting with the first we have
   \begin{align*}
-    \left|\int_0^1\log(1-e^{2\pi i(t+iR)})dt\right| &\leq \int_0^1\left|\log(1-e^{-2\pi R}e^{2\pi i t})\right|dt\\
-                                              &\leq\int_0^1\log|1-e^{-2\pi R}e^{2\pi i t}|+|i\Arg(1-e^{-2\pi R}e^{2\pi it})|dt\\
-                                              & \leq\int_0^1\log(|1|+|e^{-2\pi R}e^{2\pi i t}|)+|i\Arg(1-e^{-2\pi R}e^{2\pi it})|dt\\
-                                              &\leq\int_0^1\log(1+e^{-2\pi R})+|i\Arg(1-e^{-2\pi R}e^{2\pi it})|dt\\
-                                              &\leq\int_0^1\log(1+e^{-2\pi R})+|\Arg(1-e^{-2\pi R}e^{2\pi it})|dt\\
-                                              &\leq\int_0^1\log(1+e^{-2\pi R})+|\arctan(\frac{\Im(1-e^{-2\pi R}e^{2\pi it})}{\Re(1-e^{-2\pi R}e^{2\pi it})})|dt\\
-                                              &\leq\int_0^1\log(1+e^{-2\pi R})+|\arctan(\frac{e^{-2\pi R}\sin(2\pi t)}{1-e^{-2\pi R}\cos(2\pi t)})|dt\\
-                                              &\leq\int_0^1\log(1+e^{-2\pi R})+|\frac{e^{-2\pi R}\sin(2\pi t)}{1-e^{-2\pi R}\cos(2\pi t)}|dt\\
-                                              &\leq\int_0^1\log(1+e^{-2\pi R})+|\frac{e^{-2\pi R}}{1-e^{-2\pi R}}|dt\\
-                                              &= \log(1+e^{-2\pi R})+|\frac{e^{-2\pi R}}{1-e^{-2\pi R}}|
+    \left|\int_0^1\log\left(1-e^{2\pi i\left(t+iR\right)}\right)dt\right| &\leq \int_0^1\left|\log\left(1-e^{-2\pi R}e^{2\pi i t}\right)\right|dt\\
+                                              &\leq\int_0^1\log\left|1-e^{-2\pi R}e^{2\pi i t}\right|+\left|i\Arg\left(1-e^{-2\pi R}e^{2\pi it}\right)\right|dt\\
+                                              & \leq\int_0^1\log\left(\left|1\right|+\left|e^{-2\pi R}e^{2\pi i t}\right|\right)+\left|i\Arg\left(1-e^{-2\pi R}e^{2\pi it}\right)\right|dt\\
+                                              &\leq\int_0^1\log\left(1+e^{-2\pi R}\right)+\left|i\Arg\left(1-e^{-2\pi R}e^{2\pi it}\right)\right|dt\\
+                                              &\leq\int_0^1\log\left(1+e^{-2\pi R}\right)+\left|\Arg\left(1-e^{-2\pi R}e^{2\pi it}\right)\right|dt\\
+                                              &\leq\int_0^1\log\left(1+e^{-2\pi R}\right)+\left|\arctan\left(\frac{\Im\left(1-e^{-2\pi R}e^{2\pi it}\right)}{\Re\left(1-e^{-2\pi R}e^{2\pi it}\right)}\right)\right|dt\\
+                                              &\leq\int_0^1\log\left(1+e^{-2\pi R}\right)+\left|\arctan\left(\frac{e^{-2\pi R}\sin\left(2\pi t\right)}{1-e^{-2\pi R}\cos\left(2\pi t\right)}\right)\right|dt\\
+                                              &\leq\int_0^1\log\left(1+e^{-2\pi R}\right)+\left|\frac{e^{-2\pi R}\sin\left(2\pi t\right)}{1-e^{-2\pi R}\cos\left(2\pi t\right)}\right|dt\\
+                                              &\leq\int_0^1\log\left(1+e^{-2\pi R}\right)+\left|\frac{e^{-2\pi R}}{1-e^{-2\pi R}}\right|dt\\
+                                              &= \log\left(1+e^{-2\pi R}\right)+\left|\frac{e^{-2\pi R}}{1-e^{-2\pi R}}\right|
   \end{align*}
   which goes to zero as $R\rightarrow \infty$.
 
-  Next we show that $|\int_{\pi/2}^0\log(1-e^{2\pi i \epsilon e^{i\theta}}) d\theta|\rightarrow 0$ as $\epsilon\rightarrow 0$.
+  Next we show that $\left|\int_{\pi/2}^0\log\left(1-e^{2\pi i \epsilon e^{i\theta}}\right) d\theta\right|\rightarrow 0$ as $\epsilon\rightarrow 0$.
   \begin{align*}
-    |\int_{\pi/2}^0\log(1-e^{2\pi i \epsilon e^{i\theta}}) \epsilon ie^i\theta d\theta| &\leq \int_0^{\pi/2}|\log(1-e^{2\pi i \epsilon e^{i\theta}})\epsilon ie^{i\theta}|d\theta\\
-                                                       &\leq\epsilon\int_0^{\pi/2}|\log(1-e^{2\pi i \epsilon e^{i\theta}})|d\theta\\
-                                           &\leq \epsilon\int_0^{\pi/2}|\log|1-e^{2\pi i \epsilon e^{i\theta}}|+i\Arg(1-e^{2\pi i \epsilon e^{i\theta}})|d\theta\\
-                                                       &\leq \epsilon\int_0^{\pi/2}\log(1+|e^{2\pi i\epsilon e^{i\theta}}|)+|\Arg(1-e^{2\pi i \epsilon e^{i\theta}})|d\theta\\
-                                                       &\leq\epsilon\int_0^{\pi/2}\log(1+|e^{2\pi i\epsilon e^{i\theta}}|)+\pi d\theta\\
-                                                       &\leq\epsilon\int_0^{\pi/2}\log(1+e^{-2\pi \epsilon\sin\theta})+\pi d\theta\\
-                                                       &\leq\epsilon\int_0^{\pi/2}\log(1+e^{2\pi \epsilon})+\pi d\theta\\
-                                                       &= \epsilon\cdot\frac{\pi}{2}\log(1+e^{2\pi\epsilon})+\epsilon\frac{\pi^2}{2}
+    \left|\int_{\pi/2}^0\log\left(1-e^{2\pi i \epsilon e^{i\theta}}\right) \epsilon ie^i\theta d\theta\right| &\leq \int_0^{\pi/2}\left|\log\left(1-e^{2\pi i \epsilon e^{i\theta}}\right)\epsilon ie^{i\theta}\right|d\theta\\
+                                                       &\leq\epsilon\int_0^{\pi/2}\left|\log\left(1-e^{2\pi i \epsilon e^{i\theta}}\right)\right|d\theta\\
+                                           &\leq \epsilon\int_0^{\pi/2}\left|\log\left|1-e^{2\pi i \epsilon e^{i\theta}}\right|+i\Arg\left(1-e^{2\pi i \epsilon e^{i\theta}}\right)\right|d\theta\\
+                                                       &\leq \epsilon\int_0^{\pi/2}\log\left(1+\left|e^{2\pi i\epsilon e^{i\theta}}\right|\right)+\left|\Arg\left(1-e^{2\pi i \epsilon e^{i\theta}}\right)\right|d\theta\\
+                                                       &\leq\epsilon\int_0^{\pi/2}\log\left(1+\left|e^{2\pi i\epsilon e^{i\theta}}\right|\right)+\pi d\theta\\
+                                                       &\leq\epsilon\int_0^{\pi/2}\log\left(1+e^{-2\pi \epsilon\sin\theta}\right)+\pi d\theta\\
+                                                       &\leq\epsilon\int_0^{\pi/2}\log\left(1+e^{2\pi \epsilon}\right)+\pi d\theta\\
+                                                       &= \epsilon\cdot\frac{\pi}{2}\log\left(1+e^{2\pi\epsilon}\right)+\epsilon\frac{\pi^2}{2}
   \end{align*}
   Which at this point clearly goes to zero as $\epsilon\rightarrow 0$. The last quarter-circle integral is identical
   once we note that
   \[
-    \int_{\pi}^{\pi/2}\log(1-e^{2\pi i(1+\epsilon e^{i\theta})})i\epsilon e^{i\theta}d\theta =  \int_{\pi}^{\pi/2}\log(1-e^{2\pi i(\epsilon e^{i\theta})})i\epsilon e^{i\theta}d\theta
+    \int_{\pi}^{\pi/2}\log\left(1-e^{2\pi i\left(1+\epsilon e^{i\theta}\right)}\right)i\epsilon e^{i\theta}d\theta =  \int_{\pi}^{\pi/2}\log\left(1-e^{2\pi i\left(\epsilon e^{i\theta}\right)}\right)i\epsilon e^{i\theta}d\theta
   \]
   We can then bound this integral the same as the prior. Since the arc length of the quarter-circle
   is the same we can safely conclude that this integral also approaches zero as $\epsilon\rightarrow 0$.
 
-  Therefore, since every portion of $\int_{\gamma_{\epsilon,R}}\log(1-e^{2\pi i z})$ is zero aside from
-  $\int_{-\epsilon}^\epsilon\log(\sin(\pi x))dx$, we can conclude that
+  Therefore, since every portion of $\int_{\gamma_{\epsilon,R}}\log\left(1-e^{2\pi i z}\right)$ is zero aside from
+  $\int_{-\epsilon}^\epsilon\log\left(\sin\left(\pi x\right)\right)dx$, we can conclude that
   \[
-    \int_0^1\log(\sin\pi x)dx = -\log 2
+    \int_0^1\log\left(\sin\pi x\right)dx = -\log 2
   \]
 \end{proof}
 
@@ -338,22 +338,22 @@ we get $\frac{\pi}{2}$. Which gives us that
                                                     &= \int_{C_R}\frac{\log z}{z^2+a^2}dz \\
                                                     &+ \int_{C_\epsilon}\frac{\log z}{z^2+a^2}dz \\
                                                     &+ \int_\epsilon^R \frac{\log x}{x^2+a^2}dx\\
-                                                    &-\int_{R}^{\epsilon}\frac{\log (-x)}{x^2+a^2}dx
+                                                    &-\int_{R}^{\epsilon}\frac{\log \left(-x\right)}{x^2+a^2}dx
   \end{align*}
   First we show that the integral on $C_R$ approaches $0$ as $R\rightarrow\infty$.
   \begin{align*}
-    |\int_{C_R}\frac{\log z}{z^2+a^2}dz| &\leq \int_{C_R}|\frac{\log z}{z^2+a^2}|dz\\
-                                    &\leq \int_{C_R}\frac{|\log R+i\pi}{R^2-a^2}dz\\
-                                    &\leq \frac{\pi R(\log R+i\pi)}{R^2-a^2}\\
+    \left|\int_{C_R}\frac{\log z}{z^2+a^2}dz\right| &\leq \int_{C_R}\left|\frac{\log z}{z^2+a^2}\right|dz\\
+                                    &\leq \int_{C_R}\frac{\left|\log R+i\pi\right|}{R^2-a^2}dz\\
+                                    &\leq \frac{\pi R\left(\log R+i\pi\right)}{R^2-a^2}\\
   \end{align*}
   This approaches zero as $R$ approaches infinity.
 
   Next we show that the integral along $C_\epsilon$ approaches $0$ as $\epsilon\rightarrow 0$.
   \begin{align*}
-    |\int_{C_\epsilon}\frac{\log z}{z^2+a^2}dz| & \leq\int_{C_\epsilon}|\frac{\log z}{z^2+a^2}|dz \\
-                                   &\leq\int_{C_\epsilon}|\log \epsilon + i\pi |dz\\
+    \left|\int_{C_\epsilon}\frac{\log z}{z^2+a^2}dz\right| & \leq\int_{C_\epsilon}\left|\frac{\log z}{z^2+a^2}\right|dz \\
+                                   &\leq\int_{C_\epsilon}\left|\log \epsilon + i\pi \right|dz\\
                                    &\leq\int_{C_\epsilon}\log \epsilon + \pi dz\\
-                                   &\leq\pi\epsilon(\log \epsilon+\pi)
+                                   &\leq\pi\epsilon\left(\log \epsilon+\pi\right)
   \end{align*}
   which also approaches $0$ as $\epsilon$ approaches $0$.
   
@@ -364,7 +364,7 @@ we get $\frac{\pi}{2}$. Which gives us that
 
   Note that for the last integral, since we are on the principle branch we have
   \[
-    -\int_{R}^{\epsilon}\frac{\log (-x)}{x^2+a^2}dx =\int_\epsilon^R\frac{\log x}{x^2+a^2}dx+\int_\epsilon^R\frac{i\pi}{x^2+a^2}dx
+    -\int_{R}^{\epsilon}\frac{\log \left(-x\right)}{x^2+a^2}dx =\int_\epsilon^R\frac{\log x}{x^2+a^2}dx+\int_\epsilon^R\frac{i\pi}{x^2+a^2}dx
   \]
   
   Which gives us that
@@ -382,10 +382,10 @@ we get $\frac{\pi}{2}$. Which gives us that
 \sk
 
 \begin{problem}[3.8.13]
-  Suppose $f$ is holomorphic in a punctured disc $D_r(z_0)\setminus\{z_0\}$.
+  Suppose $f$ is holomorphic in a punctured disc $D_r\left(z_0\right)\setminus\{z_0\}$.
   Suppose also that
   \[
-    |f(z)|\leq A|z-z_0|^{-1+\epsilon}
+    \left|f\left(z\right)\right|\leq A\left|z-z_0\right|^{-1+\epsilon}
   \]
   for some $\epsilon>0$, and all $z$ near $z_0$. Show that the singularity
   of $f$ at $z_0$ is removable.
@@ -397,21 +397,21 @@ we get $\frac{\pi}{2}$. Which gives us that
   Then it is either a pole of order $k$ or essential.
 
   If $z_0$ is a pole of order $k$ then we can write $f$ as
-  $f(z)=\sum_{n=0}^k\frac{a_{-n}}{(z-z_0)^{n}}\cdot g(z)$ where $g$ is holomorphic on
-  $D_r(z_0)$. Then there exists a constant $B$ such that $B|(z-z_0)^{-k}|<|f(z)|$
+  $f\left(z\right)=\sum_{n=0}^k\frac{a_{-n}}{\left(z-z_0\right)^{n}}\cdot g\left(z\right)$ where $g$ is holomorphic on
+  $D_r\left(z_0\right)$. Then there exists a constant $B$ such that $B|\left(z-z_0\right)^{-k}|<|f\left(z\right)|$
   when $z$ is sufficiently close to $z_0$. In addition when $z$ is sufficiently
   close to $A|z-z_0|^{-1+\epsilon}\leq B|z-z_0|^{-k}$ which then implies that
-  $A|z-z_0|^{-1+\epsilon}\leq|f(z)|$ when sufficiently close.
+  $A|z-z_0|^{-1+\epsilon}\leq|f\left(z\right)|$ when sufficiently close.
 
   On the other hand if $k$ is an essential singularity we have a Laurent
-  series in $D_r(z_0)\setminus\{z_0\}$ of the form
+  series in $D_r\left(z_0\right)\setminus\{z_0\}$ of the form
   \[
-    f(z)=\sum_0^\infty b_n(z-z_0)^{-n} +\sum_0^\infty a_n(z-z_0)^n
+    f\left(z\right)=\sum_0^\infty b_n\left(z-z_0\right)^{-n} +\sum_0^\infty a_n\left(z-z_0\right)^n
   \]
   If we cut off the series for the negative powers at the first nonzero coefficient
   we get
   \[
-    g(z)=b_k(z-z_0)^k+\sum_0^\infty a_n(z-z_0)^n
+    g\left(z\right)=b_k\left(z-z_0\right)^k+\sum_0^\infty a_n\left(z-z_0\right)^n
   \]
   where $B|g|<|f|$ sufficiently close to $z_0$ for some nonzero constant $B$. Since
   $g$ has a pole of order $k$ at $z_0$ this then reduces to the case where we have a
@@ -424,7 +424,7 @@ we get $\frac{\pi}{2}$. Which gives us that
   If $f$ is holomorphic in the deleted neighborhood $\{0<|z-z_0|<r\}$ and has a
   pole of order $k$ at $z_0$, then we can write
   \[
-    f(z)=\frac{a_{-k}}{(z-z_0)^k}+\cdots + \frac{a_{-1}}{(z-z_0)} +g(z)
+    f\left(z\right)=\frac{a_{-k}}{\left(z-z_0\right)^k}+\cdots + \frac{a_{-1}}{\left(z-z_0\right)} +g\left(z\right)
   \]
   where $g$ is holomorphic in the disc $\{|z-z_0|<r\}$.
 \end{problem}
@@ -432,12 +432,12 @@ we get $\frac{\pi}{2}$. Which gives us that
 \begin{proof}
   Since $f$ has a pole of order $k$ we can write $f$ as
   \[
-    f(z)=(z-z_0)^k g(z)
+    f\left(z\right)=\left(z-z_0\right)^{-k} g\left(z\right)
   \]
   where $g$ is holomorphic. Moreover since $g$ is holomorphic it is equal
-  to its power series $g(z)=\sum_0^\infty a_n(z-z_0)^n$. Then we distribute to get
+  to its power series $g\left(z\right)=\sum_0^\infty a_n\left(z-z_0\right)^n$. Then we distribute to get
   \[
-    f(z)=\sum_{n=0}^{k-1}\frac{a_n}{(z-z_0)^{k-n}}+\sum_0^\infty a_{n+k}(z-z_0)^n
+    f\left(z\right)=\sum_{n=0}^{k-1}\frac{a_n}{\left(z-z_0\right)^{k-n}}+\sum_0^\infty a_{n+k}\left(z-z_0\right)^n
   \]
   completing the proof.
 \end{proof}
