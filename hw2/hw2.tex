@@ -43,7 +43,35 @@
 \end{problem}
 
 \begin{proof}
-  Tried doing the sum method. Currently attempting proof by induction.
+  We proceed by induction over the degree of the pole. The case of the simple
+  pole was handled in class. Suppose that the above property holds for poles of
+  degree $k$. Then if $z_0$ is a pole of degree $k+1$ we can construct a function
+  \[
+    g(z)=(z-z_0)f(z)
+  \]
+  This function has a pole of degree $k$. By induction for the power series
+  $g(z)=\sum_0^\infty b_nz^n$ we have that $\lim_{n\rightarrow\infty}\frac{b_n}{b_{n+1}}=z_0$. Since
+  power series are unique. We can write the coefficients $b_n$ in terms of $a_n$.
+  \[
+    f(z)(z-z_0)=\sum_0^\infty(z-z_0)a_nz^n
+  \]
+  This implies that $b_n=a_{n-1}-a_nz_0$ where $a_{n-1}=0$. Now we rewrite the limit
+  as
+  \[
+    \lim_{n\rightarrow\infty}\frac{b_n}{b_{n+1}}=\lim_{n\rightarrow\infty}\frac{a_{n-1}-a_nz_0}{a_n-a_{n+1}z_0}=z_0
+  \]
+  and use it to show that $\lim_{n\rightarrow\infty}\frac{a_n}{a_{n+1}}=z_0$.
+
+  To do this first we factor out $a_n$ from the top and $a_{n+1}$ from the bottom. This
+  gives us
+  \[
+    \lim_{n\rightarrow\infty}\frac{a_{n-1}-a_nz_0}{a_n-a_{n+1}z_0}=\lim_{n\rightarrow\infty}\frac{a_n}{a_{n+1}}\cdot\frac{\frac{a_{n-1}}{a_n}-z_0}{\frac{a_n}{a_{n+1}}-z_0}
+  \]
+  We can split the limit since they both exist. The right limit converges to one giving us
+  \[
+    \lim_{n\rightarrow\infty}\frac{a_n}{a_{n+1}}\cdot\frac{\frac{a_{n-1}}{a_n}-z_0}{\frac{a_n}{a_{n+1}}-z_0}=\lim_{n\rightarrow\infty} \frac{a_n}{a_{n+1}}\cdot\lim_{n\rightarrow\infty}\frac{\frac{a_{n-1}}{a_n}-z_0}{\frac{a_n}{a_{n+1}}-z_0} = \lim_{n\rightarrow\infty}\frac{a_n}{a_{n+1}}=z_0
+  \]
+  which gives us the desired limit.
 \end{proof}
 
 \sk
@@ -302,6 +330,7 @@ we get $\frac{\pi}{2}$. Which gives us that
   This approaches zero as $R$ approaches infinity.
 
   Next we show that the integral along $C_\epsilon$ approaches $0$ as $\epsilon\rightarrow 0$.
+  \textbf{Finish this}
   \begin{align*}
     |\int_{C_\epsilon}\frac{\log z}{z^2+a^2}dz & \leq \\
   \end{align*}
