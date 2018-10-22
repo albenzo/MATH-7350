@@ -1,0 +1,128 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amscd}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{listings}
+\usepackage{enumerate}
+\usepackage[all,cmtip]{xy}
+
+\textwidth=15cm \textheight=22cm \topmargin=0.5cm \oddsidemargin=0.5cm \evensidemargin=0.5cm
+
+\newcommand{\sk}{\vskip 10mm}
+\newcommand{\bb}[1]{\mathbb{#1}}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\conj}[1]{\overline{#1}}
+\DeclareMathOperator{\cis}{cis}
+
+\theoremstyle{plain}
+\newtheorem{problem}{Problem}
+\newtheorem{lemma}{Lemma}[problem]
+
+\theoremstyle{remark}
+\newtheorem{tpart}{}[problem]
+\newtheorem*{ppart}{}
+
+\begin{document}
+
+\begin{problem}[]
+  Consider the integral
+  \[
+    \Phi_n(z) = \int_a^b \frac{x^ndx}{(x-a)^{\frac{1}{2}-\lambda} (b-x)^{\frac{1}{2}+ \lambda} (x-z)}
+  \]
+  where $z \notin [a,b]$ and $\frac{-1}{2} < \lambda < \frac{1}{2}$.
+  
+  \begin{enumerate}
+  \item[(a)] Compute the integral for $n= 0$ and $n=1$.
+  \item[(b)] Determine the domain where $\phi_n(z)$ is holomorphic.
+  \end{enumerate}
+  
+  Hint: Consider the contour $\Gamma$ and fix a branch of the function
+  $\Gamma = C_R \cup \gamma^- \cup \gamma^+$ and
+  $f(\zeta) = (\zeta - a)^{\frac{1}{2} - \lambda}(b- \zeta) ^{\frac{1}{2} + \lambda}$
+  where $\zeta = x+ iy$
+\end{problem}
+
+\begin{proof}
+  
+\end{proof}
+
+\sk
+
+\begin{problem}[]
+  Show, by contour integration, that if $a >0$ and $\xi \in \mathbb{R}$ then
+  \[
+    \frac{1}{\pi} \int_{-\infty}^\infty 
+    \frac{a}{a^2 + x^2}e^{-2\pi ix\xi}dx = e^{-2\pi a |\xi|},
+  \]
+  and check that 
+  \[
+    \int_{-\infty}^\infty 
+    e^{-2\pi a|\xi|}e^{2\pi i\xi x}d\xi = \frac{1}{\pi}  
+    \frac{a}{a^2 + x^2}.
+  \]
+\end{problem}
+
+\begin{proof}
+  
+\end{proof}
+
+\sk
+
+\begin{problem}[]
+  Prove that 
+  \[
+    \frac{1}{\pi} \sum_{n = -\infty}^\infty 
+    \frac{a}{a^2 + n^2} = \sum_{n = -\infty}^\infty e^{-2\pi a|n|}
+  \]
+  whenever $a>0$. Hence show that the sum equals both $\coth \pi a$.
+\end{problem}
+
+\begin{proof}
+  
+\end{proof}
+
+\sk
+
+\begin{problem}[]
+  \begin{enumerate}
+  \item[(a)] Let $\tau$ be fixed with Im$(\tau)>0$. Apply the Poisson summation
+    formula to
+    \[
+      f(z) = (\tau + z)^{-k},
+    \]
+    where $k$ is an integer $\geq 2$, to obtain
+    \[
+      \sum_{n = -\infty}^\infty
+      \frac{1}{(\tau +n)^k} = \frac{(-2\pi i )^k}{(k-1)!} \sum_{m=1}^{\infty} m^{k-1}e^{2\pi im\tau}.
+    \]
+  \item[(b)] Set $k=2$ in the above formula to show that if Im$(\tau)>0$, then 
+    \[
+      \sum_{n = -\infty}^\infty 
+      \frac{1}{(\tau +n)^2} = \frac{\pi^2}{\sin^2(\pi\tau)}.
+    \]
+  \item[(c)] Can one conclude that the above formula hold true whenever $\tau$
+    is any complex number that is not an integer?
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}
+  
+\end{proof}
+
+\sk
+
+\begin{problem}[]
+  Compute the integral 
+  \[
+    I = \int_0^\infty \frac{\log^2(x)}{x^2 + a^2} dx
+  \]
+\end{problem}
+
+\begin{proof}
+  
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\end{document}
