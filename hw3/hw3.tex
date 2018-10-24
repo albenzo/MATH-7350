@@ -15,6 +15,7 @@
 \newcommand{\ra}{\rightarrow}
 \newcommand{\conj}[1]{\overline{#1}}
 \DeclareMathOperator{\cis}{cis}
+\DeclareMathOperator{\res}{Res}
 
 \theoremstyle{plain}
 \newtheorem{problem}{Problem}
@@ -38,34 +39,61 @@
   \item[(b)] Determine the domain where $\phi_n(z)$ is holomorphic.
   \end{enumerate}
   
-  Hint: Consider the contour $\Gamma$ and fix a branch of the function
-  $\Gamma = C_R \cup \gamma^- \cup \gamma^+$ and
+  Hint: Consider the contour $\Gamma$ (circle entering to go about branch points) and fix a
+  branch of the function $\Gamma = C_R \cup \gamma^- \cup \gamma^+$ and
   $f(\zeta) = (\zeta - a)^{\frac{1}{2} - \lambda}(b- \zeta) ^{\frac{1}{2} + \lambda}$
   where $\zeta = x+ iy$
 \end{problem}
 
-\begin{proof}
-  
-\end{proof}
 
 \sk
 
 \begin{problem}[]
   Show, by contour integration, that if $a >0$ and $\xi \in \mathbb{R}$ then
   \[
-    \frac{1}{\pi} \int_{-\infty}^\infty 
-    \frac{a}{a^2 + x^2}e^{-2\pi ix\xi}dx = e^{-2\pi a |\xi|},
+    \frac{1}{\pi} \int_{-\infty}^\infty \frac{a}{a^2 + x^2}e^{-2\pi ix\xi}dx = e^{-2\pi a |\xi|},
   \]
   and check that 
   \[
-    \int_{-\infty}^\infty 
-    e^{-2\pi a|\xi|}e^{2\pi i\xi x}d\xi = \frac{1}{\pi}  
-    \frac{a}{a^2 + x^2}.
+    \int_{-\infty}^\infty e^{-2\pi a|\xi|}e^{2\pi i\xi x}d\xi = \frac{1}{\pi}\frac{a}{a^2 + x^2}.
   \]
 \end{problem}
 
 \begin{proof}
-  
+  We start with the first integral in the case where $\xi\geq 0$. In this scenario
+  we integrate over the lower semicircle of radius $R$. The integral of the
+  outer portion $C_{R^-}$ will approach zero by Jordan's lemma as
+  $|\frac{a}{a^2+z^2}|\leq\frac{a}{R^2-a^2}\rightarrow 0 $ as $R\rightarrow\infty$. Thus we have
+  \[
+    \frac{1}{\pi}\int_\infty^{-\infty}\frac{a}{a^2 + x^2}e^{-2\pi ix\xi}dx = 2 i \res_{z=-ia}\frac{a}{a^2 + z^2}e^{-2\pi iz\xi}
+  \]
+  The residue is
+  \[
+    2i\res_{z=-ia}\frac{a}{a^2 + z^2}e^{-2\pi iz\xi}=2i\frac{a}{-2ia}e^{-2\pi i(-ia)|\xi|} = -e^{-2\pi a\xi}
+  \]
+  Which, after swapping the bounds of integration, implies that when $\xi>0$
+  \[
+    \frac{1}{\pi} \int_{-\infty}^\infty \frac{a}{a^2 + x^2}e^{-2\pi ix\xi}dx = e^{-2\pi a |\xi|}
+  \]
+
+  However when $\xi<0$ we instead integrate over the upper semicircle of radius $R$. For the
+  same reason as above the outer portion of the integral approaches 0 as $R\rightarrow\infty$. This gives
+  us
+  \[
+    \frac{1}{\pi}\int_{-\infty}^I\frac{a}{a^2 + x^2}e^{-2\pi ix\xi} dx = 2 i \res_{z=ia}\frac{a}{a^2 + z^2}e^{-2\pi iz\xi}
+  \]
+  Similar to before if we do the residue calculation we get
+  \[
+    2 i \res_{z=ia}\frac{a}{a^2 + z^2}e^{-2\pi iz\xi}= 2 i \frac{a}{2ia}e^{2\pi a\xi}=e^{-2\pi a\xi}
+  \]
+
+  Therefore
+  \[
+    \frac{1}{\pi} \int_{-\infty}^\infty \frac{a}{a^2 + x^2}e^{-2\pi ix\xi}dx = e^{-2\pi a |\xi|},
+  \]
+  for all $\xi\in \bb{R}$.
+
+  To check the other direction
 \end{proof}
 
 \sk
@@ -80,24 +108,33 @@
 \end{problem}
 
 \begin{proof}
-  
+  By the previous problem and the fact that $\frac{a}{a^2+x^2}\in\mathcal{F}$ the two
+  above sums are equal by the Poisson summation formula. Now we show that this sum
+  is equal to $\coth\pi a$.
+  \begin{align*}
+    \coth\pi a &= \frac{e^{\pi a}+e^{-\pi a}}{e^{\pi a}-e^{-\pi a}}\\
+             &= \frac{e^{\pi a} (1+e^{-2\pi a})}{e^{\pi a}(1-e^{-2\pi a})}\\
+             &= (1+e^{-2\pi a})\frac{1}{1-e^{-2\pi a}}\\
+             &= (1+e^{-2\pi a})\sum_{n=0}^\infty e^{-2n\pi a}\\
+             &= \sum_{n=0}^\infty e^{-2n\pi a}+\sum_{n=1}^\infty e^{-2 n\pi a}\\
+             &= \sum_{n=-\infty}^\infty e^{-2|n|\pi a}
+  \end{align*}
 \end{proof}
 
 \sk
 
 \begin{problem}[]
   \begin{enumerate}
-  \item[(a)] Let $\tau$ be fixed with Im$(\tau)>0$. Apply the Poisson summation
+  \item[(a)] Let $\tau$ be fixed with $\Im(\tau)>0$. Apply the Poisson summation
     formula to
     \[
       f(z) = (\tau + z)^{-k},
     \]
     where $k$ is an integer $\geq 2$, to obtain
     \[
-      \sum_{n = -\infty}^\infty
-      \frac{1}{(\tau +n)^k} = \frac{(-2\pi i )^k}{(k-1)!} \sum_{m=1}^{\infty} m^{k-1}e^{2\pi im\tau}.
+      \sum_{n = -\infty}^\infty\frac{1}{(\tau +n)^k} = \frac{(-2\pi i )^k}{(k-1)!} \sum_{m=1}^{\infty} m^{k-1}e^{2\pi im\tau}.
     \]
-  \item[(b)] Set $k=2$ in the above formula to show that if Im$(\tau)>0$, then 
+  \item[(b)] Set $k=2$ in the above formula to show that if $\Im(\tau)>0$, then 
     \[
       \sum_{n = -\infty}^\infty 
       \frac{1}{(\tau +n)^2} = \frac{\pi^2}{\sin^2(\pi\tau)}.
@@ -107,9 +144,56 @@
   \end{enumerate}
 \end{problem}
 
-\begin{proof}
-  
-\end{proof}
+\begin{enumerate}
+\item[(a)] Since $f\in\mathcal{F}$ when $k\geq 2$ we can use the Poisson
+  summation formula to show the equivalence of these two series. The
+  Fourier transform of $f$ is of the form
+  \[
+    \hat{f}(\xi)=\int_{-\infty}^\infty f(x)e^{-2\pi ix\xi}dx
+  \]
+  When $\xi<0$ we calculate the above integral by integrating over
+  the upper semicircle of radius $R$. The outer portion $C_R$ will
+  approach $0$ by Jordan's lemma as $|f(R)|\leq\frac{1}{(|R|-|\tau|)^k}$ approaches
+  zero as $R\rightarrow\infty$. Since $f(z)e^{-2\pi i x\xi}$ is holomorphic in the upper half plane
+  the integral over the upper semicircle is also zero. This implies that
+  \[
+    \hat{f}(\xi)=\int_{-\infty}^\infty f(z)e^{-2\pi iz\xi}dz = (\int_{C_R}+\int_{-R}^R)f(z)e^{-2\pi iz\xi}dz = \int_{-\infty}^\infty f(x)e^{-2\pi ix\xi} dx = 0
+  \]
+  when $\xi<0$.
+
+  On the other hand if $\xi>0$, we integrate over the lower semicircle of radius
+  $R$. The integral on $C_{R^-}$ will be zero by Jordan's lemma as before. This
+  gives us
+  \[
+    \hat{f}(\xi)=\int_{-\infty}^\infty f(x)e^{-2\pi i x\xi}dx = -2\pi i\res_{x=-\tau}\frac{e^{-2\pi i x\xi}}{(\tau+z)^k}
+  \]
+
+  Next we calculate the residue
+  \begin{align*}
+    \hat{f}(\xi)=-2\pi i \res_{x=-\tau}\frac{e^{-2\pi i x\xi}}{(\tau+z)} &=-2\pi i\lim_{x\rightarrow-\tau}\frac{1}{(k-1)!}\frac{d^{k-1}}{dx^{k-1}}\frac{(\tau+x)^k e^{-2\pi i x\xi}}{(\tau+x)^k}\\
+                                                          &=-2\pi i\lim_{x\rightarrow-\tau}\frac{1}{(k-1)!}\frac{d^{k-1}}{dx^{k-1}}e^{-2\pi i x\xi}\\
+                                                          &=-2\pi i\lim_{x\rightarrow-\tau} \frac{(-2\pi i\xi)^{k-1}}{(k-1)!}e^{-2\pi i x\xi}\\
+                                                          &=\frac{(-2\pi i)^{k}\xi^{k-1}}{(k-1)!}e^{2\pi i \tau\xi}\\
+  \end{align*}
+  Applying the Poisson summation formula with the above values for $\hat{f}(\xi)$
+  gives us that
+  \[
+    \sum_{n = -\infty}^\infty\frac{1}{(\tau +n)^k} = \frac{(-2\pi i )^k}{(k-1)!} \sum_{m=1}^{\infty} m^{k-1}e^{2\pi im\tau}.
+  \]
+\item[(b)] First we transform $\frac{\pi^2}{\sin^2(\pi\tau)}$ into a series.
+  \begin{align*}
+    \frac{\pi^2}{\sin^2(\pi\tau)} &= \pi^2\left(\frac{2i}{e^{i\pi\tau}-e^{-i\pi\tau}}\right)^2\\
+                               &=\frac{-4\pi^2}{e^{-i\pi\tau/2}(1-e^{2i\pi\tau})^2}\\
+                               &=\frac{-4\pi^2}{e^{-2i\pi\tau}}\sum_{m=0}^\infty me^{2i\pi m\tau}\\
+                               &=-4\pi^2\sum_{1}^\infty me^{2i\pi m\tau}\\
+  \end{align*}
+  The last step only works when $|e^{2\pi i\tau}|<1$. However since $\Im(\tau)>0$
+  this is in fact the case.
+
+  Which exactly matches the series listed above when we plug in $k=2$.
+\item[(c)] This will not work if $\Im(\tau)>0$ does not hold. The series in
+  question may not be convergent otherwise.
+\end{enumerate}
 
 \sk
 
@@ -120,9 +204,55 @@
   \]
 \end{problem}
 
-\begin{proof}
-  
-\end{proof}
+Let $\Gamma$ be the positively oriented upper half annulus of outer radius $R$
+and inner radius $\epsilon$. The given function has a simple pole at $ia$ inside $\Gamma$.
+This gives us
+\[
+  \int_\epsilon^R\frac{\ln^2(x)}{x^2 + a^2} dx + \int_{C_R}\frac{\log^2(z)}{z^2 + a^2} dz+ \int_{C_\epsilon}\frac{\log^2(z)}{z^2 + a^2} dz+\int_{-R}^{-\epsilon}\frac{\log^2(z)}{z^2 + a^2} dz=2\pi i\res_{z=ia}\frac{\log^2(z)}{z^2 + a^2}
+\]
+
+The integrals about $C_R$ and $C_\epsilon$ both go to zero. For
+\[
+  \int_{-R}^{-\epsilon}\frac{\log^2(z)}{z^2 + a^2} dz
+\]
+we make the substitution $z=-x$ giving us
+\[
+  \int_{-R}^{-\epsilon}\frac{\log^2(z)}{z^2 + a^2} dz = \int_{\epsilon}^R\frac{\log^2(-x)}{x^2 + a^2} dx
+\]
+Which when rewriting $\log(-x)$ as $\ln(x)+i\pi$ we get
+\[
+  \int_{\epsilon}^R\frac{\log^2(-x)}{x^2 + a^2} dx = \int_{\epsilon}^R\frac{\ln^2(x)+\pi i\ln(x)-\pi^2}{x^2 + a^2} dx
+\]
+
+Now rewrite the original equation as
+\[
+  2\int_\epsilon^R\frac{\ln^2(x)}{x^2+a^2}dx = 2\pi i\res_{z=ia}\frac{\log^2(z)}{z^2 + a^2} +\pi^2\int_\epsilon^R\frac{1}{x^2+a^2}dx-2\pi i\int_\epsilon^R\frac{\ln(x)}{x^2+a^2}dx
+\]
+The residue is
+\[
+  \res_{z=ia}\frac{\log^2z}{z^2+a^2}=\frac{\log^2(ia)}{2ia}=\frac{\ln^2(a)+\pi i\ln(a)-\pi^2/4}{2ia}
+\]
+
+The first integral on the right is of the derivative of $a^{-1}\arctan(x/a)$. Giving us
+\[
+  \int_0^\infty\frac{1}{a^2+x^2}dx=\frac{\pi}{2a}
+\]
+The latter integral is from a previous assignment
+\[
+  \int_0^\infty\frac{\ln x}{x^2+a^2}dx = \frac{\pi\ln a}{2a}
+\]
+
+Putting this all together while letting $\epsilon\rightarrow 0$ and $R\rightarrow\infty$ we get
+\begin{align*}
+  2I &= 2\pi i\res_{z=ia}\frac{\log^2(z)}{z^2 + a^2} +\pi^2\int_\epsilon^R\frac{1}{x^2+a^2}dx-2\pi i\int_\epsilon^R\frac{\ln(x)}{x^2+a^2}dx\\
+     &=\frac{\pi\ln^2 a}{a}+\frac{i\pi^2\ln a}{a}-\frac{\pi^3}{4a}+\frac{\pi^3}{2a}-\frac{i\pi^2\ln a}{a}\\
+     &=\frac{\pi\ln^2 a}{a}-\frac{\pi^3}{4a}+\frac{\pi^3}{2a}\\
+\end{align*}
+
+We can then conclude that
+\[
+  I = \int_0^\infty \frac{\log^2 x}{x^2+a^2} dx = \frac{\pi\ln^2 a}{2a}-\frac{\pi^3}{8a}+\frac{\pi^3}{4a}
+\]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \end{document}
