@@ -14,8 +14,10 @@
 \newcommand{\bb}[1]{\mathbb{#1}}
 \newcommand{\ra}{\rightarrow}
 \newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
 \DeclareMathOperator{\cis}{cis}
 \DeclareMathOperator{\res}{Res}
+
 
 \theoremstyle{plain}
 \newtheorem{problem}{Problem}
@@ -32,7 +34,7 @@
   \[
     \Phi_n(z) = \int_a^b \frac{x^ndx}{(x-a)^{\frac{1}{2}-\lambda} (b-x)^{\frac{1}{2}+ \lambda} (x-z)}
   \]
-  where $z \notin [a,b]$ and $\frac{-1}{2} < \lambda < \frac{1}{2}$.
+  where $z \notin [a,b]$ and $-\frac{1}{2} < \lambda < \frac{1}{2}$.
   
   \begin{enumerate}
   \item[(a)] Compute the integral for $n= 0$ and $n=1$.
@@ -45,6 +47,58 @@
   where $\zeta = x+ iy$
 \end{problem}
 
+\begin{enumerate}
+\item[(a)] Let $f(w)=(w-a)^{1/2-\lambda}(b-w)^{1/2+\lambda}$ with $w=s+iy$. Then let $\wt{f}(w)=f_a(w)f_b(w)$
+  where
+  \[
+    f_a(w)=|w-a|^{1/2-\lambda}e^{i\theta_a(1/2-\lambda)},\quad f_b(w)=|b-w|^{1/2+\lambda}e^{i\theta_b(1/2+\lambda)}
+  \]
+  with $\theta_a=\arg(w-a)$ and $\theta_b=\arg(b-w)$. Using the picture I will draw here
+
+  \vskip2in
+
+  We do the work for finding branch cuts and the like to make it all consistent.
+  We have $a,b,\infty$ as branch points with a branch cut along $[a,b]$.
+  \begin{align*}
+    z=s+i0 & s>b & \theta_a=0 & \theta_b =-\pi & \wt{f}(s+i0)=-i|\wt{f}(s)|e^{-i\pi\lambda}\\
+    z=s+i0 & a\leq s\leq b & \theta_a=0 & \theta_b =0 & \wt{f}(s)=|\wt{f}(s)|\\
+    z=s+i0 & s<a & \theta_a=0 & \theta_b =-\pi & \wt{f}(s+i0)=i|\wt{f}(s)|e^{-i\pi\lambda}\\
+    z=s-i0 & a\leq s\leq b & \theta_a=2\pi & \theta_b =0 & \wt{f}(s-i0)=-|\wt{f}(s)|e^{-2i\pi\lambda}\\
+    z=s-i0 & b<s & \theta_a=2\pi & \theta_b =\pi & \wt{f}(s+i0)=-i|\wt{f}(s)|e^{-i\pi\lambda}\\
+  \end{align*}
+\item[(b)] The inside of the integral is holomorphic on $\bb{C}\setminus x$ for fixed $x\in(a,b)$.
+  Moreover it is continuous on $\bb{C}\setminus[a,b]\times(a,b)$. As such we have that $\Phi_n(z)$ is holomorphic
+  on $\bb{C}\setminus[a,b]$.
+
+  Now we integrate along the suggested curve. Since the function has only a single
+  simple pole within the curve we have
+  \begin{align*}
+    \int_\Gamma \frac{w^n dw}{\wt{f}(w)(w-z)}&=\left(\int_{C_R}+\int_{\gamma_+}+\int_{\gamma_-}+\int_{C_{\epsilon,a^-}}+\int_{C_{\epsilon,b^+}}+\int_{C_{\epsilon,b^+}}+\int_{C_{\epsilon,b^-}}\right)\frac{w^n dw}{\wt{f}(w)(w-z)}\\
+                                    &=2\pi i\res_{w=z}\frac{w^n }{\wt{f}(w)(w-z)}    
+  \end{align*}
+
+  We ignore the two fragments of the integral along $[b,R]$ since they cancel each other out.
+  At this point the cases for $n=0$ and $n=1$ diverge.
+  When $n=0$ it the integral along $C_R$ and the various $C_{\epsilon}$s vanish since
+  there are no terms on top. When $n=1$ I'm not sure how to get them to vanish
+  as they appear to grow at the same rate.
+
+  Regardless, as the pole is simple the residue is
+  \[
+    2\pi i\res_{w=z}\frac{w^n }{\wt{f}(w)(w-z)} = 2\pi i\frac{z^n}{\wt{f}(z)}
+  \]
+
+  The last bit is to combine the two integrals along $\gamma_+$ and $\gamma_-$. Using
+  the values deduced earlier we have
+  \[
+    \int_{\gamma_+} \frac{w^n dw}{\wt{f}(w)(w-z)}+ \int_{\gamma_-}\frac{w^n dw}{\wt{f}(w)(w-z)} = \int_a^b \frac{w^n dw}{\wt{f}(s+i0)(w-z)}+ \int_b^a\frac{w^n dw}{\wt{f}(s-i0)(w-z)} =
+    (1+e^{2\pi i \lambda})\int_a^b\frac{s^nds}{f(s)(s-z)}
+  \]
+  Putting it all together we get, for $n=0,1$ that
+  \[
+    \int_a^b\frac{s^nds}{f(s)(s-z)}=\frac{2\pi i z^n}{\wt{f}(z)(1+e^{2\pi i \lambda})}
+  \]
+\end{enumerate}
 
 \sk
 
@@ -93,7 +147,19 @@
   \]
   for all $\xi\in \bb{R}$.
 
-  To check the other direction
+  To check the other direction split the integral into two pieces. The first
+  for positive numbers and the other the negatives.
+  \[
+    \int_{-\infty}^\infty e^{-2\pi a|\xi|}e^{2\pi i\xi x}d\xi = \int_0^\infty e^{-2\pi a|\xi|}e^{2\pi i\xi x}d\xi-\int_{0}^{-\infty} e^{-2\pi a|\xi|}e^{2\pi i\xi x}d\xi
+  \]
+  Substitute $\zeta=-\xi$ into the latter to get
+  \begin{align*}
+    \int_0^\infty e^{-2\pi a\xi}e^{2\pi i\xi x}d\xi-\int_{0}^{-\infty} e^{-2\pi a|\xi|}e^{2\pi i\xi x}d\xi &= \int_0^\infty e^{-2\pi a\xi}e^{2\pi i\xi x}d\xi+\int_{0}^{\infty} e^{-2\pi a\zeta}e^{-2\pi i\zeta x}d\zeta\\
+                                                                                      &= \int_0^\infty e^{(-2\pi a+2\pi i x)\xi}d\xi+\int_{0}^{\infty} e^{(-2\pi a-2\pi ix)\zeta}d\zeta\\
+                                                                                      &=\frac{1}{2\pi a-2i\pi x}+\frac{1}{2\pi a+2i\pi x}\\
+                                                                                      &=\frac{1}{\pi}\frac{a}{a^2+x^2}
+  \end{align*}
+  Which completes the second part of the problem.
 \end{proof}
 
 \sk
