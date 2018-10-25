@@ -60,18 +60,15 @@
   We do the work for finding branch cuts and the like to make it all consistent.
   We have $a,b,\infty$ as branch points with a branch cut along $[a,b]$.
   \begin{align*}
-    z=s+i0 & s>b & \theta_a=0 & \theta_b =-\pi & \wt{f}(s+i0)=-i|\wt{f}(s)|e^{-i\pi\lambda}\\
-    z=s+i0 & a\leq s\leq b & \theta_a=0 & \theta_b =0 & \wt{f}(s)=|\wt{f}(s)|\\
-    z=s+i0 & s<a & \theta_a=0 & \theta_b =-\pi & \wt{f}(s+i0)=i|\wt{f}(s)|e^{-i\pi\lambda}\\
-    z=s-i0 & a\leq s\leq b & \theta_a=2\pi & \theta_b =0 & \wt{f}(s-i0)=-|\wt{f}(s)|e^{-2i\pi\lambda}\\
-    z=s-i0 & b<s & \theta_a=2\pi & \theta_b =\pi & \wt{f}(s+i0)=-i|\wt{f}(s)|e^{-i\pi\lambda}\\
+    z=s+i0 & s>b & \theta_a=0\ & \theta_b =-\pi & \wt{f}(s+i0)=-i|\wt{f}(s)|e^{-i\pi\lambda}\\
+    z=s+i0 & a\leq s\leq b & \theta_a=0\ & \theta_b =0 & \wt{f}(s)=|\wt{f}(s)|\\
+    z=s+i0 & s<a & \theta_a=0\ & \theta_b =-\pi & \wt{f}(s+i0)=i|\wt{f}(s)|e^{-i\pi\lambda}\\
+    z=s-i0 & a\leq s\leq b & \theta_a=2\pi\ & \theta_b =0 & \wt{f}(s-i0)=-|\wt{f}(s)|e^{-2i\pi\lambda}\\
+    z=s-i0 & b<s & \theta_a=2\pi\ & \theta_b =\pi & \wt{f}(s+i0)=-i|\wt{f}(s)|e^{-i\pi\lambda}\\
   \end{align*}
-\item[(b)] The inside of the integral is holomorphic on $\bb{C}\setminus x$ for fixed $x\in(a,b)$.
-  Moreover it is continuous on $\bb{C}\setminus[a,b]\times(a,b)$. As such we have that $\Phi_n(z)$ is holomorphic
-  on $\bb{C}\setminus[a,b]$.
-
+  
   Now we integrate along the suggested curve. Since the function has only a single
-  simple pole within the curve we have
+  simple pole at $z$ within the curve we have
   \begin{align*}
     \int_\Gamma \frac{w^n dw}{\wt{f}(w)(w-z)}&=\left(\int_{C_R}+\int_{\gamma_+}+\int_{\gamma_-}+\int_{C_{\epsilon,a^-}}+\int_{C_{\epsilon,b^+}}+\int_{C_{\epsilon,b^+}}+\int_{C_{\epsilon,b^-}}\right)\frac{w^n dw}{\wt{f}(w)(w-z)}\\
                                     &=2\pi i\res_{w=z}\frac{w^n }{\wt{f}(w)(w-z)}    
@@ -79,9 +76,10 @@
 
   We ignore the two fragments of the integral along $[b,R]$ since they cancel each other out.
   At this point the cases for $n=0$ and $n=1$ diverge.
-  When $n=0$ it the integral along $C_R$ and the various $C_{\epsilon}$s vanish since
-  there are no terms on top. When $n=1$ I'm not sure how to get them to vanish
-  as they appear to grow at the same rate.
+  When $n=0$ it the integral along $C_R$ and the various $C_{\epsilon}$s as the top doesn't
+  change, yet the bottom will grow at $R^2$ as $R\rightarrow\infty$. When $n=1$ I'm not entirely sure
+  how to make them vanish as once we account for arclength the top and bottom appear
+  to grow at the same rate.
 
   Regardless, as the pole is simple the residue is
   \[
@@ -98,6 +96,10 @@
   \[
     \int_a^b\frac{s^nds}{f(s)(s-z)}=\frac{2\pi i z^n}{\wt{f}(z)(1+e^{2\pi i \lambda})}
   \]
+
+\item[(b)] The inside of the integral is holomorphic on $\bb{C}\setminus x$ for fixed $x\in(a,b)$.
+  Moreover it is continuous on $\bb{C}\setminus[a,b]\times(a,b)$. As such we have that $\Phi_n(z)$ is holomorphic
+  on $\bb{C}\setminus[a,b]$.
 \end{enumerate}
 
 \sk
@@ -125,7 +127,7 @@
   \[
     2i\res_{z=-ia}\frac{a}{a^2 + z^2}e^{-2\pi iz\xi}=2i\frac{a}{-2ia}e^{-2\pi i(-ia)|\xi|} = -e^{-2\pi a\xi}
   \]
-  Which, after swapping the bounds of integration, implies that when $\xi>0$
+  Which, after swapping the bounds of integration, implies that when $\xi\geq 0$
   \[
     \frac{1}{\pi} \int_{-\infty}^\infty \frac{a}{a^2 + x^2}e^{-2\pi ix\xi}dx = e^{-2\pi a |\xi|}
   \]
