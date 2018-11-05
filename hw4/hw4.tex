@@ -1,0 +1,176 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amscd}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{listings}
+\usepackage{enumerate}
+\usepackage[all,cmtip]{xy}
+
+\textwidth=15cm \textheight=22cm \topmargin=0.5cm \oddsidemargin=0.5cm \evensidemargin=0.5cm
+
+\newcommand{\sk}{\vskip 10mm}
+\newcommand{\bb}[1]{\mathbb{#1}}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\DeclareMathOperator{\cis}{cis}
+\DeclareMathOperator{\res}{Res}
+\DeclareMathOperator{\sech}{sech}
+
+
+\theoremstyle{plain}
+\newtheorem{problem}{Problem}
+\newtheorem{lemma}{Lemma}[problem]
+
+\theoremstyle{remark}
+\newtheorem{tpart}{}[problem]
+\newtheorem*{ppart}{}
+
+\begin{document}
+
+\begin{problem}[5.6.2]
+  Find the order of growth of the following entire functions:
+  \begin{enumerate}
+  \item[(a)] $p(z)$ where $p$ is a polynomial.
+  \item[(b)] $e^{bz^n}$ for $b\neq 0$.
+  \item[(c)] $e^{e^z}$.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}
+  
+\end{proof}
+
+\sk
+
+\begin{problem}[5.6.6]
+  Prove Wallis's product formula
+  \[
+    \frac{\pi}{2}=\prod_{m=1}^\infty\frac{(2m)^2}{(2m-1)(2m+1)}
+  \]
+  [Hint: Use the product formula for $\sin z$ at $z=\pi/2$.]
+\end{problem}
+
+\begin{proof}
+  
+\end{proof}
+
+\sk
+
+\begin{problem}[5.6.8]
+  Prove that for every $z$ the product below converges, and
+  \[
+    \prod_{k=1}^\infty \cos(z/2^k)=\frac{\sin z}{z}
+  \]
+  [Hint: Use the fact that $\sin 2z=2\sin z\cos z$.]
+\end{problem}
+
+\begin{proof}
+  
+\end{proof}
+
+\sk
+
+\begin{problem}[5.6.10(b)]
+  Show that the Hadamard product for $\cos z$ is 
+  \[
+    \cos\pi z=\prod_{n=0}^I 1-\frac{4z^2}{(2n+1)^2}
+  \]
+\end{problem}
+
+\begin{proof}
+  
+\end{proof}
+
+\sk
+
+\begin{problem}[6.3.5]
+  Use the fact that $\Gamma(s)\Gamma(1-s)=\pi/\sin\pi s$ to prove that
+  \[
+    |\Gamma(1/2+it)|=\sqrt{\frac{2\pi}{e^{\pi t}+e^{-\pi t}}}=\sqrt{\pi\sech{\pi t}}
+  \]
+  whenever $t\in \bb{R}$.
+\end{problem}
+
+\begin{proof}
+  
+\end{proof}
+
+\sk
+
+\begin{problem}[6.3.7]
+  The \textbf{Beta function} is defined for $\Re(\alpha)>0$ and
+  $\Re(\beta)>0$ by
+  \[
+    B(\alpha,\beta)=\int_0^1(1-t)^{\alpha-1}t^{\beta-1}dt
+  \]
+  \begin{enumerate}
+  \item[(a)] Prove that
+    $B(\alpha,\beta)=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}$.
+  \item[(b)] Show that
+    $B(\alpha,\beta)=\int_0^\infty\frac{u^{\alpha-1}}{(1+u)^{\alpha+\beta}}du$.
+  \end{enumerate}
+  [Hint: For part (a), note that
+  \[
+    \Gamma(\alpha)\Gamma(\beta)=\int_0^\infty\int_0^\infty t^{\alpha-1}s^{\beta-1}e^{-t-s}dtds
+  \]
+  and make the change of variables $s=ur,t=u(1-r)$.]
+\end{problem}
+
+\begin{proof}
+  
+\end{proof}
+
+\sk
+
+\begin{problem}[6.3.10]
+  An integral of the form
+  \[
+    F(z)=\int_0^\infty f(t)t^{z-1}dt
+  \]
+  is called a \textbf{Mellin transform}, and we shall write
+  ${\cal M}(f)(z)=F(z)$. For example, the gamma function is the Mellin
+  transform of the function $e^{-t}$.
+  \begin{enumerate}
+  \item[(a)] Prove that
+    \[
+      {\cal M}(\cos)(z)=\int_0^\infty\cos(t)t^{z-1}dt=\Gamma(z)\cos(\frac{\pi z}{2})
+    \]
+    for $0<\Re(z)<1$ and
+    \[
+      {\cal M}(\sin)(z)=\int_0^\infty\sin(t)t^{z-1}dt=\Gamma(z)\sin(\frac{\pi z}{2})
+    \]
+    for $0<\Re(z)<1$.
+  \item[(b)] Show that the second of the above is valid in the larger strip
+    $-1<\Re(z)<1$, and that as a consequence, one has
+    \[
+      \int_0^\infty \frac{\sin x}{x}dx=\frac{\pi}{2}\quad \text{and}\quad \int_0^\infty\frac{\sin x}{x^{3/2}}dx=\sqrt{2\pi}
+    \]
+  \end{enumerate}
+  [Hint: For the first part, consider the integral of the function
+  $f(w)=e^{-w}w^{z-1}$ around the quarter annulus. Use the analytic continuation
+  to prove the second part.]
+\end{problem}
+
+\begin{proof}
+  
+\end{proof}
+
+\sk
+
+\begin{problem}[6.3.15]
+  Prove that for $\Re(s)>1$,
+  \[
+    \zeta(s)=\frac{1}{\Gamma(s)}\int_0^\infty\frac{x^{x-1}}{e^x-1}dx
+  \]
+  [Hint: Write $1/(e^x-1)=\sum_{n=1}^\infty e^{-nx}$.]
+\end{problem}
+
+\begin{proof}
+  
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
