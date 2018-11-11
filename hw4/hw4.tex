@@ -55,7 +55,16 @@
     definition of order to be $b$ we get exactly $e^{bz^n}=e^{Bz^n}$. From this
     we can conclude that the order of $e^{bz^n}$ is exactly $n$.
 
-  \item[(c)]
+  \item[(c)] For $e^{e^z}$ suppose that it had order $n$. Then if $z=x+iy$
+    \[
+      |e^{e^z}|=|e^{e^x(\cos x+i\sin y)}|=e^{e^x\cos x}< Ae^{B|z|^n}
+    \]
+    Take the logarithm of both sides to get
+    \[
+      e^x\cos x < C|z|^n
+    \]
+    which is most assuredly not true for all $z\in\bb{C}$. As
+    such $e^{e^z}$ does not have finite order.
   \end{enumerate}
 \end{proof}
 
@@ -70,7 +79,15 @@
 \end{problem}
 
 \begin{proof}
-  
+  Plugging in $z=\pi/2$ we get
+  \[
+    1=\frac{\pi}{2}\prod_{n=1}^\infty(1-\frac{1}{4n^2})=\frac{\pi}{2}\prod_{n=1}^\infty\frac{(2n+1)(2n-1)}{(2n)^2}
+  \]
+  Which then dividing by the product gives us
+  \[
+    \prod_{n=1}^\infty\frac{(2n)^2}{(2n+1)(2n-1)}=\frac{\pi}{2}
+  \]
+  as desired.
 \end{proof}
 
 \sk
@@ -84,7 +101,23 @@
 \end{problem}
 
 \begin{proof}
-  
+  Start with using the suggested identity with $z/2$ to get
+  \[
+    \sin z=2\sin(z/2)\cos(z/2)
+  \]
+  Then iterate usage of the identity and divide by $z$ to get
+  \[
+    \frac{\sin z}{z} = \frac{2^N\sin(z/2^N)}{z}\prod_{k=1}^N\cos(z/2^k)
+  \]
+  Use Wallis's formula on the right term to get
+  \[
+    \frac{2^N\sin(z/2^N)}{z}=\frac{2^N}{z}\cdot\frac{z}{2^N}\prod_{k=1}^\infty(1-\frac{(\frac{z}{2^N})^2}{k^2\pi^2})=\prod_{k=1}^\infty(1-\frac{(\frac{z}{2^N})^2}{k^2\pi^2})
+  \]
+  which goes to $1$ as $N\rightarrow\infty$. Which in turn gives us that
+  \[
+    \frac{\sin z}{z}=\prod_{k=1}^\infty\cos(z/2^k)
+  \]
+  as desired.
 \end{proof}
 
 \sk
@@ -97,7 +130,33 @@
 \end{problem}
 
 \begin{proof}
-  
+  First note that $\cos z$ has growth order $1$. As such for the Hadamard
+  product formula we get
+  \begin{align*}
+    \cos\pi z&=e^{P(z)}z^0\prod_{n=-\infty}^\infty E_1(2z/(2n+1))\\
+           &=e^{P(z)}\prod_{n=-\infty}^\infty (1-\frac{2z}{2n+1})e^{2z/(2n+1)}\\
+           &=e^{P(z)}(\prod_{n=0}^\infty (1-\frac{2z}{2n+1})e^{2z/(2n+1)})(\prod_{n=0}^\infty (1+\frac{2z}{2n+1})e^{-2z/(2n+1)})\\
+           &=e^{P(z)}\prod_{n=0}^\infty(1-\frac{4z^2}{(2n+1)^2})
+  \end{align*}
+  Now we must show that $P(z)=0$. Since $P$ is at most degree $1$
+  it will be sufficient to show $P$ evaluates to zero at two distinct
+  values for $z$. Begin with $z=0$
+  \[
+    1=e^{P(0)}\prod_{n=0}^\infty 1
+  \]
+  Giving that $P(0)=0$. Then use $z=2$ to get
+  \[
+    1=e^{P(2)}\prod_{n=0}^\infty(1-\frac{16}{(2n+1)^2})
+  \]
+  The partial product for the right term is
+  \[
+    \prod_{n=0}^N1-\frac{16}{(2n+1)^2}=\frac{(2N+3)(2N+5)}{4N^2-1}
+  \]
+  Which implies that $\prod_{n=0}^\infty 1-\frac{16}{(2n+1)^2}=1$ and as
+  such $P(2)=0$ as well. Thus $P(z)=0$ and we have the formula
+  \[
+    \cos\pi z=\prod_{n=0}^\infty 1-\frac{4z^2}{(2n+1)^2}
+  \]
 \end{proof}
 
 \sk
@@ -111,7 +170,22 @@
 \end{problem}
 
 \begin{proof}
-  
+  Use the above identity with $s=1/2+it$ to get
+  \begin{align*}
+    \Gamma(1/2+it)\Gamma(1/2-it) &= \frac{2\pi}{\sin\pi s}\\
+                       &= \frac{2\pi i}{e^{i\pi/2-\pi t}-e^{-i\pi/2+\pi t}}\\
+                       &= \frac{2\pi i}{i(e^{\pi t}-e^{-\pi t})}\\
+                       &= \frac{2\pi}{e^{\pi t}-e^{-\pi t}}\\
+  \end{align*}
+  Then using the fact that $\Gamma(\bar{s})=\overline{\Gamma(s)}$ and
+  that $s\bar{s}=|s|^2$ we get
+  \[
+    |\Gamma(1/2+it)|^2=\frac{2\pi}{e^{\pi t}-e^{-\pi t}}
+  \]
+  Which leads us to the desired identity
+  \[
+    |\Gamma(1/2+it)|=\sqrt{\frac{2\pi}{e^{\pi t}-e^{-\pi t}}}
+  \]
 \end{proof}
 
 \sk
@@ -136,7 +210,32 @@
 \end{problem}
 
 \begin{proof}
-  
+  \begin{enumerate}
+  \item[(a)] Begin with $\Gamma(\alpha)\Gamma(\beta)$ and make the above suggested
+    substitution to get
+    \begin{align*}
+      \Gamma(\alpha)\Gamma(\beta) &= (\int_0^\infty e^{-t}t^{\alpha-1}dt)(\int_0^\infty e^{-s}s^{\beta-1}ds)\\
+               &=\int_0^\infty\int_0^\infty t^{\alpha-1}s^{\beta-1}e^{-(t+s)}dtds\\
+               &=\int_0^1\int_0^\infty(u(1-r))^{\alpha-1}(ur)^{\beta-1}e^{-u}(-u)dudr\\
+               &=\int_0^1\int_0^\infty-u^{\alpha+\beta-1}e^{-u}(1-r)^{\alpha-1}r^{\beta-1}dudr\\
+               &=\int_0^1(\int_0^\infty-u^{\alpha+\beta-1}e^{-u}du)(1-r)^{\alpha-1}r^{\beta-1}dr\\
+               &=\int_0^1\Gamma(\alpha+\beta)(1-r)^{\alpha-1}r^{\beta-1}dr\\
+               &=\Gamma(\alpha+\beta)\int_0^1(1-r)^{\alpha-1}r^{\beta-1}dr\\
+               &=\Gamma(\alpha+\beta)B(\alpha,\beta)\\
+    \end{align*}
+    Which when we divide through gives us
+    \[
+      B(\alpha,\beta)=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}
+    \]
+  \item[(b)] Begin with the integral side of the problem and make the
+    substitution $\frac{1-t}{t}=u$ to get
+    \begin{align*}
+      \int_0^\infty\frac{u^{\alpha-1}}{(1+u)^{\alpha+\beta}}du &= \int_0^\infty (\frac{u}{1+u})^{\alpha-1}(1+u)^{-\beta-1}du\\
+                                                  &=\int_1^0 (1-t)^{\alpha-1}(t^{-1})^{-\beta-1}(-t^{-2})dt\\
+                                                  &=\int_0^1 (1-t)^{\alpha-1}t^{\beta-1}dt\\
+                                                  &=B(\alpha,\beta)
+    \end{align*}
+  \end{enumerate}
 \end{proof}
 
 \sk
@@ -185,7 +284,17 @@
 \end{problem}
 
 \begin{proof}
-  
+  Start with the right side of the equation and use the suggested series
+  with a substitution $t=nx$ to get
+  \begin{align*}
+    \frac{1}{\Gamma(s)}\int_0^\infty \frac{x^{s-1}}{e^x-1}dx &= \frac{1}{\Gamma(s)}\int_0^\infty\sum_{n=1}^\infty x^{s-1}e^{-nx}dx\\
+                                                &=\frac{1}{\Gamma(s)}\sum_{n=1}^\infty \int_0^\infty e^{-nx}dx\\
+                                                &=\frac{1}{\Gamma(s)}\sum_{n=1}^\infty \int_0^\infty n^{-s}t^{s-1}e^{-t}dt\\
+                                                &=\frac{1}{\Gamma(s)}\sum_{n=1}^\infty n^{-s}\int_0^\infty t^{s-1}e^{-t}dt\\
+                                                &=\frac{1}{\Gamma(s)}\sum_{n=1}^\infty n^{-s}\Gamma(s)\\
+                                                &=\sum_{n=1}^\infty n^{-s}\\
+                                                &= \zeta(s)
+  \end{align*}
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
