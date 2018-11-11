@@ -40,7 +40,23 @@
 \end{problem}
 
 \begin{proof}
-  
+  \begin{enumerate}
+  \item[(a)] Let $n=\deg p(z)$ and $\rho>0$. Choose $C>|a_0|$ such that $|p(z)|\leq C|z|^n$
+    and $m$ so that $\rho m>n$. Then
+    \[
+      m!Ce^{|z|^\rho}=m!C\sum_{k=0}^\infty\frac{|z|^{\rho k}}{k!}\geq C|z|^{\rho m}\geq C|z|^n\geq|p(z)|
+    \]
+    Since this holds for any $\rho>0$ we have that $\rho_{p(z)}=0$.
+  \item[(b)] Using the Taylor expansion we get
+    \[
+      |e^{bz^n}|\leq|\sum_{m=0}^\infty\frac{(z^n)^m}{m!}|\leq\sum_{m=0}^\infty|\frac{(z^n)^m}{m!}|\leq\sum_{m=0}^\infty\frac{|z|^{nm}}{m!}\leq e^{b|z|^n}
+    \]
+    which shows that $\rho_{e^{bz^n}}\leq n$. However if we choose the exponent in the
+    definition of order to be $b$ we get exactly $e^{bz^n}=e^{Bz^n}$. From this
+    we can conclude that the order of $e^{bz^n}$ is exactly $n$.
+
+  \item[(c)]
+  \end{enumerate}
 \end{proof}
 
 \sk
