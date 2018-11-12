@@ -270,7 +270,33 @@
 \end{problem}
 
 \begin{proof}
-  
+  \begin{enumerate}
+  \item[(a)] Let $\gamma_{\epsilon,R}$ be the quarter annulus in the upper right quarter
+    plane with inner radius $\epsilon$ and outer radius $R$. Since there are no
+    singularities within for $f(w)$, the value of the integral is zero. Thus we have
+    \[
+      \int_{\gamma_{\epsilon,R}}e^{-w}w^{z-1}dw = 0 = \int_\epsilon^R e^{-t}t^{z-1}dt + \int_\epsilon^R e^{-it}t^{z-1}idt+\int_{C_\epsilon}e^{-w}w^{z-1}dw+\int_{C_R}e^{-w}w^{z-1}dw
+    \]
+    The leftmost term in the sum is $\Gamma(z)$, the two integrals about $C_\epsilon$ and $C_R$
+    will both approach zero as $\epsilon\rightarrow 0$ and $R\rightarrow \infty$. This gives us
+    \[
+      0 = \Gamma(z)+i^z\int_0^\infty e^{-it}t^{z-1}dt=\Gamma(z)+i^z(\int_0^\infty\cos(t)t^{z-1}dt-i\int_0^\infty\sin(t)t^{z-1}dt)=\Gamma(z)+i^z({\cal M}(\cos)(z)-i{\cal M}(\sin)(z))
+    \]
+    Rearrange to get
+    \[
+      {\cal M}(\cos)(z)-i{\cal M}(\sin)(z)= \Gamma(z)i^{-z}=\Gamma(z)\cos(\pi z/2)-i\Gamma(z)\sin(\pi z/2)
+    \]
+
+    \textbf{Something happens}. This then gives us that
+    \[
+      {\cal M}(\cos)(z)=\int_0^\infty\cos(t)t^{z-1}dt=\Gamma(z)\cos(\frac{\pi z}{2})
+    \]
+    and
+    \[
+      {\cal M}(\sin)(z)=\int_0^\infty\sin(t)t^{z-1}dt=\Gamma(z)\sin(\frac{\pi z}{2})
+    \]
+  \item[(b)]
+  \end{enumerate}
 \end{proof}
 
 \sk
