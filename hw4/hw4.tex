@@ -286,8 +286,8 @@
     \[
       {\cal M}(\cos)(z)-i{\cal M}(\sin)(z)= \Gamma(z)i^{-z}=\Gamma(z)\cos(\pi z/2)-i\Gamma(z)\sin(\pi z/2)
     \]
-
-    \textbf{Something happens}. This then gives us that
+    If $z$ is real then by taking the real and imaginary parts of the above
+    equality we get
     \[
       {\cal M}(\cos)(z)=\int_0^\infty\cos(t)t^{z-1}dt=\Gamma(z)\cos(\frac{\pi z}{2})
     \]
@@ -295,7 +295,32 @@
     \[
       {\cal M}(\sin)(z)=\int_0^\infty\sin(t)t^{z-1}dt=\Gamma(z)\sin(\frac{\pi z}{2})
     \]
-  \item[(b)]
+
+    
+    For ${\cal M}(\cos)(z)$ the original integral exists in the strip defined
+    by $0<\Re(z)<1$. Since the integral agrees with $\Gamma(z)\cos(\pi z/2)$ on
+    interval $(0,1)$ and $\Gamma(z)\cos(\pi z/2)$ is analytic in said strip it
+    must be that ${\cal M}(\cos)(z)$ continues analytically to the whole
+    strip with values $\Gamma(z)\cos(\pi z/2)$. The same reasoning applies
+    to ${\cal M}(\sin)(z)$.
+  \item[(b)] Using that $\Gamma(z)=(z-1)\Gamma(z-1)$ and that $\cos(z)=\sin(z+\pi/2)$
+    we can continue ${\cal M}(\sin)(z)$ to the larger strip by
+    \[
+      {\cal M}(\sin)(z-1)=\Gamma(z-1)\sin(\pi/2(z-1))=\frac{\Gamma(z)\cos(\pi z/2)}{z-1}
+    \]
+    Now if we plug-in $-1/2$ in for $z$ we get
+    \[
+      {\cal M}(\sin)(-1/2)=\int_0^\infty \frac{\sin(t)}{t^{3/2}}dt = \frac{\Gamma(1/2)\cos(-\pi/4)}{-1/2}=\frac{2\sqrt{\pi}}{\sqrt{2}}=\sqrt{2\pi}
+    \]
+    Using $z=0$ we have
+    \begin{align*}
+      {\cal M}(\sin)(0)=\int_0^\infty\frac{\sin(t)}{t}dt &= \lim_{z\rightarrow 0}\Gamma(z)\sin(\pi z/2)\\
+                                                 &= \lim_{z\rightarrow 0}\Gamma(z+1)\frac{\sin(\pi z/2)}{z}\\
+                                                 &=(\lim_{z\rightarrow 0}\Gamma(z+1))(\lim_{z\rightarrow 0}\frac{\sin(\pi z/2)}{z})\\
+                                                 &=1\lim_{z\rightarrow 0}\frac{\sin(\pi z/2)}{z}\\
+                                                 &=\lim_{z\rightarrow 0}\frac{\pi/2\cos(\pi z/2)}{1}\\
+                                                 &=\pi/2
+    \end{align*}
   \end{enumerate}
 \end{proof}
 
