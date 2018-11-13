@@ -10,7 +10,7 @@
 
 \textwidth=15cm \textheight=22cm \topmargin=0.5cm \oddsidemargin=0.5cm \evensidemargin=0.5cm
 
-\newcommand{\sk}{\vskip 10mm}
+\newcommand{\sk}{\vskip 6mm}
 \newcommand{\bb}[1]{\mathbb{#1}}
 \newcommand{\ra}{\rightarrow}
 \newcommand{\conj}[1]{\overline{#1}}
@@ -33,7 +33,7 @@
 \begin{problem}[5.6.2]
   Find the order of growth of the following entire functions:
   \begin{enumerate}
-  \item[(a)] $p(z)$ where $p$ is a polynomial.
+  \item[(a)] $p\left(z\right)$ where $p$ is a polynomial.
   \item[(b)] $e^{bz^n}$ for $b\neq 0$.
   \item[(c)] $e^{e^z}$.
   \end{enumerate}
@@ -41,15 +41,15 @@
 
 \begin{proof}
   \begin{enumerate}
-  \item[(a)] Let $n=\deg p(z)$ and $\rho>0$. Choose $C>|a_0|$ such that $|p(z)|\leq C|z|^n$
+  \item[(a)] Let $n=\deg p\left(z\right)$ and $\rho>0$. Choose $C>|a_0|$ such that $|p\left(z\right)|\leq C|z|^n$
     and $m$ so that $\rho m>n$. Then
     \[
-      m!Ce^{|z|^\rho}=m!C\sum_{k=0}^\infty\frac{|z|^{\rho k}}{k!}\geq C|z|^{\rho m}\geq C|z|^n\geq|p(z)|
+      m!Ce^{\left|z\right|^\rho}=m!C\sum_{k=0}^\infty\frac{\left|z\right|^{\rho k}}{k!}\geq C\left|z\right|^{\rho m}\geq C\left|z\right|^n\geq\left|p\left(z\right)\right|
     \]
-    Since this holds for any $\rho>0$ we have that $\rho_{p(z)}=0$.
+    Since this holds for any $\rho>0$ we have that $\rho_{p\left(z\right)}=0$.
   \item[(b)] Using the Taylor expansion we get
     \[
-      |e^{bz^n}|\leq|\sum_{m=0}^\infty\frac{(z^n)^m}{m!}|\leq\sum_{m=0}^\infty|\frac{(z^n)^m}{m!}|\leq\sum_{m=0}^\infty\frac{|z|^{nm}}{m!}\leq e^{b|z|^n}
+      \left|e^{bz^n}\right|\leq\left|\sum_{m=0}^\infty\frac{\left(z^n\right)^m}{m!}\right|\leq\sum_{m=0}^\infty\left|\frac{\left(z^n\right)^m}{m!}\right|\leq\sum_{m=0}^\infty\frac{\left|z\right|^{nm}}{m!}\leq e^{b\left|z\right|^n}
     \]
     which shows that $\rho_{e^{bz^n}}\leq n$. However if we choose the exponent in the
     definition of order to be $b$ we get exactly $e^{bz^n}=e^{Bz^n}$. From this
@@ -57,11 +57,11 @@
 
   \item[(c)] For $e^{e^z}$ suppose that it had order $n$. Then if $z=x+iy$
     \[
-      |e^{e^z}|=|e^{e^x(\cos x+i\sin y)}|=e^{e^x\cos x}< Ae^{B|z|^n}
+      \left|e^{e^z}\right|=\left|e^{e^x\left(\cos x+i\sin y\right)}\right|=e^{e^x\cos x}< Ae^{B\left|z\right|^n}
     \]
     Take the logarithm of both sides to get
     \[
-      e^x\cos x < C|z|^n
+      e^x\cos x < C\left|z\right|^n
     \]
     which is most assuredly not true for all $z\in\bb{C}$. As
     such $e^{e^z}$ does not have finite order.
@@ -73,7 +73,7 @@
 \begin{problem}[5.6.6]
   Prove Wallis's product formula
   \[
-    \frac{\pi}{2}=\prod_{m=1}^\infty\frac{(2m)^2}{(2m-1)(2m+1)}
+    \frac{\pi}{2}=\prod_{m=1}^\infty\frac{\left(2m\right)^2}{\left(2m-1\right)\left(2m+1\right)}
   \]
   [Hint: Use the product formula for $\sin z$ at $z=\pi/2$.]
 \end{problem}
@@ -81,11 +81,11 @@
 \begin{proof}
   Plugging in $z=\pi/2$ we get
   \[
-    1=\frac{\pi}{2}\prod_{n=1}^\infty(1-\frac{1}{4n^2})=\frac{\pi}{2}\prod_{n=1}^\infty\frac{(2n+1)(2n-1)}{(2n)^2}
+    1=\frac{\pi}{2}\prod_{n=1}^\infty\left(1-\frac{1}{4n^2}\right)=\frac{\pi}{2}\prod_{n=1}^\infty\frac{\left(2n+1\right)\left(2n-1\right)}{\left(2n\right)^2}
   \]
   Which then dividing by the product gives us
   \[
-    \prod_{n=1}^\infty\frac{(2n)^2}{(2n+1)(2n-1)}=\frac{\pi}{2}
+    \prod_{n=1}^\infty\frac{\left(2n\right)^2}{\left(2n+1\right)\left(2n-1\right)}=\frac{\pi}{2}
   \]
   as desired.
 \end{proof}
@@ -95,7 +95,7 @@
 \begin{problem}[5.6.8]
   Prove that for every $z$ the product below converges, and
   \[
-    \prod_{k=1}^\infty \cos(z/2^k)=\frac{\sin z}{z}
+    \prod_{k=1}^\infty \cos\left(z/2^k\right)=\frac{\sin z}{z}
   \]
   [Hint: Use the fact that $\sin 2z=2\sin z\cos z$.]
 \end{problem}
@@ -103,19 +103,19 @@
 \begin{proof}
   Start with using the suggested identity with $z/2$ to get
   \[
-    \sin z=2\sin(z/2)\cos(z/2)
+    \sin z=2\sin\left(z/2\right)\cos\left(z/2\right)
   \]
   Then iterate usage of the identity and divide by $z$ to get
   \[
-    \frac{\sin z}{z} = \frac{2^N\sin(z/2^N)}{z}\prod_{k=1}^N\cos(z/2^k)
+    \frac{\sin z}{z} = \frac{2^N\sin\left(z/2^N\right)}{z}\prod_{k=1}^N\cos\left(z/2^k\right)
   \]
   Use Wallis's formula on the right term to get
   \[
-    \frac{2^N\sin(z/2^N)}{z}=\frac{2^N}{z}\cdot\frac{z}{2^N}\prod_{k=1}^\infty(1-\frac{(\frac{z}{2^N})^2}{k^2\pi^2})=\prod_{k=1}^\infty(1-\frac{(\frac{z}{2^N})^2}{k^2\pi^2})
+    \frac{2^N\sin\left(z/2^N\right)}{z}=\frac{2^N}{z}\cdot\frac{z}{2^N}\prod_{k=1}^\infty\left(1-\frac{\left(\frac{z}{2^N}\right)^2}{k^2\pi^2}\right)=\prod_{k=1}^\infty\left(1-\frac{\left(\frac{z}{2^N}\right)^2}{k^2\pi^2}\right)
   \]
   which goes to $1$ as $N\rightarrow\infty$. Which in turn gives us that
   \[
-    \frac{\sin z}{z}=\prod_{k=1}^\infty\cos(z/2^k)
+    \frac{\sin z}{z}=\prod_{k=1}^\infty\cos\left(z/2^k\right)
   \]
   as desired.
 \end{proof}
@@ -125,7 +125,7 @@
 \begin{problem}[5.6.10(b)]
   Show that the Hadamard product for $\cos z$ is 
   \[
-    \cos\pi z=\prod_{n=0}^\infty 1-\frac{4z^2}{(2n+1)^2}
+    \cos\pi z=\prod_{n=0}^\infty 1-\frac{4z^2}{\left(2n+1\right)^2}
   \]
 \end{problem}
 
@@ -133,38 +133,38 @@
   First note that $\cos z$ has growth order $1$. As such for the Hadamard
   product formula we get
   \begin{align*}
-    \cos\pi z&=e^{P(z)}z^0\prod_{n=-\infty}^\infty E_1(2z/(2n+1))\\
-           &=e^{P(z)}\prod_{n=-\infty}^\infty (1-\frac{2z}{2n+1})e^{2z/(2n+1)}\\
-           &=e^{P(z)}(\prod_{n=0}^\infty (1-\frac{2z}{2n+1})e^{2z/(2n+1)})(\prod_{n=0}^\infty (1+\frac{2z}{2n+1})e^{-2z/(2n+1)})\\
-           &=e^{P(z)}\prod_{n=0}^\infty(1-\frac{4z^2}{(2n+1)^2})
+    \cos\pi z&=e^{P\left(z\right)}z^0\prod_{n=-\infty}^\infty E_1\left(2z/\left(2n+1\right)\right)\\
+           &=e^{P\left(z\right)}\prod_{n=-\infty}^\infty \left(1-\frac{2z}{2n+1}\right)e^{2z/\left(2n+1\right)}\\
+           &=e^{P\left(z\right)}\left(\prod_{n=0}^\infty \left(1-\frac{2z}{2n+1}\right)e^{2z/\left(2n+1\right)}\right)\left(\prod_{n=0}^\infty \left(1+\frac{2z}{2n+1}\right)e^{-2z/\left(2n+1\right)}\right)\\
+           &=e^{P\left(z\right)}\prod_{n=0}^\infty\left(1-\frac{4z^2}{\left(2n+1\right)^2}\right)
   \end{align*}
-  Now we must show that $P(z)=0$. Since $P$ is at most degree $1$
+  Now we must show that $P\left(z\right)=0$. Since $P$ is at most degree $1$
   it will be sufficient to show $P$ evaluates to zero at two distinct
   values for $z$. Begin with $z=0$
   \[
-    1=e^{P(0)}\prod_{n=0}^\infty 1
+    1=e^{P\left(0\right)}\prod_{n=0}^\infty 1
   \]
-  Giving that $P(0)=0$. Then use $z=2$ to get
+  Giving that $P\left(0\right)=0$. Then use $z=2$ to get
   \[
-    1=e^{P(2)}\prod_{n=0}^\infty(1-\frac{16}{(2n+1)^2})
+    1=e^{P\left(2\right)}\prod_{n=0}^\infty\left(1-\frac{16}{\left(2n+1\right)^2}\right)
   \]
   The partial product for the right term is
   \[
-    \prod_{n=0}^N1-\frac{16}{(2n+1)^2}=\frac{(2N+3)(2N+5)}{4N^2-1}
+    \prod_{n=0}^N1-\frac{16}{\left(2n+1\right)^2}=\frac{\left(2N+3\right)\left(2N+5\right)}{4N^2-1}
   \]
-  Which implies that $\prod_{n=0}^\infty 1-\frac{16}{(2n+1)^2}=1$ and as
-  such $P(2)=0$ as well. Thus $P(z)=0$ and we have the formula
+  Which implies that $\prod_{n=0}^\infty 1-\frac{16}{\left(2n+1\right)^2}=1$ and as
+  such $P\left(2\right)=0$ as well. Thus $P\left(z\right)=0$ and we have the formula
   \[
-    \cos\pi z=\prod_{n=0}^\infty 1-\frac{4z^2}{(2n+1)^2}
+    \cos\pi z=\prod_{n=0}^\infty 1-\frac{4z^2}{\left(2n+1\right)^2}
   \]
 \end{proof}
 
 \sk
 
 \begin{problem}[6.3.5]
-  Use the fact that $\Gamma(s)\Gamma(1-s)=\pi/\sin\pi s$ to prove that
+  Use the fact that $\Gamma\left(s\right)\Gamma\left(1-s\right)=\pi/\sin\pi s$ to prove that
   \[
-    |\Gamma(1/2+it)|=\sqrt{\frac{2\pi}{e^{\pi t}+e^{-\pi t}}}=\sqrt{\pi\sech{\pi t}}
+    |\Gamma\left(1/2+it\right)|=\sqrt{\frac{2\pi}{e^{\pi t}+e^{-\pi t}}}=\sqrt{\pi\sech{\pi t}}
   \]
   whenever $t\in \bb{R}$.
 \end{problem}
@@ -172,68 +172,68 @@
 \begin{proof}
   Use the above identity with $s=1/2+it$ to get
   \begin{align*}
-    \Gamma(1/2+it)\Gamma(1/2-it) &= \frac{2\pi}{\sin\pi s}\\
+    \Gamma\left(1/2+it\right)\Gamma\left(1/2-it\right) &= \frac{2\pi}{\sin\pi s}\\
                        &= \frac{2\pi i}{e^{i\pi/2-\pi t}-e^{-i\pi/2+\pi t}}\\
-                       &= \frac{2\pi i}{i(e^{\pi t}-e^{-\pi t})}\\
+                       &= \frac{2\pi i}{i\left(e^{\pi t}-e^{-\pi t}\right)}\\
                        &= \frac{2\pi}{e^{\pi t}-e^{-\pi t}}\\
   \end{align*}
-  Then using the fact that $\Gamma(\bar{s})=\overline{\Gamma(s)}$ and
+  Then using the fact that $\Gamma\left(\bar{s}\right)=\overline{\Gamma\left(s\right)}$ and
   that $s\bar{s}=|s|^2$ we get
   \[
-    |\Gamma(1/2+it)|^2=\frac{2\pi}{e^{\pi t}-e^{-\pi t}}
+    |\Gamma\left(1/2+it\right)|^2=\frac{2\pi}{e^{\pi t}-e^{-\pi t}}
   \]
   Which leads us to the desired identity
   \[
-    |\Gamma(1/2+it)|=\sqrt{\frac{2\pi}{e^{\pi t}-e^{-\pi t}}}
+    |\Gamma\left(1/2+it\right)|=\sqrt{\frac{2\pi}{e^{\pi t}-e^{-\pi t}}}
   \]
 \end{proof}
 
 \sk
 
 \begin{problem}[6.3.7]
-  The \textbf{Beta function} is defined for $\Re(\alpha)>0$ and
-  $\Re(\beta)>0$ by
+  The \textbf{Beta function} is defined for $\Re\left(\alpha\right)>0$ and
+  $\Re\left(\beta\right)>0$ by
   \[
-    B(\alpha,\beta)=\int_0^1(1-t)^{\alpha-1}t^{\beta-1}dt
+    B\left(\alpha,\beta\right)=\int_0^1\left(1-t\right)^{\alpha-1}t^{\beta-1}dt
   \]
   \begin{enumerate}
   \item[(a)] Prove that
-    $B(\alpha,\beta)=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}$.
+    $B\left(\alpha,\beta\right)=\frac{\Gamma\left(\alpha\right)\Gamma\left(\beta\right)}{\Gamma\left(\alpha+\beta\right)}$.
   \item[(b)] Show that
-    $B(\alpha,\beta)=\int_0^\infty\frac{u^{\alpha-1}}{(1+u)^{\alpha+\beta}}du$.
+    $B\left(\alpha,\beta\right)=\int_0^\infty\frac{u^{\alpha-1}}{\left(1+u\right)^{\alpha+\beta}}du$.
   \end{enumerate}
   [Hint: For part (a), note that
   \[
-    \Gamma(\alpha)\Gamma(\beta)=\int_0^\infty\int_0^\infty t^{\alpha-1}s^{\beta-1}e^{-t-s}dtds
+    \Gamma\left(\alpha\right)\Gamma\left(\beta\right)=\int_0^\infty\int_0^\infty t^{\alpha-1}s^{\beta-1}e^{-t-s}dtds
   \]
-  and make the change of variables $s=ur,t=u(1-r)$.]
+  and make the change of variables $s=ur,t=u\left(1-r\right)$.]
 \end{problem}
 
 \begin{proof}
   \begin{enumerate}
-  \item[(a)] Begin with $\Gamma(\alpha)\Gamma(\beta)$ and make the above suggested
+  \item[(a)] Begin with $\Gamma\left(\alpha\right)\Gamma\left(\beta\right)$ and make the above suggested
     substitution to get
     \begin{align*}
-      \Gamma(\alpha)\Gamma(\beta) &= (\int_0^\infty e^{-t}t^{\alpha-1}dt)(\int_0^\infty e^{-s}s^{\beta-1}ds)\\
-               &=\int_0^\infty\int_0^\infty t^{\alpha-1}s^{\beta-1}e^{-(t+s)}dtds\\
-               &=\int_0^1\int_0^\infty(u(1-r))^{\alpha-1}(ur)^{\beta-1}e^{-u}(-u)dudr\\
-               &=\int_0^1\int_0^\infty-u^{\alpha+\beta-1}e^{-u}(1-r)^{\alpha-1}r^{\beta-1}dudr\\
-               &=\int_0^1(\int_0^\infty-u^{\alpha+\beta-1}e^{-u}du)(1-r)^{\alpha-1}r^{\beta-1}dr\\
-               &=\int_0^1\Gamma(\alpha+\beta)(1-r)^{\alpha-1}r^{\beta-1}dr\\
-               &=\Gamma(\alpha+\beta)\int_0^1(1-r)^{\alpha-1}r^{\beta-1}dr\\
-               &=\Gamma(\alpha+\beta)B(\alpha,\beta)\\
+      \Gamma\left(\alpha\right)\Gamma\left(\beta\right) &= \left(\int_0^\infty e^{-t}t^{\alpha-1}dt\right)\left(\int_0^\infty e^{-s}s^{\beta-1}ds\right)\\
+               &=\int_0^\infty\int_0^\infty t^{\alpha-1}s^{\beta-1}e^{-\left(t+s\right)}dtds\\
+               &=\int_0^1\int_0^\infty\left(u\left(1-r\right)\right)^{\alpha-1}\left(ur\right)^{\beta-1}e^{-u}\left(-u\right)dudr\\
+               &=\int_0^1\int_0^\infty-u^{\alpha+\beta-1}e^{-u}\left(1-r\right)^{\alpha-1}r^{\beta-1}dudr\\
+               &=\int_0^1\left(\int_0^\infty-u^{\alpha+\beta-1}e^{-u}du\right)\left(1-r\right)^{\alpha-1}r^{\beta-1}dr\\
+               &=\int_0^1\Gamma\left(\alpha+\beta\right)\left(1-r\right)^{\alpha-1}r^{\beta-1}dr\\
+               &=\Gamma\left(\alpha+\beta\right)\int_0^1\left(1-r\right)^{\alpha-1}r^{\beta-1}dr\\
+               &=\Gamma\left(\alpha+\beta\right)B\left(\alpha,\beta\right)\\
     \end{align*}
     Which when we divide through gives us
     \[
-      B(\alpha,\beta)=\frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}
+      B\left(\alpha,\beta\right)=\frac{\Gamma\left(\alpha\right)\Gamma\left(\beta\right)}{\Gamma\left(\alpha+\beta\right)}
     \]
   \item[(b)] Begin with the integral side of the problem and make the
     substitution $\frac{1-t}{t}=u$ to get
     \begin{align*}
-      \int_0^\infty\frac{u^{\alpha-1}}{(1+u)^{\alpha+\beta}}du &= \int_0^\infty (\frac{u}{1+u})^{\alpha-1}(1+u)^{-\beta-1}du\\
-                                                  &=\int_1^0 (1-t)^{\alpha-1}(t^{-1})^{-\beta-1}(-t^{-2})dt\\
-                                                  &=\int_0^1 (1-t)^{\alpha-1}t^{\beta-1}dt\\
-                                                  &=B(\alpha,\beta)
+      \int_0^\infty\frac{u^{\alpha-1}}{\left(1+u\right)^{\alpha+\beta}}du &= \int_0^\infty \left(\frac{u}{1+u}\right)^{\alpha-1}\left(1+u\right)^{-\beta-1}du\\
+                                                  &=\int_1^0 \left(1-t\right)^{\alpha-1}\left(t^{-1}\right)^{-\beta-1}\left(-t^{-2}\right)dt\\
+                                                  &=\int_0^1 \left(1-t\right)^{\alpha-1}t^{\beta-1}dt\\
+                                                  &=B\left(\alpha,\beta\right)
     \end{align*}
   \end{enumerate}
 \end{proof}
@@ -243,29 +243,29 @@
 \begin{problem}[6.3.10]
   An integral of the form
   \[
-    F(z)=\int_0^\infty f(t)t^{z-1}dt
+    F\left(z\right)=\int_0^\infty f\left(t\right)t^{z-1}dt
   \]
   is called a \textbf{Mellin transform}, and we shall write
-  ${\cal M}(f)(z)=F(z)$. For example, the gamma function is the Mellin
+  ${\cal M}\left(f\right)\left(z\right)=F\left(z\right)$. For example, the gamma function is the Mellin
   transform of the function $e^{-t}$.
   \begin{enumerate}
   \item[(a)] Prove that
     \[
-      {\cal M}(\cos)(z)=\int_0^\infty\cos(t)t^{z-1}dt=\Gamma(z)\cos(\frac{\pi z}{2})
+      {\cal M}\left(\cos\right)\left(z\right)=\int_0^\infty\cos\left(t\right)t^{z-1}dt=\Gamma\left(z\right)\cos\left(\frac{\pi z}{2}\right)
     \]
-    for $0<\Re(z)<1$ and
+    for $0<\Re\left(z\right)<1$ and
     \[
-      {\cal M}(\sin)(z)=\int_0^\infty\sin(t)t^{z-1}dt=\Gamma(z)\sin(\frac{\pi z}{2})
+      {\cal M}\left(\sin\right)\left(z\right)=\int_0^\infty\sin\left(t\right)t^{z-1}dt=\Gamma\left(z\right)\sin\left(\frac{\pi z}{2}\right)
     \]
-    for $0<\Re(z)<1$.
+    for $0<\Re\left(z\right)<1$.
   \item[(b)] Show that the second of the above is valid in the larger strip
-    $-1<\Re(z)<1$, and that as a consequence, one has
+    $-1<\Re\left(z\right)<1$, and that as a consequence, one has
     \[
       \int_0^\infty \frac{\sin x}{x}dx=\frac{\pi}{2}\quad \text{and}\quad \int_0^\infty\frac{\sin x}{x^{3/2}}dx=\sqrt{2\pi}
     \]
   \end{enumerate}
   [Hint: For the first part, consider the integral of the function
-  $f(w)=e^{-w}w^{z-1}$ around the quarter annulus. Use the analytic continuation
+  $f\left(w\right)=e^{-w}w^{z-1}$ around the quarter annulus. Use the analytic continuation
   to prove the second part.]
 \end{problem}
 
@@ -273,52 +273,54 @@
   \begin{enumerate}
   \item[(a)] Let $\gamma_{\epsilon,R}$ be the quarter annulus in the upper right quarter
     plane with inner radius $\epsilon$ and outer radius $R$. Since there are no
-    singularities within for $f(w)$, the value of the integral is zero. Thus we have
+    singularities within for $f\left(w\right)$, the value of the integral is zero. Thus we have
     \[
       \int_{\gamma_{\epsilon,R}}e^{-w}w^{z-1}dw = 0 = \int_\epsilon^R e^{-t}t^{z-1}dt + \int_\epsilon^R e^{-it}t^{z-1}idt+\int_{C_\epsilon}e^{-w}w^{z-1}dw+\int_{C_R}e^{-w}w^{z-1}dw
     \]
-    The leftmost term in the sum is $\Gamma(z)$, the two integrals about $C_\epsilon$ and $C_R$
+    The leftmost term in the sum is $\Gamma\left(z\right)$, the two integrals about $C_\epsilon$ and $C_R$
     will both approach zero as $\epsilon\rightarrow 0$ and $R\rightarrow \infty$. This gives us
-    \[
-      0 = \Gamma(z)+i^z\int_0^\infty e^{-it}t^{z-1}dt=\Gamma(z)+i^z(\int_0^\infty\cos(t)t^{z-1}dt-i\int_0^\infty\sin(t)t^{z-1}dt)=\Gamma(z)+i^z({\cal M}(\cos)(z)-i{\cal M}(\sin)(z))
-    \]
+    \begin{align*}
+      0 &= \Gamma\left(z\right)+i^z\int_0^\infty e^{-it}t^{z-1}dt=\Gamma\left(z\right)+i^z\left(\int_0^\infty\cos\left(t\right)t^{z-1}dt-i\int_0^\infty\sin\left(t\right)t^{z-1}dt\right)\\
+        &=\Gamma\left(z\right)+i^z\left({\cal M}\left(\cos\right)\left(z\right)-i{\cal M}\left(\sin\right)\left(z\right)\right)
+    \end{align*}
+
     Rearrange to get
     \[
-      {\cal M}(\cos)(z)-i{\cal M}(\sin)(z)= \Gamma(z)i^{-z}=\Gamma(z)\cos(\pi z/2)-i\Gamma(z)\sin(\pi z/2)
+      {\cal M}\left(\cos\right)\left(z\right)-i{\cal M}\left(\sin\right)\left(z\right)= \Gamma\left(z\right)i^{-z}=\Gamma\left(z\right)\cos\left(\pi z/2\right)-i\Gamma\left(z\right)\sin\left(\pi z/2\right)
     \]
     If $z$ is real then by taking the real and imaginary parts of the above
     equality we get
     \[
-      {\cal M}(\cos)(z)=\int_0^\infty\cos(t)t^{z-1}dt=\Gamma(z)\cos(\frac{\pi z}{2})
+      {\cal M}\left(\cos\right)\left(z\right)=\int_0^\infty\cos\left(t\right)t^{z-1}dt=\Gamma\left(z\right)\cos\left(\frac{\pi z}{2}\right)
     \]
     and
     \[
-      {\cal M}(\sin)(z)=\int_0^\infty\sin(t)t^{z-1}dt=\Gamma(z)\sin(\frac{\pi z}{2})
+      {\cal M}\left(\sin\right)\left(z\right)=\int_0^\infty\sin\left(t\right)t^{z-1}dt=\Gamma\left(z\right)\sin\left(\frac{\pi z}{2}\right)
     \]
 
     
-    For ${\cal M}(\cos)(z)$ the original integral exists in the strip defined
-    by $0<\Re(z)<1$. Since the integral agrees with $\Gamma(z)\cos(\pi z/2)$ on
-    interval $(0,1)$ and $\Gamma(z)\cos(\pi z/2)$ is analytic in said strip it
-    must be that ${\cal M}(\cos)(z)$ continues analytically to the whole
-    strip with values $\Gamma(z)\cos(\pi z/2)$. The same reasoning applies
-    to ${\cal M}(\sin)(z)$.
-  \item[(b)] Using that $\Gamma(z)=(z-1)\Gamma(z-1)$ and that $\cos(z)=\sin(z+\pi/2)$
-    we can continue ${\cal M}(\sin)(z)$ to the larger strip by
+    For ${\cal M}\left(\cos\right)\left(z\right)$ the original integral exists in the strip defined
+    by $0<\Re\left(z\right)<1$. Since the integral agrees with $\Gamma\left(z\right)\cos\left(\pi z/2\right)$ on
+    interval $\left(0,1\right)$ and $\Gamma\left(z\right)\cos\left(\pi z/2\right)$ is analytic in said strip it
+    must be that ${\cal M}\left(\cos\right)\left(z\right)$ continues analytically to the whole
+    strip with values $\Gamma\left(z\right)\cos\left(\pi z/2\right)$. The same reasoning applies
+    to ${\cal M}\left(\sin\right)\left(z\right)$.
+  \item[(b)] Using that $\Gamma\left(z\right)=\left(z-1\right)\Gamma\left(z-1\right)$ and that $\cos\left(z\right)=\sin\left(z+\pi/2\right)$
+    we can continue ${\cal M}\left(\sin\right)\left(z\right)$ to the larger strip by
     \[
-      {\cal M}(\sin)(z-1)=\Gamma(z-1)\sin(\pi/2(z-1))=\frac{\Gamma(z)\cos(\pi z/2)}{z-1}
+      {\cal M}\left(\sin\right)\left(z-1\right)=\Gamma\left(z-1\right)\sin\left(\pi/2\left(z-1\right)\right)=\frac{\Gamma\left(z\right)\cos\left(\pi z/2\right)}{z-1}
     \]
     Now if we plug-in $-1/2$ in for $z$ we get
     \[
-      {\cal M}(\sin)(-1/2)=\int_0^\infty \frac{\sin(t)}{t^{3/2}}dt = \frac{\Gamma(1/2)\cos(-\pi/4)}{-1/2}=\frac{2\sqrt{\pi}}{\sqrt{2}}=\sqrt{2\pi}
+      {\cal M}\left(\sin\right)\left(-1/2\right)=\int_0^\infty \frac{\sin\left(t\right)}{t^{3/2}}dt = \frac{\Gamma\left(1/2\right)\cos\left(-\pi/4\right)}{-1/2}=\frac{2\sqrt{\pi}}{\sqrt{2}}=\sqrt{2\pi}
     \]
     Using $z=0$ we have
     \begin{align*}
-      {\cal M}(\sin)(0)=\int_0^\infty\frac{\sin(t)}{t}dt &= \lim_{z\rightarrow 0}\Gamma(z)\sin(\pi z/2)\\
-                                                 &= \lim_{z\rightarrow 0}\Gamma(z+1)\frac{\sin(\pi z/2)}{z}\\
-                                                 &=(\lim_{z\rightarrow 0}\Gamma(z+1))(\lim_{z\rightarrow 0}\frac{\sin(\pi z/2)}{z})\\
-                                                 &=1\lim_{z\rightarrow 0}\frac{\sin(\pi z/2)}{z}\\
-                                                 &=\lim_{z\rightarrow 0}\frac{\pi/2\cos(\pi z/2)}{1}\\
+      {\cal M}\left(\sin\right)\left(0\right)=\int_0^\infty\frac{\sin\left(t\right)}{t}dt &= \lim_{z\rightarrow 0}\Gamma\left(z\right)\sin\left(\pi z/2\right)\\
+                                                 &= \lim_{z\rightarrow 0}\Gamma\left(z+1\right)\frac{\sin\left(\pi z/2\right)}{z}\\
+                                                 &=\left(\lim_{z\rightarrow 0}\Gamma\left(z+1\right)\right)\left(\lim_{z\rightarrow 0}\frac{\sin\left(\pi z/2\right)}{z}\right)\\
+                                                 &=1\lim_{z\rightarrow 0}\frac{\sin\left(\pi z/2\right)}{z}\\
+                                                 &=\lim_{z\rightarrow 0}\frac{\pi/2\cos\left(\pi z/2\right)}{1}\\
                                                  &=\pi/2
     \end{align*}
   \end{enumerate}
@@ -327,24 +329,24 @@
 \sk
 
 \begin{problem}[6.3.15]
-  Prove that for $\Re(s)>1$,
+  Prove that for $\Re\left(s\right)>1$,
   \[
-    \zeta(s)=\frac{1}{\Gamma(s)}\int_0^\infty\frac{x^{s-1}}{e^x-1}dx
+    \zeta\left(s\right)=\frac{1}{\Gamma\left(s\right)}\int_0^\infty\frac{x^{s-1}}{e^x-1}dx
   \]
-  [Hint: Write $1/(e^x-1)=\sum_{n=1}^\infty e^{-nx}$.]
+  [Hint: Write $1/\left(e^x-1\right)=\sum_{n=1}^\infty e^{-nx}$.]
 \end{problem}
 
 \begin{proof}
   Start with the right side of the equation and use the suggested series
   with a substitution $t=nx$ to get
   \begin{align*}
-    \frac{1}{\Gamma(s)}\int_0^\infty \frac{x^{s-1}}{e^x-1}dx &= \frac{1}{\Gamma(s)}\int_0^\infty\sum_{n=1}^\infty x^{s-1}e^{-nx}dx\\
-                                                &=\frac{1}{\Gamma(s)}\sum_{n=1}^\infty \int_0^\infty e^{-nx}dx\\
-                                                &=\frac{1}{\Gamma(s)}\sum_{n=1}^\infty \int_0^\infty n^{-s}t^{s-1}e^{-t}dt\\
-                                                &=\frac{1}{\Gamma(s)}\sum_{n=1}^\infty n^{-s}\int_0^\infty t^{s-1}e^{-t}dt\\
-                                                &=\frac{1}{\Gamma(s)}\sum_{n=1}^\infty n^{-s}\Gamma(s)\\
+    \frac{1}{\Gamma\left(s\right)}\int_0^\infty \frac{x^{s-1}}{e^x-1}dx &= \frac{1}{\Gamma\left(s\right)}\int_0^\infty\sum_{n=1}^\infty x^{s-1}e^{-nx}dx\\
+                                                &=\frac{1}{\Gamma\left(s\right)}\sum_{n=1}^\infty \int_0^\infty e^{-nx}dx\\
+                                                &=\frac{1}{\Gamma\left(s\right)}\sum_{n=1}^\infty \int_0^\infty n^{-s}t^{s-1}e^{-t}dt\\
+                                                &=\frac{1}{\Gamma\left(s\right)}\sum_{n=1}^\infty n^{-s}\int_0^\infty t^{s-1}e^{-t}dt\\
+                                                &=\frac{1}{\Gamma\left(s\right)}\sum_{n=1}^\infty n^{-s}\Gamma\left(s\right)\\
                                                 &=\sum_{n=1}^\infty n^{-s}\\
-                                                &= \zeta(s)
+                                                &= \zeta\left(s\right)
   \end{align*}
 \end{proof}
 
