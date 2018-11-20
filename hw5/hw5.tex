@@ -1,0 +1,180 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amscd}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{listings}
+\usepackage{enumerate}
+\usepackage[all,cmtip]{xy}
+
+\textwidth=15cm \textheight=22cm \topmargin=0.5cm \oddsidemargin=0.5cm \evensidemargin=0.5cm
+
+\newcommand{\sk}{\vskip 6mm}
+\newcommand{\bb}[1]{\mathbb{#1}}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+\DeclareMathOperator{\cis}{cis}
+\DeclareMathOperator{\res}{Res}
+\DeclareMathOperator{\sech}{sech}
+
+
+\theoremstyle{remark}
+\newtheorem{problem}{Problem}
+\newtheorem{lemma}{Lemma}[problem]
+
+\theoremstyle{remark}
+\newtheorem{tpart}{}[problem]
+\newtheorem*{ppart}{}
+
+\begin{document}
+
+\begin{problem}[8.5.7]
+  Provide all the details n the proof of the formula for the solution of the Dirichlet problem in a strip discussed in Section 1.3. Recall that it suffices to compute the solution at the points $z=iy$ with $0<y<1$.
+  \begin{enumerate}
+  \item[(a)] Show that if $re^{i\theta}=G(iy)$, then
+    \[
+      re^{i\theta}=i\frac{\cos\pi y}{1+\sin\pi y}
+    \]
+    This leads to two separate cases: either $0<y\leq 1/2$ and $\theta=\pi/2$ or $1/2\leq y<1$ and $\theta=-\pi/2$. In either case, show that
+    \[
+      r^2=\frac{1-\sin\pi y}{1+\sin\pi y}\quad \text{and}\quad P_r(\theta-\varphi)=\frac{\sin\pi y}{1-\cos\pi y\sin\varphi}
+    \]
+  \item[(b)] In the integral $\frac{1}{2\pi}\int_0^\pi P_r(\theta-\varphi)\wt{f}_0(\varphi)d\varphi$ make the change of variables $t=F(e^{i\varphi})$. Observe that
+    \[
+      e^{i\varphi}=\frac{i-e^{\pi t}}{i+e^{\pi t}}
+    \]
+    and then take the imaginary part and differentiate both sides to establish the two identities
+    \[
+      \sin\varphi = \frac{1}{\cosh \pi t}\quad \text{and}\quad \frac{d\varphi}{dt}=\frac{\pi}{\cosh\pi t}
+    \]
+    Hence deduce that
+    \begin{align*}
+      \frac{1}{2\pi}\int_0^\pi P_r(\theta-\varphi)\wt{f}_0(\varphi)d\varphi &=\frac{1}{2\pi}\int_0^\pi\frac{\sin\pi y}{1-\cos\pi y\sin\varphi}\wt{f}_0(\varphi)d\varphi\\
+                                             &=\frac{\sin\pi y}{2}\int_{-\infty}^\infty\frac{f_0(t)}{\cosh\pi t-\cos\pi y}dt
+    \end{align*}
+  \item[(c)] Use a similar argument to prove the formula for the integral $\frac{1}{2\pi}\int_{-\pi}^0 P_r(\theta-\varphi)\wt{f}_1(\varphi)d\varphi$.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}
+  
+\end{proof}
+
+\sk
+
+\begin{problem}[8.5.9]
+  Prove that the function $u$ defined by
+  \[
+    u(x,y)=\Re(\frac{i+z}{i-z}),\quad u(0,1)=0
+  \]
+  is harmonic in the unit disc and vanishes on the boundary. Note that $u$ is not bounded in $\bb{D}$.
+\end{problem}
+
+\begin{proof}
+  
+\end{proof}
+
+\sk
+
+\begin{problem}[8.5.16]
+  Let
+  \[
+    f(z)=\frac{i-z}{i+z}\quad\text{and}\quad f^{-1}(w)=i\frac{1-w}{1+w}
+  \]
+  \begin{enumerate}
+  \item[(a)] Given $\theta\in\bb{R}$, find real numbers $a,b,c,d$ so that $ad-bc=1$, and so that for any $z\in\bb{H}$
+    \[
+      \frac{az+b}{cz+d}=f^{-1}(e^{i\theta}f(z))
+    \]
+    with $\psi_a$ defined in Section 2.1.
+  \item[(b)] Given $\theta\in\bb{R}$, find real numbers $a,b,c,d$ so that $ad-bc=1$, and so that for any $z\in\bb{H}$
+    \[
+      \frac{az+b}{cz+d}=f^{-1}(\psi_\alpha(f(z)))
+    \]
+    with $\psi_a$ defined in Section 2.1.
+  \item[(c)] Prove that if $g$ is an automorphism of the unit disc, then there exist real numbers $a,b,c,d$ such that $ad-bc=1$ and so that for any $z\in\bb{H}$
+    \[
+      \frac{az+b}{cz+d}=f^{-1}\circ g\circ f(z)
+    \]
+    [Hint: Use parts (a) and (b)].
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}
+  
+\end{proof}
+
+\sk
+
+\begin{problem}[8.5.20]
+  Other examples of elliptic integrals providing conformal maps form the upper half-plane to rectangles providing conformal maps from the upper half-plane to rectangles are given below.
+  \begin{enumerate}
+  \item[(a)] The function
+    \[
+      \int_0^z\frac{d\zeta}{\sqrt{\zeta(\zeta-1)(\zeta-\lambda)}},\quad \lambda\in\bb{R}\setminus\{1\}
+    \]
+    maps the upper half-plane conformally to a rectangle, one of whose vertices is the image of the point at infinity.
+  \item[(b)] In the case $\lambda=-1$, the image of
+    \[
+      \int_0^z\frac{d\zeta}{\sqrt{\zeta(\zeta^2-1)}}
+    \]
+    is a square whose side lengths are $\frac{\Gamma^2(1/4)}{2\sqrt{2\pi}}$.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}
+  
+\end{proof}
+
+\sk
+
+\begin{problem}[8.5.21]
+  We consider the conformal mappings to triangles.
+  \begin{enumerate}
+  \item[(a)] Show that
+    \[
+      \int_0^z z^{-\beta_1}(1-z)^{-\beta_2}dz
+    \]
+    with $0<\beta_1<1$, $0<\beta_2<$, and $1<\beta_1+\beta_2<2$, maps $\bb{H}$ to a triangle whose vertices are the images of $0,1,$ and $\infty$, and with angles $\alpha_1\pi,\alpha_2\pi$, and $\alpha_3\pi$, where $\alpha_j+\beta_j=1$ and $\beta_1+\beta_2+\beta_3=2$.
+  \item[(b)] What happens when $\beta_1+\beta_2=1$?
+  \item[(c)] What happens when $0<\beta_1+\beta_2<1$?
+  \item[(d)] In (a), the length of the side of the triangle opposite angle $\alpha_j\pi$ is $\frac{\sin(\alpha_j\pi)}{\pi}\Gamma(\alpha_1)\Gamma(\alpha_2)\Gamma(\alpha_3)$.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}
+  
+\end{proof}
+
+\sk
+
+\begin{problem}[8.6.2]
+  The angle between two non-zero complex numbers $z$ and $w$ (taken in that order) is simply the oriented angle, in $(-\pi,\pi]$, that is formed between the two vectors in $\bb{R}^2$ corresponding to the points $z$ and $w$. This oriented angle, say $\alpha$, is uniquely determined by the two quantities
+  \[
+    \frac{(z,w)}{|z||w|}\quad\text{and}\quad \frac{(z,-iw)}{|z||w|}
+  \]
+  which are simply the cosine and sine of $\alpha$, respectively. Here, the notation $(\cdot,\cdot)$ corresponds to the usual Euclidean inner product in $\bb{R}^2$, which in terms of complex numbers takes the form $(z,w)=\Re(z\conj{w})$.
+
+  In particular, we may now consider two smooth curves $\gamma:[a,b]\rightarrow\bb{C}$ and $\eta:[a,b]\rightarrow\bb{C}$, that intersect at $z_0$, say $\gamma(t_0)=\eta(t_0)=z_0$ for some $t_0\in(a,b)$. If the quantities $\gamma'(t_0)$ and $\eta'(t_0)$ are non-zero, then they represent the tangents to the curves $\gamma$ and $\eta$ at the point $z_0$, and we say that the two curves intersect at $z_0$ at the angle formed by the two vectors $\gamma'(t_0)$ and $\eta'(t_0)$.
+
+  A holomorphic function $f$ defined near $z_0$ is said to \textbf{preserve angles} at $z_0$ if for any two smooth curves $\gamma$ and $\eta$ intersecting at $z_0$, the angle formed between the curves $\gamma$ and $\eta$ at $z_0$ equals the angle formed between the curves $f\circ\gamma$a nd $f\circ\eta$ at $f(z_0)$. In particular we assume that the tangents to the curves $\gamma,\eta,f\circ\gamma$, and $f\circ\eta$ at the point $z_0$ and $f(z_0)$ are all non-zero.
+  \begin{enumerate}
+  \item[(a)] Prove that if $f:\Omega\rightarrow\bb{C}$ is holomorphic, and $f'(z_0)\neq 0$, then $f$ preserves angles at $z_0$. [Hint: Observe that
+    \[
+      (f'(z_0)\gamma'(t_0),f'(z_0)\eta'(t_0))=|f'(z_0|^2(\gamma'(t_0),\eta'(t_0)))
+    \]
+      ]
+  \item[(b)] Conversely, prove the following: suppose $f:\Omega\rightarrow\bb{C}$ is complex-valued function, that is real differentiable at $z_0\in\Omega$, and $J_f(z_0)\neq 0$. If $f$ preserves angles at $z_0$, then $f$ is holomorphic at $z_0$ with $f'(z_0)\neq 0$.
+  \end{enumerate}
+\end{problem}
+
+\begin{proof}
+  
+\end{proof}
+
+\sk
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
