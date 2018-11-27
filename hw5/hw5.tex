@@ -66,7 +66,46 @@
 \end{problem}
 
 \begin{proof}
-  
+  \begin{enumerate}
+  \item[(a)] By the definition of $G$ we start with
+    \[
+      re^{i\theta}=\frac{i-e^{i\pi y}}{i+e^{i\pi y}}
+    \]
+    Replace the $e^{i\theta}$ with sines and cosines, followed by multiplying the top and
+    bottom by the conjugate of the bottom to get
+    \[
+      \frac{i-e^{i\pi y}}{i+e^{i\pi y}}=\frac{i-\cos\pi y-i\sin\pi y}{i+\cos\pi y+i\sin\pi y}\cdot\frac{\cos\pi y-i(1+\sin\pi y)}{\cos\pi y-i(1+\sin\pi y)}
+    \]
+    Which then simplifies to
+    \[
+      i\frac{\cos\pi y}{1+\sin\pi y}
+    \]
+    In the first case listed above we lie on the positive imaginary axis, and in the second case listed
+    above we are on the negative imaginary axis. Either way we have
+    \begin{align*}
+      (\pm i r)=-r^2&= -\frac{\cos^2\pi y}{(1+\sin\pi y)^2}\\
+      r^2 &= \frac{1-\sin^2\pi y}{(1+\sin\pi y)^2}\\
+                 &= \frac{1-\sin\pi y}{1+\sin \pi y}
+    \end{align*}
+    By definition of $P_r(\theta-\varphi)$ we have
+    \[
+      P_r(\theta-\varphi)=\frac{1-r^2}{1-2r\cos(\theta-\varphi)+r^2}
+    \]
+    Substitute in for $r^2$ and simplify to get
+    \begin{align*}
+      P_r(\theta-\varphi)&=\frac{1-r^2}{1-2r\cos(\theta-\varphi)+r^2}\\
+             &= \frac{1-\frac{1-\sin\pi y}{1+\sin \pi y}}{1-2r\cos(\theta-\varphi)+\frac{1-\sin\pi y}{1+\sin \pi y}}\\
+             &=\frac{1-\frac{1-\sin\pi y}{1+\sin \pi y}}{1-2r(\cos\theta\cos\varphi+\sin\theta\sin\varphi)+\frac{1-\sin\pi y}{1+\sin \pi y}}\cdot\frac{1+\sin\pi y}{1+\sin\pi y}\\
+             &=\frac{2\sin\pi y}{2-2r(1+\sin\pi y)(\sin\theta\sin\varphi)}\\
+             &=\frac{\sin\pi y}{1-(e^{i(\theta+\pi/2)}\cos\pi y)(\sin\theta\sin\varphi)}
+    \end{align*}
+    From here since we know what $\theta$ is, we can simplify to
+    \[
+      P_r(\theta-\varphi)=\frac{\sin\pi y}{1-\cos\pi y\sin\varphi}
+    \]
+  \item[(b)]
+  \item[(c)]
+  \end{enumerate}
 \end{proof}
 
 \sk
@@ -177,11 +216,15 @@
   \begin{enumerate}
   \item[(a)] By proposition 8.4.1, we fall into the second case, and so the
     image of the upper half plane is a quadrangle with corners $S(0),S(1),S(\lambda)$, and
-    $S(\infty)$ where the angle corresponding to $S(\infty)$ is $\pi/2$. As such if we can
-    confirm that the opposite angle is $\pi/2$ we will know that this polygon is in fact
-    a rectangle.
+    $S(\infty)$ where the angle corresponding to $S(\infty)$ is $\pi/2$. In addition we also get
+    from the proposition that the rest of the angles are $\pi/2$ since they are each to
+    the $1/2$ power. So the polygon must in fact be a rectangle.
   \item[(b)] From above we know that the shape is a rectangle. All that is left
     to confirm is that the side lengths are $\frac{\Gamma^2(1/4)}{2\sqrt{2\pi}}$.
+    Starting with the side $S(0)$ to $S(1)$ make the substitution $\sqrt{u}=\zeta$ to get
+    \[
+      \int_0^1\frac{d\zeta}{\sqrt{\zeta(\zeta^2-1)}}
+    \]
   \end{enumerate}
 \end{proof}
 
@@ -208,12 +251,16 @@
 
 \begin{proof}
   \begin{enumerate}
-  \item[(a)]
+  \item[(a)] Using proposition 8.4.1, we have that the image $S(\bb{H})$ is a
+    is a triangle with points at $S(0),S(1)$, and $S(\infty)$. The angles corresponding
+    to each side are then $\alpha_0\pi,\alpha_1\pi,\alpha_\infty\pi$ where $\alpha_z=1-\beta_z$ and $\beta_0+\beta_1+\beta_\infty=2$ from
+    the proposition.
   \item[(b)] Following in a similar fashion to the last problem we
     get a ``degenerate'' triangle that is a straight line (angle at infinity is $\pi$).
   \item[(c)] We get a triangle with a vertex at infinity and a vertex at $S(0),S(1)$ with
     non-intersecting rays emerging from each.
-  \item[(d)]
+  \item[(d)] If we have one side the others follow from using law of sines. The length
+    of the side corresponding to $S(0)$ and $S(1)$ has length $|S(1)-S(0)|=|S(1)|=|\int_0^2 z^{-\beta_1}(1-z)^{-\beta_2}dz|$.
   \end{enumerate}
 \end{proof}
 
@@ -275,7 +322,14 @@
       \frac{(f'(z_0)\gamma'(t_0),if'(z_0)\eta'(t_0))}{|f'(z_0)\gamma'(t_0)||f'(z_0)\eta'(t_0)|}&=\frac{|f'(z_0)|^2(\gamma'(t_0),i\eta'(t_0)))}{|f'(z_0)\gamma'(t_0)||f'(z_0)\eta'(t_0)|}\\
       &= \frac{(\gamma'(t_0),i\eta'(t_0)))}{|\gamma'(t_0)||\eta'(t_0)|}\\
     \end{align*}
-  \item[(b)]
+  \item[(b)] Since angles are preserved by $f$ we can coerce the Cauchy-Riemann
+    equations out of the two quantities above with $z(t)$ and $w(t)=f\circ z(t)$
+    and $z(t)$ with $\conj{w(t)}$. Since they correlate to sine and cosine this
+    will give us
+    \[
+      (z,-iw)=0,\quad (z,\conj{w})=0
+    \]
+    \textbf{That's the plan anyways.}
   \end{enumerate}
 \end{proof}
 
