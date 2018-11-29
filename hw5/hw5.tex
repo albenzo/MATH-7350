@@ -223,8 +223,13 @@
     to confirm is that the side lengths are $\frac{\Gamma^2(1/4)}{2\sqrt{2\pi}}$.
     Starting with the side $S(0)$ to $S(1)$ make the substitution $\sqrt{u}=\zeta$ to get
     \[
-      \int_0^1\frac{d\zeta}{\sqrt{\zeta(\zeta^2-1)}}
+      \int_0^1\frac{d\zeta}{\sqrt{\zeta(\zeta^2-1)}}=\frac{1}{2}\int_0^1u^{-3/4}(1-u)^{-1/2}du = \frac{B(1/4,1/2)}{2}
     \]
+    From the last homework we have that
+    \[
+      \frac{B(1/4,1/2)}{2}=\frac{\Gamma(1/4)\Gamma(1/2)}{2\Gamma(3/4)}=\frac{\Gamma(1/4)\sqrt{\pi}}{2\frac{\sqrt{2}\pi}{\Gamma(1/4)}}=\frac{\Gamma^2(1/4)}{2\sqrt{2\pi}}
+    \]
+    To get another side we do $|S(-1)-0|=|S(-1)|$ instead doing the substitution $-\sqrt{u}=\zeta$.
   \end{enumerate}
 \end{proof}
 
