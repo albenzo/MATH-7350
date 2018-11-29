@@ -232,8 +232,15 @@
     \]
     To derive this, begin with $f^{-1}\circ\psi_\alpha\circ f(z)$ to get
     \begin{align*}
-      \frac{i-i\frac{\alpha-\frac{i-z}{i+z}}{1-\conj{\alpha}\frac{i-z}{i+z}}}{1+\frac{\alpha-\frac{i-z}{i+z}}{1-\conj{\alpha}\frac{i-z}{i+z}}}&=\\
+      \frac{i-i\frac{\alpha-\frac{i-z}{i+z}}{1-\conj{\alpha}\frac{i-z}{i+z}}}{1+\frac{\alpha-\frac{i-z}{i+z}}{1-\conj{\alpha}\frac{i-z}{i+z}}}&=\frac{(\conj{\alpha}-1)+iz(1+\conj{\alpha})+(\alpha-1)-iz(\alpha+1)}{i(1-\conj{\alpha})+z(1+\conj{\alpha})+i(\alpha-1)+z(\alpha+1)}\\
+                                                                                                                          &=\frac{\conj{\alpha}-2+\alpha+iz\conj{\alpha}-iz\alpha}{i\alpha-i\conj{\alpha}+i2z+z\alpha+z\conj{\alpha}}\\
+                                                                                                                          &=\frac{2\Re(\alpha)-2+2\Im(\alpha)z}{-2\Im(\alpha)+2z(\Re(\alpha)+1)}
     \end{align*}
+    which we can then renormalize to get
+    \[
+      \frac{\Re(\alpha)-1+z\Im(\alpha)}{z(\Re(\alpha)+1)-\Im(\alpha)}\cdot\frac{(|\alpha|^2-1)^{-1/2}}{(|\alpha|^2-1)^{-1/2}}
+    \]
+    as desired.
   \item[(c)] From class we know that any automorphism of $\bb{D}$ is the
     composition of a rotation $\rho(z)$ and a $\psi_\alpha(z)$. Let $g(z)=\rho\circ\psi_\alpha(z)$.
     Then
