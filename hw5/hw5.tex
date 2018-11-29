@@ -103,8 +103,65 @@
     \[
       P_r(\theta-\varphi)=\frac{\sin\pi y}{1-\cos\pi y\sin\varphi}
     \]
-  \item[(b)]
-  \item[(c)]
+  \item[(b)] Since $F$ and $G$ are inverses we have that
+    \[
+      G(t)=G(F(e^{i\varphi}))=e^{i\varphi}=\frac{i-e^{\pi t}}{i+e^{\pi t}}
+    \]
+    Which by multiplying the top and bottom by the conjugate of the bottom we get
+    \[
+      e^{i\varphi}=G(t)=\frac{1-e^{2\pi t}+2ie^{\pi t}}{1+e^{2\pi t}}
+    \]
+    From there take the imaginary part to get
+    \[
+      \sin\varphi = \frac{2e^{\pi t}}{1+e^{2\pi t}}=\sech \pi t
+    \]
+    Taking the derivative of both sides we get
+    \[
+      \cos \varphi \frac{d\varphi}{dt}=-\pi\tanh\pi t\sech\pi t
+    \]
+    However $\cos\varphi$ is the real part of $G(t)$ which is equal to
+    \[
+      \cos\varphi = \frac{1-e^{2\pi t}}{1+e^{2\pi t}}=-\tanh\pi t
+    \]
+    Which cancels the $-\tanh\pi t$ on each side giving us
+    \[
+      \frac{d\varphi}{dt}=\pi\sech\pi t
+    \]
+
+    Now we can use the above pieces to transform the integral
+    \begin{align*}
+      \frac{1}{2\pi}\int_0^\pi P_r(\theta-\varphi)\wt{f}_0(\varphi)d\varphi&=\frac{1}{2\pi}\int_0^\pi\frac{\sin\pi y}{1-\cos\pi y\sin\varphi}\wt{f}_0(\varphi)d\varphi\\
+                                                        &=\frac{1}{2\pi}\int_{-\infty}^\infty\frac{\sin\pi y}{1-\cos\pi y\cosh\pi t}\cdot\frac{\pi}{\cosh\pi t}dt\\
+                                                        &=\frac{\sin\pi y}{2}\int_{-\infty}^\infty\frac{f_0(t)}{\cosh\pi t-\cos\pi y}dt
+    \end{align*}
+  \item[(c)] We proceed similarly. However since $\wt{f}_1(\varphi)=f_1(F(e^{i\varphi})-i)$ we instead
+    let $t=F(e^{i\varphi}-i)$. This will cause a $+i$ to appear in the exponent which will make the
+    calculations the same as before with a small sign change.
+    \[
+      G(t+i)=e^{i\varphi}=\frac{i-e^{i\pi+\pi t}}{i+e^{\pi i+\pi t}} = \frac{1-e^{2\pi t}-2ie^{\pi t}}{1+e^{2\pi t}}
+    \]
+    Taking the imaginary part instead gives us
+    \[
+      \sin\varphi = -\sech\pi t
+    \]
+    and the real part
+    \[
+      \cos\varphi = -\tanh\pi t
+    \]
+    Which when we take the derivative again will give us
+    \[
+      \cos\varphi\frac{d\varphi}{dt}=\pi\tanh\pi t\sech\pi t
+    \]
+    This then turns into
+    \[
+      \frac{d\varphi}{dt}=-\pi\sech\pi t
+    \]
+    Now we can once again transform the integral
+    \begin{align*}
+      \frac{1}{2\pi}\int_{-\pi}^0 P_r(\theta-\varphi)\wt{f}_1(\varphi)d\varphi&=\frac{1}{2\pi}\int_{-\pi}^0\frac{\sin\pi y}{1-\cos\pi y\sin\varphi}\wt{f}_1(\varphi)d\varphi\\
+                                                                         &= -\frac{1}{2\pi}\int_{-\infty}^\infty\frac{\sin\pi y}{1+\cos\pi y\sech\pi t}f_1(t)\cdot\frac{-\pi}{\cosh\pi t}dt\\
+                                                                         &=\frac{\sin\pi y}{2}\int_{-\infty}^\infty\frac{f_1(t)}{\cosh\pi t+\cos\pi y}dt
+    \end{align*}
   \end{enumerate}
 \end{proof}
 
@@ -229,7 +286,12 @@
     \[
       \frac{B(1/4,1/2)}{2}=\frac{\Gamma(1/4)\Gamma(1/2)}{2\Gamma(3/4)}=\frac{\Gamma(1/4)\sqrt{\pi}}{2\frac{\sqrt{2}\pi}{\Gamma(1/4)}}=\frac{\Gamma^2(1/4)}{2\sqrt{2\pi}}
     \]
-    To get another side we do $|S(-1)-0|=|S(-1)|$ instead doing the substitution $-\sqrt{u}=\zeta$.
+    To get another side we do $|S(-1)-0|=|S(-1)|$ instead doing the substitution $-\sqrt{u}=\zeta$ to get
+    \[
+      |\int_0^{-1}\frac{d\zeta}{\sqrt{\zeta(\zeta^2-1)}}| = |\frac{1}{2}\int_0^1\frac{du}{u^{3/4}(u-1)^{1/2}}|=\frac{B(1/4,1/2)}{2}=\frac{\Gamma^2(1/4)}{2\sqrt{2\pi}}
+    \]
+    Since we have a rectangle and two non-opposite sides are equal in length
+    the polygon must be a square.
   \end{enumerate}
 \end{proof}
 
@@ -265,7 +327,15 @@
   \item[(c)] We get a triangle with a vertex at infinity and a vertex at $S(0),S(1)$ with
     non-intersecting rays emerging from each.
   \item[(d)] If we have one side the others follow from using law of sines. The length
-    of the side corresponding to $S(0)$ and $S(1)$ has length $|S(1)-S(0)|=|S(1)|=|\int_0^2 z^{-\beta_1}(1-z)^{-\beta_2}dz|$.
+    of the side corresponding to $S(0)$ and $S(1)$ has length $|S(1)-S(0)|=|S(1)|=|\int_0^1 z^{-\beta_1}(1-z)^{-\beta_2}dz|$.
+    However this is exactly $B(1-\beta_1,1-\beta_2)$. Using that the relation between the
+    beta function and the gamma from the prior homework along with the property
+    that $\Gamma(s)\Gamma(1-s)=\frac{\pi}{\sin\pi s}$ we get
+    \[
+      B(1-\beta_1,1-\beta_2)=\frac{\Gamma(1-\beta_1)\Gamma(1-\beta_2)}{\Gamma(\beta_\infty)}=\frac{\Gamma(\alpha_1)\Gamma(\alpha_2)}{\Gamma(1-\alpha_\infty)}=\frac{\sin(\alpha_\infty\pi)}{\pi}\Gamma(\alpha_1)\Gamma(\alpha_2)\Gamma(\alpha_\infty)
+    \]
+    The length of the other sides then follows immediately from the application of
+    law of sines.
   \end{enumerate}
 \end{proof}
 
@@ -327,14 +397,7 @@
       \frac{(f'(z_0)\gamma'(t_0),if'(z_0)\eta'(t_0))}{|f'(z_0)\gamma'(t_0)||f'(z_0)\eta'(t_0)|}&=\frac{|f'(z_0)|^2(\gamma'(t_0),i\eta'(t_0)))}{|f'(z_0)\gamma'(t_0)||f'(z_0)\eta'(t_0)|}\\
       &= \frac{(\gamma'(t_0),i\eta'(t_0)))}{|\gamma'(t_0)||\eta'(t_0)|}\\
     \end{align*}
-  \item[(b)] Since angles are preserved by $f$ we can coerce the Cauchy-Riemann
-    equations out of the two quantities above with $z(t)$ and $w(t)=f\circ z(t)$
-    and $z(t)$ with $\conj{w(t)}$. Since they correlate to sine and cosine this
-    will give us
-    \[
-      (z,-iw)=0,\quad (z,\conj{w})=0
-    \]
-    \textbf{That's the plan anyways.}
+  \item[(b)] 
   \end{enumerate}
 \end{proof}
 
