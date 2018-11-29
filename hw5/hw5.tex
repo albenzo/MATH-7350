@@ -397,7 +397,27 @@
       \frac{(f'(z_0)\gamma'(t_0),if'(z_0)\eta'(t_0))}{|f'(z_0)\gamma'(t_0)||f'(z_0)\eta'(t_0)|}&=\frac{|f'(z_0)|^2(\gamma'(t_0),i\eta'(t_0)))}{|f'(z_0)\gamma'(t_0)||f'(z_0)\eta'(t_0)|}\\
       &= \frac{(\gamma'(t_0),i\eta'(t_0)))}{|\gamma'(t_0)||\eta'(t_0)|}\\
     \end{align*}
-  \item[(b)] 
+  \item[(b)] Let $z(t)=x(t)+iy(t)$ be a smooth curve in the complex plane
+    and $f(x,y)=u(x,y)+iv(x,y)$ a complex valued function fulfilling the conditions
+    above. Define $w(t)=f\circ z(t)$. Then take the derivative of $w$ to get
+    \begin{align*}
+      w'(t) &= u_x x'+u_y y' + iv_x x'+ iv_y y'\\
+            &= f_x x'+f_y y'\\
+            &=\frac{1}{2}(2f_x x'+2f_y y'+if_y x'- if_y x'+if_x y'-if_x y')\\
+            &=\frac{1}{2}(f_x-if_y)(x'+iy')+\frac{1}{2}(f_x+if_y)(x'-iy')\\
+            &=\frac{1}{2}(f_x-if_y)z'+\frac{1}{2}(f_x+if_y)\conj{z'}\\
+    \end{align*}
+    With the right side containing one form of the Cauchy-Riemann equations.
+
+    Next consider
+    \[
+      \frac{w'}{z'}=\frac{1}{2}(f_x-if_y)+\frac{1}{2}(f_x+if_y)\frac{\conj{z'}}{z'}
+    \]
+    Since $f$ preserves angles it stands to reason that as we vary $t$ that
+    the argument of the expression will not change. If we write $z(t)=re^{i\theta}$
+    then we have $\frac{\conj{z'}}{z}=re^{-2\theta}$. As such we can only actually
+    get a constant argument in the above expression if $(f_x+if_y)=0$.
+    However this is equivalent to $f$ being holomorphic.
   \end{enumerate}
 \end{proof}
 
